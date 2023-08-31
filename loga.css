@@ -1,8 +1,12 @@
-@media screen and (min-width: 768px) {
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Vertikale Zentrierung */
-  }
+/* Stil für die Zentrierung des Inhalts auf Desktop-Seiten */
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0; /* Hintergrundfarbe (optional) */
 }
+
+/* Weitere Stildefinitionen können hier hinzugefügt werden */
