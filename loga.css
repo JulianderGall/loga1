@@ -9,4 +9,10 @@ body {
   background-color: #f0f0f0; /* Hintergrundfarbe (optional) */
 }
 
+.container {
+  max-width: 1200px; /* Maximale Breite des Inhalts */
+  width: 90%; /* Breite des Inhalts in Relation zur Bildschirmbreite */
+  text-align: center; /* Text und Inhalte zentrieren */
+}
+
 /* Weitere Stildefinitionen können hier hinzugefügt werden */
