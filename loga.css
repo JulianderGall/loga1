@@ -1,18 +1,7 @@
-/* Stil für die Zentrierung des Inhalts auf Desktop-Seiten */
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f0f0; /* Hintergrundfarbe (optional) */
-}
 
-.container {
-  max-width: 1200px; /* Maximale Breite des Inhalts */
-  width: 90%; /* Breite des Inhalts in Relation zur Bildschirmbreite */
-  text-align: center; /* Text und Inhalte zentrieren */
+/* Deine bestehenden Stile */
+.BW-MainPanel {
+  font-family: Verdana, sans-serif !important;
+  margin: 0 auto; /* Hinzugefügt: Auto-Margin für horizontale Zentrierung */
+  max-width: 780px;
 }
-
-/* Weitere Stildefinitionen können hier hinzugefügt werden */
