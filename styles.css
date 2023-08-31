@@ -1,3 +1,4 @@
+/* CSS, um den gesamten Website-Inhalt auf Desktop-Seiten zu zentrieren */
 body {
   display: flex;
   justify-content: center;
@@ -15,3 +16,104 @@ body {
   opacity: 0.95;
   z-index: 1000;
 }
+
+.log-panel .GF5TDW5DB {
+  font-size: 10pt;
+  margin: 0;
+  text-align: center; /* Änderung: Zentriert den Text */
+}
+
+.log-panel BUTTON {
+  font-size: 10pt;
+  margin: 0;
+}
+
+.log-panel .GF5TDW5EB {
+  cursor: move;
+  font-weight: bold;
+  text-align: center; /* Änderung: Zentriert den Text */
+}
+
+.log-panel .GF5TDW5M {
+  margin: 0 auto; /* Änderung: Zentriert den Inhalt horizontal */
+  text-align: center; /* Änderung: Zentriert den Text */
+}
+
+.log-panel BUTTON.GF5TDW5L {
+  color: #444 !important;
+}
+
+.log-panel .GF5TDW5CB {
+  white-space: nowrap;
+  text-align: center; /* Änderung: Zentriert den Text */
+}
+
+.log-panel .GF5TDW5N {
+  white-space: pre;
+  font-family: monospace;
+  cursor: help;
+  text-align: center; /* Änderung: Zentriert den Text */
+}
+
+.log-panel .GF5TDW5O {
+  background-color: #f0f0f0;
+}
+
+.log-panel .GF5TDW5BB {
+  background-color: #fff;
+}
+
+.log-panel .GF5TDW5AB {
+  cursor: se-resize;
+}
+
+HTML {
+  margin: 0 !important;
+  border: none !important;
+}
+
+.dragdrop-handle {
+  cursor: move;
+  user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+}
+
+.dragdrop-draggable {
+  zoom: 1;
+}
+
+.dragdrop-dragging {
+  zoom: normal;
+}
+
+.dragdrop-positioner {
+  border: 1px dashed #1e90ff;
+  margin: 0 !important;
+  zoom: 1;
+  z-index: 100;
+}
+
+.dragdrop-flow-panel-positioner {
+  color: #1e90ff;
+  display: inline;
+  text-align: center; 
+  vertical-align: middle;
+}
+
+.dragdrop-proxy {
+  background-color: #7af;
+}
+
+.dragdrop-selected,
+.dragdrop-dragging,
+.dragdrop-proxy {
+  opacity: 0.3;
+}
+
+.dragdrop-movable-panel {
+  z-index: 200;
+  margin: 0 !important;
+  border: none !important;
+}
+
