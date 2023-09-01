@@ -42,4 +42,9 @@ body {
 .Bewerber-Web-Common-Info a {
     color: #333 !important;
 }
+/* Zentrieren von Iframes */
+iframe {
+    display: block;
+    margin: 0 auto;
+}
 
