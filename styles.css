@@ -1,15 +1,19 @@
 /* Zentrieren Sie den gesamten Website-Inhalt in der Desktopansicht */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Georgia, serif !important;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    font-family: Georgia, serif !important;
 }
 
 /* Behalten Sie die Textausrichtung im BW-MainPanel bei */
 .BW-MainPanel {
-    text-align: center !important;
+    text-align: left !important;
 }
 
 /* Änderungen an anderen Stilen beibehalten */
@@ -42,9 +46,3 @@ body {
 .Bewerber-Web-Common-Info a {
     color: #333 !important;
 }
-/* Zentrieren von Iframes */
-iframe {
-    display: block;
-    margin: 0 auto;
-}
-
