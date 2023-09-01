@@ -1,7 +1,15 @@
-/* Zentrieren Sie den Stellenanzeigeninhalt in der Desktopansicht */
+/* Zentrieren Sie den gesamten Inhalt der Website in der Desktopansicht */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Behalten Sie die Textausrichtung im BW-MainPanel bei */
 .BW-MainPanel {
     font-family: Georgia, serif !important;
-    text-align: center !important; /* Fügt die Textausrichtung hinzu */
+    text-align: left !important;
 }
 
 /* Änderungen an anderen Stilen beibehalten */
