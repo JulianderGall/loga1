@@ -1,4 +1,4 @@
-/* Zentrieren Sie den gesamten Inhalt der Website in der Desktopansicht */
+/* Zentrieren Sie den gesamten Website-Inhalt in der Desktopansicht */
 body {
     display: flex;
     justify-content: center;
