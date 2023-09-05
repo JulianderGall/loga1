@@ -20,7 +20,7 @@ body {
 
 /* Hauptinhalt */
 .BW-MainPanel {
-    text-align: center !important;
+    text-align: left !important;
 }
 
 /* Tabellenanpassung für die mobile Ansicht */
