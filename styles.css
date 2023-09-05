@@ -7,17 +7,6 @@ body {
     padding: 0;
 }
 
-/* Header-Stile */
-.BW-Header {
-    margin: 0;
-    padding: 0;;
-}
-
-.BW-Header .LG-Button, .BW-Header .LG-IconButton {
-   margin: 0;
-    padding: 0;;
-}
-
 /* Hauptinhalt */
 .BW-MainPanel {
     text-align: left !important;
@@ -32,7 +21,7 @@ body {
 
     /* Überschrift */
     .BW-MainPanel h1 {
-        font-size: 24px;
+        font-family: Verdana; font-size: 24px;
         color: #007731 !important;
     }
 }
