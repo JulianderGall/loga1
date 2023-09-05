@@ -1,62 +1,31 @@
-/* Zentrieren Sie den gesamten Website-Inhalt in der Desktopansicht */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Verdana, sans-serif !important;
-}
-
-/* Änderungen an der Schriftgröße und -farbe */
+/* Grundlegende Stile, die für alle Ansichten gelten */
 body {
+    font-family: Verdana, sans-serif !important;
     font-size: 12px;
     color: #414141;
+    margin: 0;
+    padding: 0;
 }
 
-/* Überschrift */
-.BW-MainPanel h1 {
-    font-size: 24px;
-    color: #007731 !important;
-}
-
-/* Behalten Sie die Textausrichtung im BW-MainPanel bei */
-.BW-MainPanel {
-    text-align: left !important;
-}
-
-/* Änderungen an anderen Stilen beibehalten */
+/* Header-Stile */
 .BW-Header {
-    background: #bfa5a5 !important;
-}
-.BW-Header .LG-Button, .BW-Header .LG-IconButton {
-    background: #666 !important;
-    color: #fff !important;
-}
-.BW-MainPanel .LG-DataTableHeader {
-    background: #666 !important;
-    color: #fff !important;
-}
-.BW-MainPanel .LG-DataTableEvenRowCell {
-    background: #999 !important;
-}
-.BW-MainPanel .LG-DataTableOddRowCell {
-    background: #888 !important;
-}
-.BW-MainPanel div.gwt-DataPager {
-    background: #bfa5a5 !important;
-}
-.Bewerber-Web-Common-Heading {
-    color: #007731 !important;
-}
-.Bewerber-Web-Common-Info {
-    color: #414141 !important;
-}
-.Bewerber-Web-Common-Info a {
-    color: #333 !important;
+    margin: 0;
+    padding: 0;;
 }
 
+.BW-Header .LG-Button, .BW-Header .LG-IconButton {
+   margin: 0;
+    padding: 0;;
+}
+
+/* Hauptinhalt */
+.BW-MainPanel {
+    text-align: center !important;
+}
+
+/* Tabellenanpassung für die mobile Ansicht */
 @media screen and (max-width: 768px) {
+    /* Tabellen */
     table {
         width: 100% !important;
     }
@@ -77,5 +46,11 @@ body {
     table td {
         display: block;
         text-align: left !important; /* Textausrichtung links */
+    }
+
+    /* Überschrift */
+    .BW-MainPanel h1 {
+        font-size: 24px;
+        color: #007731 !important;
     }
 }
