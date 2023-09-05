@@ -24,3 +24,26 @@ body {
 .BW-MainPanel {
     text-align: left !important;
 }
+@media screen and (max-width: 768px) {
+    table {
+        width: 100% !important;
+    }
+    
+    table thead {
+        display: none; /* Ausblenden der Tabellenüberschriften */
+    }
+
+    table tbody {
+        display: block;
+    }
+
+    table tbody tr {
+        display: block;
+        margin-bottom: 15px; /* Abstand zwischen den Tabellenzeilen */
+    }
+
+    table td {
+        display: block;
+        text-align: left !important; /* Textausrichtung links */
+    }
+}
