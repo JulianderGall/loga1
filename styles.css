@@ -1,5 +1,5 @@
 /* Grundlegende Stile, die für alle Ansichten gelten */
-body {
+html, body {
     font-family: Verdana, sans-serif !important;
     font-size: 12px;
     color: #414141;
