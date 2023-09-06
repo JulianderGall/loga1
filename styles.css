@@ -18,6 +18,14 @@ html, body {
     .BW-MainPanel h1 {
         font-size: 70% !important;
     }
+
+}
+@media screen and (min-width: 780px) {
+    table {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 16px; /* Anpassen Sie den Abstand zwischen den Spalten nach Bedarf */
+    }
 }
 ul, ol {
     padding-left: 20px; /* Hier können Sie den gewünschten Einrückungsabstand anpassen */
