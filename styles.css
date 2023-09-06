@@ -27,3 +27,8 @@ html, body {
         color: #007731 !important;
     }
 }
+
+li {
+    text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
+    margin-left: 20px;
+}
