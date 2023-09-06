@@ -28,38 +28,7 @@ li {
     text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
     margin-left: 25px;
 }
-/* Abwechselnde Zeilenfarben in vier Spalten-Tabelle */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
 
-/* Standardformatierung für Zeilen in der Tabelle */
-table tr {
-    background-color: #fff; /* Weiß */
-}
-
-/* Abwechselnde Zeilenfarben */
-table tr:nth-child(even) {
-    background-color: #EFEFEF;
-}
-
-/* Tabellenanpassung für die mobile Ansicht */
-@media screen and (max-width: 780px) {
-    table {
-        display: block;
-    }
-
-    table tbody {
-        display: flex;
-        flex-wrap: wrap;
-    }
-
-    table tr {
-        width: 50%; /* Zwei Spalten in der mobilen Ansicht */
-        box-sizing: border-box;
-    }
-}
 .spinner-border {
 	display: inline-block;
 	width: 2rem;
