@@ -26,18 +26,113 @@ li {
     text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
     margin-left: 25px;
 }
+.spinner-border {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	vertical-align: -0.125em;
+	border: 0.25em solid currentColor;
+	border-right-color: rgba(0, 0, 0, 0);
+	border-radius: 50%;
+	animation: 0.75s linear infinite spinner-border;
+}
+
+.spinner-border-sm {
+	width: 1rem;
+	height: 1rem;
+	border-width: 0.2em;
+}
+
+@keyframes spinner-grow {
+	0% {
+		transform: scale(0);
+	}
+
+	50% {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.spinner-grow {
+	display: inline-block;
+	width: 2rem;
+	height: 2rem;
+	vertical-align: -0.125em;
+	background-color: currentColor;
+	border-radius: 50%;
+	opacity: 0;
+	animation: 0.75s linear infinite spinner-grow;
+}
+
+.spinner-grow-sm {
+	width: 1rem;
+	height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.spinner-border,
+	.spinner-grow {
+		animation-duration: 1.5s;
+	}
+}
+/* .BW-MainPanel .LG-RichTextContent {
+	display: none;
+} */
 .BW-MainPanel {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1260px !important;
-    text-align: left !important;
+	width: 100%;
+	margin: 0 auto;
+	max-width: 1260px !important;
 }
 .BW-WebPositionPage {
-    width: 100%;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
-    background: #fff;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 6px !important;
+	width: 100%;
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+	background: #fff;
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 0 6px !important;
+}
+.BW-WebPositionPage .LG-RichTextContent p {
+	padding-left: 0;
+	padding-right: 0;
+	font-size: 1rem;
+	margin: 0 0 1rem !important;
+}
+.BW-WebPositionPage .LG-RichTextContent li,
+.BW-WebPositionPage .LG-RichTextContent td {
+	font-size: 1rem;
+}
+.BW-WebPositionPage .LG-RichTextContent h1,
+.BW-WebPositionPage .LG-RichTextContent h2 {
+	padding-left: 0;
+	font-weight: 700;
+}
+.BW-WebPositionPage .LG-RichTextContent a:not(.pure):hover {
+	background-color: transparent !important;
+}
+.BW-WebPositionPage.bw-small-width {
+	padding: 0 1rem;
+}
+.BW-WebPositionPage .LG-BoxPanelRow-Column {
+	width: 100% !important;
+}
+.BW-WebPositionPage .LG-FileController .LG-FileController-Edit:focus {
+	box-shadow: none !important;
+}
+.BW-WebPositionPage button:not(.react-datepicker__navigation) {
+	padding: 0 1.25rem;
+	color: #000;
+	font-weight: 600;
+	font-family: "Open Sans", Tahoma, sans-serif;
+}
+
+.BW-WebPositionPage .login-headline {
+	font-size: 1.75rem;
+	font-weight: 400;
+	margin-bottom: 2.5rem;
+}
+
+.BW-WebPositionPage .content-block {
+	margin-bottom: 2.5rem;
 }
