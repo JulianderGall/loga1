@@ -27,7 +27,9 @@ html, body {
         color: #007731 !important;
     }
 }
-
+ul, ol {
+    padding-left: 20px; /* Hier können Sie den gewünschten Einrückungsabstand anpassen */
+}
 li {
     text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
     margin-left: 20px;
