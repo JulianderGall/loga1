@@ -21,10 +21,8 @@ html, body {
         width: 100% !important;
     }
 
-    /* Überschrift */
     .BW-MainPanel h1 {
-        font-family: Verdana; font-size: 24px;
-        color: #007731 !important;
+        font-size: 70% !important;
     }
 }
 ul, ol {
