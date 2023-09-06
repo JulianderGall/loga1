@@ -8,12 +8,6 @@ html, body {
     font-family: Verdana, sans-serif !important;
 }
 
-
-/* Hauptinhalt */
-.BW-MainPanel {
-    text-align: left !important;
-}
-
 /* Tabellenanpassung für die mobile Ansicht */
 @media screen and (max-width: 768px) {
     /* Tabellen */
@@ -31,4 +25,19 @@ ul, ol {
 li {
     text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
     margin-left: 25px;
+}
+.BW-MainPanel {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1260px !important;
+    text-align: left !important;
+}
+.BW-WebPositionPage {
+    width: 100%;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    background: #fff;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 6px !important;
 }
