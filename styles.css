@@ -93,108 +93,12 @@ li {
 	margin: 0 auto;
 	padding: 0 6px !important;
 }
-.BW-WebPositionPage .LG-RichTextContent p {
-	padding-left: 0;
-	padding-right: 0;
-	font-size: 1rem;
-	margin: 0 0 1rem !important;
-}
-.BW-WebPositionPage .LG-RichTextContent li,
-.BW-WebPositionPage .LG-RichTextContent td {
-	font-size: 1rem;
-}
-.BW-WebPositionPage .LG-RichTextContent h1,
-.BW-WebPositionPage .LG-RichTextContent h2 {
-	padding-left: 0;
-	font-weight: 700;
-}
-.BW-WebPositionPage .LG-RichTextContent a:not(.pure):hover {
-	background-color: transparent !important;
-}
-.BW-WebPositionPage.bw-small-width {
-	padding: 0 1rem;
-}
-.BW-WebPositionPage .LG-BoxPanelRow-Column {
-	width: 100% !important;
-}
-.BW-WebPositionPage .LG-FileController .LG-FileController-Edit:focus {
-	box-shadow: none !important;
-}
+
 .BW-WebPositionPage button:not(.react-datepicker__navigation) {
 	padding: 0 1.25rem;
 	color: #000;
 	font-weight: 600;
-	font-family: Verdana, sans-serif;
+	font-family: Verdana, sans-serif
+	margin:center;
 }
 
-.BW-WebPositionPage .login-headline {
-	font-size: 1.75rem;
-	font-weight: 400;
-	margin-bottom: 2.5rem;
-}
-
-.BW-WebPositionPage .content-block {
-	margin-bottom: 4.0rem;
-}
-.BW-WebPositionPage .LG-FileController-Edit {
-	font: normal 12px/24px, Verdana, sans-serif;
-	outline-style: none;
-	font-size: 12px;
-	width: 100%;
-	height: 3.125rem;
-	background-color: #fff;
-	box-shadow: 0 1px 1px 0 #f6f6f6 inset;
-	border-radius: 0 !important;
-	border-top: 1px solid #007734 !important;
-	border-left: 1px solid #007734 !important;
-	border-right: 1px solid #007734 !important;
-	border-bottom: 1px solid #007734 !important;
-	padding: 8px 10px;
-	font-size: 12px;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-	color: #000;
-	margin: 0 0 1rem;
-}
-.BW-WebPositionPage input[type="text"].gwt-combo-box-input {
-	margin-bottom: 0;
-}
-
-.BW-WebPositionPage .gwt-combo-box {
-	margin-bottom: 1rem;
-	border: 1px solid transparent !important;
-}
-.BW-WebPositionPage .ic-navigationdown::before {
-	content: "";
-	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='20' width='20' viewBox='0 0 20 20' aria-hidden='true' focusable='false' fill='%23f9cd00'%3E%3Cpath d='M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z'%3E%3C/path%3E%3C/svg%3E");
-	width: 40px;
-	height: 40px;
-	background-repeat: no-repeat;
-	background-position: 9px 9px;
-	padding: 0;
-	top: 3px;
-}
-.BW-WebPositionPage .ic-attachment::before {
-	color: #007734;
-}
-.BW-WebPositionPage .combo-box-action-icon {
-	padding: 0;
-}
-.BW-WebPositionPage .LG-CheckBox > label,
-.BW-WebPositionPage.bw-small-width
-	table.LG-Form.LG-FormBox
-	td
-	.LG-CheckBox
-	> label {
-	width: 25px;
-	height: 25px;
-	padding: 0;
-	border-top: 1px solid #000 !important;
-	border-left: 1px solid #000 !important;
-	border-right: 1px solid #000 !important;
-	border-bottom: 1px solid #000 !important;
-}
-.BW-WebPositionPage input[type="number"] {
-	-webkit-appearance: none;
-	-moz-appearance: textfield;
-}
