@@ -9,7 +9,7 @@ html, body {
 }
 
 /* Tabellenanpassung für die mobile Ansicht */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1000px) {
     /* Tabellen */
     table {
         width: 100% !important;
