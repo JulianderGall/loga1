@@ -89,7 +89,7 @@ li {
 	margin-top: 2.5rem;
 	margin-bottom: 2.5rem;
 	background: #fff;
-	max-width: 680px;
+	max-width: 780px;
 	margin: 0 auto;
 	padding: 0 6px !important;
 }
@@ -124,7 +124,7 @@ li {
 	padding: 0 1.25rem;
 	color: #000;
 	font-weight: 600;
-	font-family: "Open Sans", Tahoma, sans-serif;
+	font-family: Verdana, sans-serif;
 }
 
 .BW-WebPositionPage .login-headline {
@@ -134,5 +134,5 @@ li {
 }
 
 .BW-WebPositionPage .content-block {
-	margin-bottom: 2.5rem;
+	margin-bottom: 4.0rem;
 }
