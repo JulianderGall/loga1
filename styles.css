@@ -28,9 +28,9 @@ html, body {
     }
 }
 ul, ol {
-    padding-left: 10px; /* Hier können Sie den gewünschten Einrückungsabstand anpassen */
+    padding-left: 15px; /* Hier können Sie den gewünschten Einrückungsabstand anpassen */
 }
 li {
-    text-indent: -10px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
-    margin-left: 10px;
+    text-indent: -15px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
+    margin-left: 15px;
 }
