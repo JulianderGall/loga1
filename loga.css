@@ -1,49 +1,7 @@
-/* Zentrieren Sie den gesamten Website-Inhalt in der Desktopansicht */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Verdana, sans-serif !important;
+ul, ol {
+    padding-left: 20px; /* Hier können Sie den gewünschten Einrückungsabstand anpassen */
 }
-
-/* Änderungen an der Schriftgröße und -farbe */
-body {
-    font-size: 12px;
-    color: #414141;
-}
-
-/* Überschrift */
-.BW-MainPanel h1 {
-    font-size: 24px;
-    color: #007731 !important;
-}
-
-/* Behalten Sie die Textausrichtung im BW-MainPanel bei */
-.BW-MainPanel {
-    text-align: left !important;
-}
-@media screen and (max-width: 768px) {
-    table {
-        width: 100% !important;
-    }
-    
-    table thead {
-        display: none; /* Ausblenden der Tabellenüberschriften */
-    }
-
-    table tbody {
-        display: block;
-    }
-
-    table tbody tr {
-        display: block;
-        margin-bottom: 15px; /* Abstand zwischen den Tabellenzeilen */
-    }
-
-    table td {
-        display: block;
-        text-align: left !important; /* Textausrichtung links */
-    }
+li {
+    text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
+    margin-left: 25px;
 }
