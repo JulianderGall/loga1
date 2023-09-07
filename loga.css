@@ -5,3 +5,18 @@ li {
     text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
     margin-left: 25px;
 }
+} */
+.BW-MainPanel {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 1260px !important;
+}
+.BW-WebPositionPage {
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	background: #fff;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 6px !important;
+}
