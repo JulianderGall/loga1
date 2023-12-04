@@ -7,14 +7,7 @@ html, body {
     align-items: center;
     font-family: Verdana, sans-serif !important;
 }
-ul, ol {
-    padding-left: 20px; /* Hier können Sie den gewünschten Einrückungsabstand anpassen */
-}
-li {
-    text-indent: -20px; /* Hier denselben Wert wie oben verwenden, jedoch negativ */
-    margin-left: 25px;
-}
-} */
+
 .BW-MainPanel {
 	width: 100%;
 	margin: 0 auto;
