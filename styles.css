@@ -1,12 +1,4 @@
 /* Grundlegende Stile, die für alle Ansichten gelten */
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: Verdana, sans-serif !important;
-}
 
 /* Tabellenanpassung für die mobile Ansicht */
 @media screen and (max-width: 1000px) {
