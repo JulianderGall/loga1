@@ -29,13 +29,13 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 }
 .BW-MainPanel p {
     font-size: 30pt;   /* gewünschte Größe */
-    font-weight: 400;  /* Normal */
+    font-weight: 200;  /* Normal */
 }
 /* Buttons */
 .BW-WebPositionPage button:not(.react-datepicker__navigation) {
     padding: 0 1.25rem;
     color: #000;
-    font-weight: 600;
+    font-weight: 900;
     font-family: 'Figtree', Verdana, sans-serif;
     margin: center;
 }
@@ -83,3 +83,4 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
     vertical-align: -0.125em;
     background-color: currentColor;
     border-radius: 50%;
+}
