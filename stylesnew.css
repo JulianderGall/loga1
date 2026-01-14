@@ -12,7 +12,7 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 
 /* Überschriften */
 .BW-MainPanel h1 {
-    font-size: 60pt;   /* gewünschte Größe */
+    font-size: 100pt;   /* gewünschte Größe */
     font-weight: 900;  /* Extra Bold */
     color: rgb(0, 119, 52);
 }
