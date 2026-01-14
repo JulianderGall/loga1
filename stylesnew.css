@@ -12,22 +12,25 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 
 /* Überschriften */
 .BW-MainPanel h1 {
-    font-size: 100pt;   /* gewünschte Größe */
+    font-size: 120pt;   /* gewünschte Größe */
     font-weight: 900;  /* Extra Bold */
     color: rgb(0, 119, 52);
 }
 
 .BW-MainPanel h2 {
-    font-size: 40pt;   /* gewünschte Größe */
+    font-size: 100pt;   /* gewünschte Größe */
     font-weight: 900;
     color: rgb(0, 119, 52); /* Extra Bold */
 }
 
 .BW-MainPanel h3 {
-    font-size: 12pt;   /* gewünschte Größe */
+    font-size: 30pt;   /* gewünschte Größe */
     font-weight: 400;  /* Normal */
 }
-
+.BW-MainPanel p {
+    font-size: 30pt;   /* gewünschte Größe */
+    font-weight: 400;  /* Normal */
+}
 /* Buttons */
 .BW-WebPositionPage button:not(.react-datepicker__navigation) {
     padding: 0 1.25rem;
