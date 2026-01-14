@@ -14,7 +14,7 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 .BW-MainPanel h1 {
     font-size: 40pt;   /* gewünschte Größe */
     font-weight: 900;  /* Extra Bold */
-    colar: #007734;
+    color: #007734;
 }
 
 .BW-MainPanel h2 {
