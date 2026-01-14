@@ -10,20 +10,20 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
     font-style: normal;
 }
 
-/* Headlines */
+/* Überschriften */
 .BW-MainPanel h1 {
-    font-size: 2rem;
-    font-weight: 800; /* Extra Bold für starke Headlines */
+    font-size: 30pt;   /* gewünschte Größe */
+    font-weight: 800;  /* Extra Bold */
 }
 
 .BW-MainPanel h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 25pt;   /* gewünschte Größe */
+    font-weight: 800;  /* Extra Bold */
 }
 
 .BW-MainPanel h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
+    font-size: 12pt;   /* gewünschte Größe */
+    font-weight: 400;  /* Normal */
 }
 
 /* Buttons */
@@ -69,3 +69,16 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
         transform: scale(0);
     }
 
+    50% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.spinner-grow {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: -0.125em;
+    background-color: currentColor;
+    border-radius: 50%;
