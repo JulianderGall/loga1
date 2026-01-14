@@ -18,8 +18,8 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 }
 
 .BW-MainPanel h2 {
-    font-size: 25pt;   /* gewünschte Größe */
-    font-weight: 800;  /* Extra Bold */
+    font-size: 30pt;   /* gewünschte Größe */
+    font-weight: 900;  /* Extra Bold */
 }
 
 .BW-MainPanel h3 {
