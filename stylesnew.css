@@ -84,3 +84,17 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
     background-color: currentColor;
     border-radius: 50%;
 }
+.BW-MainPanel {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 2500px !important;
+}
+.BW-WebPositionPage {
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 10px;
+	background: #fff;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 6px !important;
+}
