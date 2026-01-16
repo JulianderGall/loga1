@@ -87,7 +87,7 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 .BW-MainPanel {
 	width: 100%;
 	margin: 0 auto;
-	max-width: 2500px !important;
+	max-width: 1200 px !important;
 }
 .BW-WebPositionPage {
 	width: 100%;
