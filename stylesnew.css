@@ -41,7 +41,7 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 }
 
 /* Tabellenanpassung für die mobile Ansicht */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 2000px) {
     table {
         width: 100% !important;
     }
