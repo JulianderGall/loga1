@@ -70,7 +70,7 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
         transform: scale(0);
     }
 
-    50% {
+    70% {
         opacity: 1;
         transform: none;
     }
@@ -94,7 +94,7 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
 	margin-top: 0px;
 	margin-bottom: 10px;
 	background: #fff;
-	max-width: 1000px;
+	max-width: 2500px;
 	margin: 0 auto;
 	padding: 0 6px !important;
 }
