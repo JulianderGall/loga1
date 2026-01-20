@@ -20,6 +20,16 @@
     --bg-color: #ffffff;
     --content-width: 1000px; /* Maximale Breite für den Text */
 }
+.fullwidth-header, 
+.BW-MainPanel p:first-of-type img,
+.BW-MainPanel > img:first-child {
+    width: 100vw !important;           /* !important überschreibt den Editor */
+    max-width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+    display: block;
+    height: auto;
+}
 
 body {
     background-color: var(--bg-color);
