@@ -12,27 +12,54 @@
 ========================================== */
 
 /* Der Wrapper bricht aus dem Text-Container aus (Vollbild) */
+/* ==========================================
+   HEADER WRAPPER (Bild + Logo + Schräge)
+========================================== */
+
 .header-wrapper {
     position: relative;
-    width: 100vw;               /* Volle Bildschirmbreite */
-    left: 50%;                  /* Zentrierungstrick Start */
+    width: 100vw;
+    left: 50%;
     right: 50%;
-    margin-left: -50vw;         /* Zentrierungstrick Ende */
+    margin-left: -50vw;
     margin-right: -50vw;
-    margin-top: -20px;          /* Zieht alles nach oben in das Loga-Padding rein */
-    margin-bottom: 40px;
+    margin-top: -20px;
+    
+    /* Wichtig: Kein Margin unten, damit der Text direkt anschließt */
+    margin-bottom: 0px !important; 
     padding: 0;
-    overflow: hidden;           /* Wichtig, damit nichts wackelt */
+    overflow: hidden;
 }
 
-/* Das Bild im Wrapper füllt einfach alles aus */
 .header-wrapper img.header-bg {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
+    
+    /* Wir müssen das Bild etwas "länger" lassen, damit hinter der Schräge noch Bild ist */
+    padding-bottom: 2vw; 
 }
 
+/* --- HIER ENTSTEHT DIE SCHRÄGE (DER "OVERLAP"-EFFEKT) --- */
+.header-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: -1px; /* -1px verhindert weiße Blitzer-Linien */
+    left: 0;
+    width: 100%;
+    
+    /* Höhe der Schräge: Je höher dieser Wert, desto steiler der Schnitt */
+    height: 6vw; 
+    min-height: 50px; /* Mindesthöhe, damit es immer wirkt */
+    
+    background-color: #ffffff; /* Muss exakt die Hintergrundfarbe der Seite sein */
+    z-index: 5;
+    
+    /* Die Form: Links tief (100%), Rechts hoch (0%) */
+    /* Polygon Punkte: Oben-Links, Oben-Rechts, Unten-Rechts, Unten-Links */
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0% 100%);
+}
 /* ==========================================
    LOGO OVERLAY (Die "Develey-Ecke")
 ========================================== */
