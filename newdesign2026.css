@@ -7,7 +7,48 @@
 
 /* Open Sans (Variable Font für Width 75 Einstellung) */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
+/* ==========================================
+   LOGO OVERLAY (Die "Develey-Ecke")
+========================================== */
 
+/* Der Container für das Logo (macht die weiße Form & Position) */
+.logo-badge {
+    position: absolute;       /* Löst das Element aus dem Fluss */
+    top: 0;                   /* Ganz oben am Container andocken */
+    left: 0;                  /* Ganz links am Container andocken */
+    z-index: 100;             /* Muss ÜBER dem Header-Bild liegen */
+    
+    background-color: #ffffff; /* Weißer Hintergrund */
+    
+    /* Innenabstand: Rechts mehr Platz lassen für die Schräge */
+    padding: 15px 50px 15px 25px; 
+    
+    /* Die schräge Kante rechts abschneiden */
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    
+    /* Optional: Ein leichter Schatten (funktioniert nur mit filter bei clip-path) */
+    filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.15));
+}
+
+/* Das Logo-Bild darin */
+.logo-badge img {
+    display: block;
+    width: 180px;  /* Standardbreite Desktop */
+    height: auto;
+    max-width: 100%;
+}
+
+/* MOBILE ANPASSUNG */
+@media screen and (max-width: 600px) {
+    .logo-badge {
+        padding: 10px 30px 10px 15px; /* Etwas kompakter auf Handy */
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%); /* Winkel etwas steiler */
+    }
+    
+    .logo-badge img {
+        width: 120px; /* Kleiner auf Handy */
+    }
+}
 
 /* ==========================================
    2. VARIABLEN & GRUNDEINSTELLUNGEN
