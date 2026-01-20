@@ -2,211 +2,198 @@
 /* ==========================================
    FONT IMPORTS
 ========================================== */
-
-/* Figtree für Bodytext */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
-
-/* Open Sans für Headlines */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
+/* ==========================================
+   DESIGN TOKENS (Farben, Größen, Shadow)
+========================================== */
+:root{
+  --brand-green:#007734;
+  --brand-yellow:#F4CA00;
+  --surface:#ffffff;
+  --page-bg:#f3f5f7;
+
+  --container-max:1200px;
+  --radius-lg:18px;
+  --radius-md:14px;
+
+  --shadow-lg: 0 12px 30px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.08);
+  --shadow-md: 0 8px 20px rgba(0,0,0,.10), 0 1px 4px rgba(0,0,0,.08);
+}
 
 /* ==========================================
    GLOBAL TYPOGRAPHY
 ========================================== */
-
-/* Body & allgemeine Texte: Figtree */
-body, 
-.BW-WebPositionPage, 
-button, 
-p, 
-span {
-    font-family: "Figtree", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
+body, .BW-WebPositionPage, button, p, span{
+  font-family:"Figtree",sans-serif;
+  font-optical-sizing:auto;
+  font-style:normal;
+  color:#111;
+  background:var(--page-bg);
 }
 
-
-/* ==========================================
-   OPEN SANS HEADLINE FONT
-========================================== */
-
-.open-sans-headline {
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-    font-variation-settings: "wdth" 100;
-}
-
-/* Alle Überschriften automatisch Open Sans */
+/* Headlines = Open Sans */
 .BW-MainPanel h1,
 .BW-MainPanel h2,
-.BW-MainPanel h3 {
-    font-family: "Open Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-variation-settings: "wdth" 75;
+.BW-MainPanel h3{
+  font-family:"Open Sans",sans-serif;
+  font-optical-sizing:auto;
+  font-style:normal;
+  font-variation-settings:"wdth" 75;
+  color:var(--brand-green);
 }
 
+/* Responsive Größen */
+.BW-MainPanel h1{ font-size:clamp(40pt,10vw,130pt); font-weight:800; }
+.BW-MainPanel h2{ font-size:clamp(32pt,8vw,110pt);  font-weight:800; }
+.BW-MainPanel h3{ font-size:clamp(18pt,3.2vw,30pt); font-weight:400; }
+.BW-MainPanel p { font-size:clamp(16pt,2.5vw,30pt); font-weight:200; }
 
-/* ==========================================
-   RESPONSIVE HEADLINE STYLES
-========================================== */
-
+/* Optional: minimaler „Verdichtungs“-Rand, skaliert mit (em) */
 .BW-MainPanel h1 {
-    font-size: clamp(40pt, 10vw, 130pt);
-    font-weight: 800;
-    color: rgb(0, 119, 52);
-    text-shadow:
-    -0.02em -0.02em 0 rgb(0,119,52),
-     0.02em -0.02em 0 rgb(0,119,52),
-    -0.02em  0.02em 0 rgb(0,119,52),
-     0.02em  0.02em 0 rgb(0,119,52),
-    -0.02em  0       0 rgb(0,119,52),
-     0.02em  0       0 rgb(0,119,52),
-     0      -0.02em  0 rgb(0,119,52),
-     0       0.02em  0 rgb(0,119,52);
-
-
+  text-shadow:
+    -0.015em -0.015em 0 currentColor,
+     0.015em -0.015em 0 currentColor,
+    -0.015em  0.015em 0 currentColor,
+     0.015em  0.015em 0 currentColor,
+    -0.015em  0       0 currentColor,
+     0.015em  0       0 currentColor,
+     0      -0.015em  0 currentColor,
+     0       0.015em  0 currentColor;
 }
-
-.BW-MainPanel h2 {
-    font-size: clamp(32pt, 8vw, 110pt);
-    font-weight: 800;
-    color: rgb(0, 119, 52);
-}
-
-.BW-MainPanel h3 {
-    font-size: clamp(18pt, 3vw, 30pt);
-    font-weight: 400;
-}
-
-.BW-MainPanel p {
-    font-size: clamp(16pt, 2.5vw, 30pt);
-    font-weight: 200;
-}
-
 
 /* ==========================================
-   FULL WIDTH LAYOUT FÜR BILDER & BACKGROUNDS
+   CONTAINER
 ========================================== */
-
-/* VOLLBREITE SEKTION MIT BACKGROUND */
-.fullwidth-section {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: clamp(2rem, 6vw, 6rem) 0;
+.container,
+.BW-MainPanel{
+  width:min(100% - 2rem, var(--container-max));
+  margin-inline:auto;
 }
-
-/* Textcontainer in der Mitte */
-.fullwidth-section .content-wrapper {
-    max-width: 1200px;
-    width: 100%;
-    padding: 0 3rem;
-    text-align: center;
-}
-
-/* VOLLBREITE BILDER */
-img.fullwidth-image {
-    display: block;
-    width: 100vw;
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    height: auto;
-}
-
 
 /* ==========================================
-   BUTTONS
+   HERO (vollbreites Head-Bild)
 ========================================== */
-
-.BW-WebPositionPage button:not(.react-datepicker__navigation) {
-    padding: 0 1.25rem;
-    color: #000;
-    font-weight: 900;
-    font-family: "Figtree", sans-serif;
-    margin: center;
+/* Abschnitt nimmt echte Viewportbreite ein */
+.hero {
+  position:relative;
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  background:#e6eef2; /* Fallback, falls kein Bild geladen */
 }
 
+/* Hintergrundbild */
+.hero__bg{
+  min-height:clamp(260px, 38vw, 480px); /* Höhe über Viewport skalierend */
+  background-size:cover;
+  background-position:center center;
+  background-repeat:no-repeat;
+}
+
+/* Optional: leichte Abdunklung/Gradient über dem Bild */
+.hero__overlay{
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.15) 0%, rgba(0,0,0,0) 60%);
+  pointer-events:none;
+}
 
 /* ==========================================
-   TABLE RESPONSIVENESS
+   OVERLAPPING CARD (weißes Feld für Text)
 ========================================== */
+.hero-card{
+  position:relative;
+  width:min(100% - 2rem, var(--container-max));
+  margin-inline:auto;
+  background:var(--surface);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow-lg);
+  padding:clamp(1.25rem, 2.5vw, 2.5rem);
+  z-index:5;
 
-@media screen and (max-width: 2000px) {
-    table {
-        width: 100% !important;
-    }
+  /* Überlappen lassen */
+  transform:translateY(-14%);
 }
 
+/* Mobile: weniger Überlappung / bessere Lesbarkeit */
+@media (max-width: 768px){
+  .hero-card{
+    border-radius:var(--radius-md);
+    transform:translateY(-8%);
+  }
+}
+@media (max-width: 520px){
+  .hero-card{
+    transform:none;               /* kein Überlappen auf sehr kleinen Screens */
+    margin-top:-18px;             /* kleiner optischer Anschluss */
+  }
+}
+
+/* Meta-Pills (z. B. Standort) */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap:.45rem;
+  background:#fff3cd;
+  color:#5a4a00;
+  border:1px solid #ffe69c;
+  padding:.35rem .6rem;
+  border-radius:999px;
+  font-size:.95rem;
+  font-weight:600;
+}
+
+/* Haupttitel in Card */
+.hero-card .job-title{
+  margin: .75rem 0 .5rem 0;
+  line-height:1.05;
+}
+
+/* Lead/Untertitel */
+.hero-card .lead{
+  color:#333;
+  margin: .25rem 0 1rem 0;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5rem; cursor:pointer; user-select:none;
+  padding:.85rem 1.25rem; border-radius:999px; border:none;
+  text-decoration:none; font-weight:800;
+}
+.btn-primary{
+  background:var(--brand-yellow); color:#111;
+  box-shadow:var(--shadow-md);
+}
+.btn-primary:hover{ filter:brightness(0.96); }
 
 /* ==========================================
-   SPINNER STYLES
+   VOLLBREITE BILDER (falls benötigt im Fließtext)
 ========================================== */
-
-.spinner-border {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    vertical-align: -0.125em;
-    border: 0.25em solid currentColor;
-    border-right-color: rgba(0, 0, 0, 0);
-    border-radius: 50%;
-    animation: 0.75s linear infinite spinner-border;
+img.fullwidth-image{
+  display:block;
+  width:100vw; max-width:100vw; height:auto;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
 }
-
-.spinner-border-sm {
-    width: 1rem;
-    height: 1rem;
-    border-width: 0.2em;
-}
-
-@keyframes spinner-grow {
-    0% {
-        transform: scale(0);
-    }
-    70% {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-.spinner-grow {
-    display: inline-block;
-    width: 2rem;
-    height: 2rem;
-    vertical-align: -0.125em;
-    background-color: currentColor;
-    border-radius: 50%;
-}
-
 
 /* ==========================================
-   CONTAINER FIXES
+   TABLE & SPINNER (aus deiner Basis)
 ========================================== */
+@media screen and (max-width: 2000px){ table{ width:100% !important; } }
 
-.BW-MainPanel {
-    width: 100%;
-    margin: 0 auto;
-    max-width: 1200px !important;
-}
+.spinner-border{ display:inline-block; width:2rem; height:2rem; vertical-align:-0.125em;
+  border:0.25em solid currentColor; border-right-color:rgba(0,0,0,0);
+  border-radius:50%; animation:0.75s linear infinite spinner-border; }
+.spinner-border-sm{ width:1rem; height:1rem; border-width:0.2em; }
+@keyframes spinner-grow{ 0%{ transform:scale(0);} 70%{ opacity:1; transform:none;} }
+.spinner-grow{ display:inline-block; width:2rem; height:2rem; vertical-align:-0.125em;
+  background-color:currentColor; border-radius:50%; }
 
-.BW-WebPositionPage {
-    width: 100%;
-    margin-top: 0;
-    margin-bottom: 10px;
-    background: #fff;
-    max-width: 2500px;
-    margin: 0 auto;
-    padding: 0 6px !important;
-}
+/* ==========================================
+   OPTIONALES SCROLL-FIX (falls horizontale Scrollbalken entstehen)
+========================================== */
+/* body{ overflow-x:hidden; }  -> nur aktivieren, wenn nötig */
+``
