@@ -57,19 +57,16 @@ span {
     font-size: clamp(40pt, 10vw, 130pt);
     font-weight: 800;
     color: rgb(0, 119, 52);
-    
     text-shadow:
-        /* Diagonal */
-        -0.4px -0.4px 0 rgb(0,119,52),
-         0.4px -0.4px 0 rgb(0,119,52),
-        -0.4px  0.4px 0 rgb(0,119,52),
-         0.4px  0.4px 0 rgb(0,119,52),
+    -0.02em -0.02em 0 rgb(0,119,52),
+     0.02em -0.02em 0 rgb(0,119,52),
+    -0.02em  0.02em 0 rgb(0,119,52),
+     0.02em  0.02em 0 rgb(0,119,52),
+    -0.02em  0       0 rgb(0,119,52),
+     0.02em  0       0 rgb(0,119,52),
+     0      -0.02em  0 rgb(0,119,52),
+     0       0.02em  0 rgb(0,119,52);
 
-        /* Horizontal + Vertikal */
-        -0.4px  0     0 rgb(0,119,52),
-         0.4px  0     0 rgb(0,119,52),
-         0     -0.4px 0 rgb(0,119,52),
-         0      0.4px 0 rgb(0,119,52);
 
 }
 
