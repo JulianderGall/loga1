@@ -56,21 +56,21 @@ span {
 .BW-MainPanel h1 {
     font-size: clamp(40pt, 10vw, 130pt);
     font-weight: 800;
-    font-wight: 75;
+    font-width: 75;
     color: rgb(0, 119, 52);
     
     text-shadow:
         /* Diagonal */
-        -0.3px -0.3px 0 rgb(0,119,52),
-         0.3px -0.3px 0 rgb(0,119,52),
-        -0.3px  0.3px 0 rgb(0,119,52),
-         0.3px  0.3px 0 rgb(0,119,52),
+        -0.4px -0.4px 0 rgb(0,119,52),
+         0.4px -0.4px 0 rgb(0,119,52),
+        -0.4px  0.4px 0 rgb(0,119,52),
+         0.4px  0.4px 0 rgb(0,119,52),
 
         /* Horizontal + Vertikal */
-        -0.3px  0     0 rgb(0,119,52),
-         0.3px  0     0 rgb(0,119,52),
-         0     -0.3px 0 rgb(0,119,52),
-         0      0.3px 0 rgb(0,119,52);
+        -0.4px  0     0 rgb(0,119,52),
+         0.4px  0     0 rgb(0,119,52),
+         0     -0.4px 0 rgb(0,119,52),
+         0      0.4px 0 rgb(0,119,52);
 
 }
 
