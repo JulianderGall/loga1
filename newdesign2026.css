@@ -1,0 +1,222 @@
+/* ==========================================
+   1. FONT IMPORTS
+========================================== */
+
+/* Montserrat (Medium 500 & SemiBold 600) für Fließtext */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
+
+/* Open Sans (Variable Font für Width 75 Einstellung) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
+
+
+/* ==========================================
+   2. VARIABLEN & GRUNDEINSTELLUNGEN
+========================================== */
+
+:root {
+    --develey-green: rgb(0, 119, 52);
+    --develey-yellow: rgb(255, 200, 46);
+    --text-color: #000000;
+    --bg-color: #ffffff;
+    --content-width: 1000px; /* Maximale Breite für den Text */
+}
+
+body {
+    background-color: var(--bg-color);
+    margin: 0;
+    overflow-x: hidden; /* Wichtig wegen Full-Width Elementen */
+}
+
+/* Der Hauptcontainer von Loga */
+.BW-WebPositionPage {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    background: #fff;
+    padding: 0 20px 40px 20px !important; /* Oben 0 padding, damit Bild randlos ist */
+    box-sizing: border-box;
+}
+
+/* ==========================================
+   3. TYPOGRAFIE (Montserrat & Open Sans)
+========================================== */
+
+/* Fließtext: Montserrat Medium */
+p, span, div, li, td, button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500; /* Medium wie gewünscht */
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Überschriften: Open Sans Width 75 + Outline */
+h1, h2, h3, h4, .open-sans-headline {
+    font-family: "Open Sans", sans-serif;
+    font-variation-settings: "wdth" 75; /* Schmalerer Schnitt */
+    font-weight: 800; /* Extra Bold */
+    color: var(--develey-green);
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.1;
+    
+    /* Die gewünschte leichte Umrandung */
+    -webkit-text-stroke: 1px currentColor; 
+    /* Fallback für Browser, die text-stroke nicht können: */
+    text-shadow: 0px 0px 1px currentColor; 
+}
+
+/* H1 Spezifisch (Stellentitel) */
+.BW-MainPanel h1 {
+    font-size: 3rem;
+    text-transform: none;
+    margin-top: 40px; 
+    margin-bottom: 30px;
+}
+
+/* ==========================================
+   4. HEADER BILD (Vollbild-Breite)
+========================================== */
+
+/* WICHTIG: Geben Sie dem Bild im Editor KEINE Breite/Höhe, 
+   sondern weisen Sie ihm (wenn möglich) die Klasse "fullwidth-header" zu.
+   Falls Sie keine Klassen zuweisen können, nutzen wir den Trick unten für das erste Bild.
+*/
+
+.fullwidth-header, 
+/* Alternativ: Das allererste Bild im Container automatisch vollbreit machen */
+.BW-MainPanel p:first-of-type img,
+.BW-MainPanel > img:first-child {
+    width: 100vw; /* Volle Bildschirmbreite */
+    max-width: 100vw;
+    margin-left: calc(50% - 50vw); /* Zieht das Bild nach links raus */
+    margin-right: calc(50% - 50vw); /* Zieht das Bild nach rechts raus */
+    display: block;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 40px; /* Abstand zum Titel */
+}
+
+
+/* ==========================================
+   5. DIE ANGESCHRÄGTE GRÜNE BOX (Slanted)
+========================================== */
+
+/* Anwendung im Editor:
+   Erstellen Sie eine Tabelle oder ein Div.
+   Schreiben Sie in den HTML-Quelltext: class="angled-box"
+   Oder nutzen Sie einen grünen Hintergrund und wir fangen ihn ab.
+*/
+
+.angled-box,
+/* Fängt grüne Tabellen/Divs automatisch ab */
+div[style*="background-color: rgb(0, 119, 52)"],
+td[bgcolor="#007734"] {
+    background-color: var(--develey-green) !important;
+    color: #ffffff !important;
+    padding: 3rem !important;
+    margin: 4rem 0; /* Viel Abstand oben/unten */
+    position: relative;
+    
+    /* Der Schräg-Effekt (Rotation) */
+    transform: skewY(-2deg); /* Kippt die ganze Box leicht */
+    transform-origin: center;
+    
+    /* Schatten für Tiefe */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
+}
+
+/* Den Inhalt wieder "gerade rücken", damit der Text lesbar bleibt */
+.angled-box > *,
+div[style*="background-color: rgb(0, 119, 52)"] > *,
+td[bgcolor="#007734"] > * {
+    transform: skewY(2deg); /* Kippt den Text zurück */
+}
+
+/* Texte in der grünen Box müssen weiß sein */
+.angled-box h2, .angled-box p, .angled-box span, .angled-box li,
+div[style*="background-color: rgb(0, 119, 52)"] h2,
+div[style*="background-color: rgb(0, 119, 52)"] span {
+    color: #ffffff !important;
+    -webkit-text-stroke: 0px !important; /* Keine Umrandung in der Box für bessere Lesbarkeit */
+    text-shadow: none !important;
+}
+
+.angled-box h2,
+div[style*="background-color: rgb(0, 119, 52)"] h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================
+   6. GELBE ELEMENTE (Optional)
+========================================== */
+
+.yellow-highlight {
+    background-color: var(--develey-yellow);
+    padding: 5px 10px;
+    font-weight: 800;
+    color: var(--develey-green);
+    transform: skewX(-10deg); /* Textmarker-Effekt */
+    display: inline-block;
+}
+
+
+/* ==========================================
+   7. INFO GRID (Standort / Zeit)
+========================================== */
+table {
+    width: 100%;
+    margin-bottom: 30px;
+    border-collapse: collapse;
+}
+
+td {
+    vertical-align: top;
+    padding: 10px;
+}
+
+.info-label {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    font-variation-settings: "wdth" 75;
+    text-transform: uppercase;
+    color: var(--develey-green);
+    display: block;
+    margin-bottom: 5px;
+}
+
+
+/* ==========================================
+   8. MOBILE ANPASSUNG
+========================================== */
+@media screen and (max-width: 800px) {
+    /* Container füllt auf Handy den Screen */
+    .BW-WebPositionPage {
+        max-width: 100%;
+        padding: 0 15px !important;
+        overflow-x: hidden;
+    }
+
+    /* Auf Handy Schrägen entfernen, da es sonst Platzprobleme gibt */
+    .angled-box, 
+    div[style*="background-color: rgb(0, 119, 52)"] {
+        transform: none !important;
+        margin: 2rem 0;
+        border-radius: 10px;
+    }
+    
+    .angled-box > *,
+    div[style*="background-color: rgb(0, 119, 52)"] > * {
+        transform: none !important;
+    }
+
+    /* Header Bild */
+    .fullwidth-header,
+    .BW-MainPanel p:first-of-type img {
+        width: 100vw;
+        margin-left: -15px; /* Ausgleich des Paddings */
+        margin-right: -15px;
+    }
+}
