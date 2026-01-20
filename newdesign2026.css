@@ -20,15 +20,40 @@
     --bg-color: #ffffff;
     --content-width: 1000px; /* Maximale Breite für den Text */
 }
+/* ==========================================
+   FIX FÜR VOLLBILD-HEADER
+========================================== */
+
+/* 1. Der Container darf Inhalte nicht abschneiden */
+.BW-WebPositionPage {
+    overflow: visible !important; 
+    position: relative;
+    max-width: 1000px; /* Text bleibt schmal */
+    margin: 0 auto;
+}
+
+/* WICHTIG: Damit kein horizontaler Scrollbalken entsteht */
+body {
+    overflow-x: hidden;
+}
+
+/* 2. Das Bild bricht aus dem Container aus */
 .fullwidth-header, 
-.BW-MainPanel p:first-of-type img,
-.BW-MainPanel > img:first-child {
-    width: 100vw !important;           /* !important überschreibt den Editor */
+/* Fallback: Falls Sie die Klasse nicht setzen können, nehmen wir das erste Bild */
+.BW-MainPanel p:first-of-type img {
+    width: 100vw !important;         /* Breite des gesamten Bildschirms */
     max-width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-    display: block;
-    height: auto;
+    
+    /* Der "Breakout"-Trick: */
+    position: relative !important;
+    left: 50% !important;            /* Schiebt den Startpunkt in die Mitte */
+    right: 50% !important;
+    margin-left: -50vw !important;   /* Zieht das Bild 50% der Screenbreite nach links */
+    margin-right: -50vw !important;  /* Zieht das Bild 50% der Screenbreite nach rechts */
+    
+    display: block !important;
+    height: auto !important;
+    object-fit: cover;
 }
 
 body {
