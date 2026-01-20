@@ -15,6 +15,10 @@ body, .BW-MainPanel, .BW-WebPositionPage, button, h1, h2, h3, p, span {
     font-size: 130pt;   /* gewünschte Größe */
     font-weight: 900;  /* Extra Bold */
     color: rgb(0, 119, 52);
+	text-shadow: 1px 1px 0 rgb(0, 119, 52), /* Rechts-unten Versatz, 0 Unschärfe (scharf) */
+                 -1px -1px 0 rgb(0, 119, 52), /* Links-oben Versatz */
+                 1px -1px 0 rgb(0, 119, 52), /* Rechts-oben Versatz */
+                 -1px 1px 0 rgb(0, 119, 52);
 }
 
 .BW-MainPanel h2 {
