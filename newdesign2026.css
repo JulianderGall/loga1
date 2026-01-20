@@ -8,41 +8,65 @@
 /* Open Sans (Variable Font für Width 75 Einstellung) */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
 /* ==========================================
+   HEADER WRAPPER (Container für Bild & Logo)
+========================================== */
+
+/* Der Wrapper bricht aus dem Text-Container aus (Vollbild) */
+.header-wrapper {
+    position: relative;
+    width: 100vw;               /* Volle Bildschirmbreite */
+    left: 50%;                  /* Zentrierungstrick Start */
+    right: 50%;
+    margin-left: -50vw;         /* Zentrierungstrick Ende */
+    margin-right: -50vw;
+    margin-top: -20px;          /* Zieht alles nach oben in das Loga-Padding rein */
+    margin-bottom: 40px;
+    padding: 0;
+    overflow: hidden;           /* Wichtig, damit nichts wackelt */
+}
+
+/* Das Bild im Wrapper füllt einfach alles aus */
+.header-wrapper img.header-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* ==========================================
    LOGO OVERLAY (Die "Develey-Ecke")
 ========================================== */
 
-/* Der Container für das Logo (macht die weiße Form & Position) */
 .logo-badge {
-    position: absolute;       /* Löst das Element aus dem Fluss */
-    top: 0;                   /* Ganz oben am Container andocken */
-    left: 0;                  /* Ganz links am Container andocken */
-    z-index: 100;             /* Muss ÜBER dem Header-Bild liegen */
+    position: absolute;       /* Schwebt über dem Bild */
+    top: 0;                   /* Ganz oben andocken */
+    z-index: 10;              /* Liegt ÜBER dem Bild */
     
-    background-color: #ffffff; /* Weißer Hintergrund */
+    /* Positionierung: Richtet sich am Text-Container (1000px) aus */
+    left: calc(50% - 500px);  
     
-    /* Innenabstand: Rechts mehr Platz lassen für die Schräge */
-    padding: 15px 50px 15px 25px; 
+    background-color: #ffffff;
+    padding: 20px 60px 20px 30px; /* Platz für die Schräge rechts */
     
-    /* Die schräge Kante rechts abschneiden */
+    /* Die schräge Kante */
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
     
-    /* Optional: Ein leichter Schatten (funktioniert nur mit filter bei clip-path) */
-    filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.15));
+    /* Schatten (optional, wirkt edel) */
+    filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.2));
 }
 
-/* Das Logo-Bild darin */
 .logo-badge img {
     display: block;
-    width: 180px;  /* Standardbreite Desktop */
+    width: 160px; /* Logo-Größe Desktop */
     height: auto;
-    max-width: 100%;
 }
 
 /* MOBILE ANPASSUNG */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1020px) {
     .logo-badge {
-        padding: 10px 30px 10px 15px; /* Etwas kompakter auf Handy */
-        clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%); /* Winkel etwas steiler */
+        left: 0; /* Auf kleinen Screens klebt es links am Rand */
+        padding: 15px 40px 15px 20px;
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
     }
     
     .logo-badge img {
