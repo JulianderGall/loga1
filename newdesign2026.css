@@ -40,6 +40,7 @@
 .logo-badge {
     position: absolute;       /* Schwebt über dem Bild */
     top: 0;                   /* Ganz oben andocken */
+    left: 0 !important;
     z-index: 10;              /* Liegt ÜBER dem Bild */
     
     /* Positionierung: Richtet sich am Text-Container (1000px) aus */
