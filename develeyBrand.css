@@ -92,7 +92,7 @@
    CONTENT INNER (Inhalt gerade rücken)
 ========================================== */
 .content-inner {
-    max-width: 1000px; /* Breite des Textbereichs */
+    max-width: 1300px; /* Breite des Textbereichs */
     margin: 0 auto;
     padding: 0 20px;
     
@@ -101,7 +101,7 @@
 }
 
 /* ==========================================
-   TYPOGRAFIE
+   TYPOGRAFIE (Update: Larger Fonts)
 ========================================== */
 .develey-job-ad {
     font-family: "Montserrat", sans-serif;
@@ -109,57 +109,64 @@
 
 .intro-text {
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.3rem; /* Vorher 1rem */
     color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 h1 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 800;
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive Größe */
-    line-height: 1.1;
+    /* Richtig groß: Startet bei 3.5rem (Handy) und geht bis 6.5rem (Desktop) */
+    font-size: clamp(3.5rem, 9vw, 6.5rem); 
+    line-height: 1.05;
     color: var(--develey-green);
-    margin: 0 0 1.5rem 0;
-    -webkit-text-stroke: 1px var(--develey-green);
+    margin: 0 0 2rem 0;
+    -webkit-text-stroke: 2px var(--develey-green); /* Etwas dickere Kontur bei der Größe */
 }
 
 h2 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 2.8rem; /* Vorher 2rem */
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
     margin-top: 0;
 }
 
 p, li {
-    font-size: 1.1rem;
+    font-size: 1.4rem; /* Vorher 1.1rem - deutlich besser lesbar */
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 ul {
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-/* Anpassungen für die grüne Box (weiße Schrift) */
-.bg-green h1,
-.bg-green h2,
-.bg-green p,
-.bg-green li {
-    color: #fff !important;
-    -webkit-text-stroke: 0px !important;
+/* Mobile Anpassung, damit es auf dem Handy nicht ZU riesig wird */
+@media screen and (max-width: 800px) {
+    h1 {
+        /* Auf dem Handy etwas zähmen, aber immer noch wuchtig */
+        font-size: 3rem; 
+        -webkit-text-stroke: 1px var(--develey-green);
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p, li {
+        font-size: 1.2rem;
+    }
 }
-
 /* ==========================================
    MOBILE ANPASSUNG
 ========================================== */
