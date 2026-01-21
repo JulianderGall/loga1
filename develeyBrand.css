@@ -1,0 +1,179 @@
+/* ==========================================
+   FONTS & VARIABLEN
+========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
+
+:root {
+    --develey-green: rgb(0, 119, 52);
+    --develey-yellow: rgb(255, 200, 46);
+    --skew-angle: -2deg; /* Der Winkel für die Schrägen */
+}
+
+/* ==========================================
+   RESET FÜR LOGA CONTAINER
+   Damit das Design volle Breite nutzen kann
+========================================== */
+.BW-MainPanel {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.BW-WebPositionPage {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+.header-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: -5vw; /* Zieht das Bild unter den ersten Textblock */
+    z-index: 1;
+}
+
+.header-wrapper img.header-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    min-height: 300px;
+}
+
+/* ==========================================
+   SECTIONS (Schräge Container)
+========================================== */
+.skew-section {
+    position: relative;
+    width: 100%;
+    padding: 80px 0;
+    
+    /* Die Neigung des gesamten Streifens */
+    transform: skewY(var(--skew-angle));
+    transform-origin: center;
+    
+    margin-top: -5px; /* Verhindert weiße Blitzer zwischen Sektionen */
+}
+
+/* Farben */
+.bg-white {
+    background-color: #fff;
+    color: #000;
+}
+
+.bg-green {
+    background-color: var(--develey-green);
+    color: #fff;
+}
+
+.bg-yellow {
+    background-color: var(--develey-yellow);
+    color: #000;
+}
+
+/* Erste Sektion überlappt das Bild */
+.skew-section.first-overlap {
+    z-index: 10;
+    padding-top: 60px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+}
+
+/* ==========================================
+   CONTENT INNER (Inhalt gerade rücken)
+========================================== */
+.content-inner {
+    max-width: 1000px; /* Breite des Textbereichs */
+    margin: 0 auto;
+    padding: 0 20px;
+    
+    /* Neigung zurücksetzen, damit Text gerade ist */
+    transform: skewY(calc(var(--skew-angle) * -1));
+}
+
+/* ==========================================
+   TYPOGRAFIE
+========================================== */
+.develey-job-ad {
+    font-family: "Montserrat", sans-serif;
+}
+
+.intro-text {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-family: "Open Sans", sans-serif;
+    font-variation-settings: "wdth" 75;
+    font-weight: 800;
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive Größe */
+    line-height: 1.1;
+    color: var(--develey-green);
+    margin: 0 0 1.5rem 0;
+    -webkit-text-stroke: 1px var(--develey-green);
+}
+
+h2 {
+    font-family: "Open Sans", sans-serif;
+    font-variation-settings: "wdth" 75;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+p, li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Anpassungen für die grüne Box (weiße Schrift) */
+.bg-green h1,
+.bg-green h2,
+.bg-green p,
+.bg-green li {
+    color: #fff !important;
+    -webkit-text-stroke: 0px !important;
+}
+
+/* ==========================================
+   MOBILE ANPASSUNG
+========================================== */
+@media screen and (max-width: 800px) {
+    .skew-section {
+        padding: 50px 0;
+    }
+    .header-wrapper {
+        margin-bottom: -15vw; /* Stärkerer Pull am Handy */
+    }
+    h1 {
+        font-size: 2.2rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
