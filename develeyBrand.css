@@ -236,3 +236,46 @@ li {
         padding-bottom: 0 !important;
     }
 }
+/* ==========================================
+   BILD MIT TEXT-OVERLAY
+========================================== */
+
+/* Der Container, der Bild und Text zusammenhält */
+.image-overlay-wrapper {
+    position: relative; /* Wichtig: Macht den Container zum Bezugspunkt */
+    width: 100%;
+    overflow: hidden;   /* Schneidet alles ab, was übersteht */
+    display: block;
+}
+
+/* Das Bild im Hintergrund */
+.image-overlay-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block; /* Entfernt störende Abstände unter Bildern */
+}
+
+/* Der Text, der darüber schwebt */
+.image-overlay-wrapper .overlay-text {
+    position: absolute;
+    top: 50%;       /* Vertikal mittig */
+    left: 50%;      /* Horizontal mittig */
+    transform: translate(-50%, -50%); /* Exakte Zentrierung */
+    
+    width: 90%;     /* Maximalbreite, damit Text nicht am Rand klebt */
+    text-align: center;
+    z-index: 2;     /* Liegt sicher über dem Bild */
+    
+    /* Text-Styling für gute Lesbarkeit */
+    color: #ffffff; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.7); /* Schwarzer Schatten für Kontrast */
+}
+
+/* Optional: Headlines im Overlay anpassen */
+.image-overlay-wrapper .overlay-text h1,
+.image-overlay-wrapper .overlay-text h2 {
+    color: #ffffff !important;
+    margin: 0;
+    padding: 0;
+    -webkit-text-stroke: 0 !important; /* Entfernt Outline falls vorhanden */
+}
