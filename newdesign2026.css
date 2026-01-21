@@ -13,14 +13,14 @@
 body {
     background-color: #ffffff;
     margin: 0;
-    overflow-x: hidden; /* Wichtig gegen Scrollbalken */
+    overflow-x: hidden; /* Wichtig bei Vollbild-Elementen */
     font-family: "Montserrat", sans-serif;
 }
 
 /* ==========================================
    2. LOGA CONTAINER RESET
-   (Damit wir volle Breite nutzen können)
 ========================================== */
+/* Wir setzen den Standard-Loga-Container auf "durchlässig" */
 .BW-WebPositionPage {
     width: 100% !important;
     max-width: 100% !important;
@@ -31,62 +31,36 @@ body {
 }
 
 /* ==========================================
-   3. HEADER WRAPPER (Bild + Logo)
+   3. HEADER WRAPPER (Nur Bild)
 ========================================== */
 .header-wrapper {
     position: relative;
-    /* Breakout-Trick: Zwingt den Container auf volle Bildschirmbreite */
+    /* Zwingt den Container auf volle Bildschirmbreite */
     width: 100vw;
     left: 50%;
     margin-left: -50vw;
-    margin-top: -20px; /* Zieht alles ganz nach oben */
+    margin-top: -20px; 
     z-index: 1;
 }
 
-/* Das Hintergrundbild */
 .header-wrapper img.header-bg {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
-    /* Wir lassen unten viel Platz, damit die weiße Schräge das Bild überlappen kann */
-    padding-bottom: 15vw; 
-}
-
-/* --- LOGO (Oben Links) --- */
-.logo-badge {
-    position: absolute;
-    top: 0;
-    z-index: 999;
-    
-    /* Positionierung: Klebt am linken Bildschirmrand */
-    left: 50% !important;
-    margin-left: -50vw !important;
-    
-    background-color: #ffffff;
-    padding: 20px 80px 20px 20px; /* Rechts Platz für Schräge */
-    
-    /* Die schräge Kante am Logo */
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.15));
-}
-
-.logo-badge img {
-    display: block;
-    width: 280px !important;
-    height: auto;
+    /* Platz unten lassen für den weißen Schnitt */
+    padding-bottom: 12vw; 
 }
 
 /* ==========================================
-   4. CONTENT OVERLAP (Weißer Hintergrund + Text)
+   4. CONTENT OVERLAP (Weißer Hintergrund)
 ========================================== */
 
-/* ÄUSSERER Container: Macht den Hintergrund weiß & vollbreit */
+/* ÄUSSERER Container: Weißer Hintergrund über ganze Breite */
 .content-overlap {
     position: relative;
     z-index: 10;
     
-    /* Volle Breite erzwingen */
     width: 100vw;
     left: 50%;
     margin-left: -50vw;
@@ -96,21 +70,21 @@ body {
     /* Schiebt den weißen Block nach oben ÜBER das Bild */
     margin-top: -10vw !important; 
     
-    /* Der schräge Schnitt oben: Steigt nach rechts oben an */
+    /* Der schräge Schnitt oben */
     clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0% 100%);
     
-    padding-top: 8vw; /* Platz oben, damit Text nicht abgeschnitten wird */
+    padding-top: 8vw; 
     padding-bottom: 40px;
 }
 
-/* INNERER Container: Hält den Text mittig (1000px) */
+/* INNERER Container: Hält den Text mittig auf 1000px */
 .content-inner {
     width: 100%;
     max-width: var(--content-width);
-    margin: 0 auto; /* Das zentriert den Text horizontal! */
-    padding: 0 20px;
+    margin: 0 auto; /* ZENTRIERT den Block horizontal */
+    padding: 0 20px; /* Abstand zum Rand auf Handy */
     box-sizing: border-box;
-    text-align: left; /* Text selbst ist linksbündig */
+    text-align: left; /* Text darin ist linksbündig */
 }
 
 /* ==========================================
@@ -161,14 +135,6 @@ div[style*="background-color: rgb(0, 119, 52)"] {
    6. MOBILE ANPASSUNG
 ========================================== */
 @media screen and (max-width: 1000px) {
-    .logo-badge {
-        left: 0 !important;
-        margin-left: 0 !important;
-        padding: 15px 50px 15px 15px;
-        clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
-    }
-    .logo-badge img { width: 140px !important; }
-    
     .content-overlap {
         margin-top: -50px !important;
         padding-top: 60px;
