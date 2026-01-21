@@ -11,13 +11,13 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
     margin: 0;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Verhindert Scrollbalken durch Vollbreite */
     font-family: "Montserrat", sans-serif;
 }
 
-/* LOGA CONTAINER RESET */
+/* LOGA CONTAINER RESET: Wir öffnen den Standard-Container komplett */
 .BW-WebPositionPage {
     width: 100% !important;
     max-width: 100% !important;
@@ -28,7 +28,7 @@ body {
 }
 
 /* ==========================================
-   2. HEADER WRAPPER (Nur das Bild)
+   HEADER WRAPPER (Bild + Weißer Keil)
 ========================================== */
 .header-wrapper {
     position: relative;
@@ -36,7 +36,9 @@ body {
     left: 50%;
     margin-left: -50vw;
     margin-top: -20px;
-    z-index: 1; /* Liegt unten */
+    margin-bottom: 0 !important; /* Kein Abstand nach unten! */
+    overflow: hidden;
+    z-index: 1;
 }
 
 .header-wrapper img.header-bg {
@@ -44,50 +46,48 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
-    /* WICHTIG: Wir brauchen unten "Fleisch" am Bild, das wir verdecken können */
-    padding-bottom: 15vw; 
+    /* Extra Platz unten im Bild lassen für den Schnitt */
+    padding-bottom: 8vw; 
 }
 
-/* Den ::after Block aus Ihrem alten Code habe ich ENTFERNT. 
-   Wir machen die Schräge jetzt sauberer im Content-Bereich unten. */
+/* Der weiße Schnitt im Bild */
+.header-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8vw; /* Winkel der Schräge */
+    background-color: rgb(255, 255, 255); /* Muss weiß sein */
+    z-index: 5;
+    /* Dreieck: Steigt von links unten nach rechts oben an */
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
 
 
 /* ==========================================
-   3. CONTENT OVERLAP (Weißer Kasten mit Schräge)
+   TEXT ÜBERLAPPUNG (NEU)
 ========================================== */
-
-/* Äußerer Container: Weißer Hintergrund & Schräge Form */
+/* Dieser Container zieht den Text garantiert nach oben */
 .content-overlap {
     position: relative;
-    z-index: 10; /* Liegt ÜBER dem Bild */
+    z-index: 20; /* Liegt ÜBER dem weißen Schnitt */
     
-    /* 1. Volle Breite erzwingen */
-    width: 100vw;
-    left: 50%;
-    margin-left: -50vw;
-    background-color: #ffffff;
+    /* Zieht den ganzen Block massiv nach oben in das Bild rein */
+    margin-top: -8vw !important; 
     
-    /* 2. Überlappung: Zieht den weißen Block 10% der Breite nach OBEN */
-    margin-top: -10vw !important; 
-    
-    /* 3. Die Schräge (Der Schnitt) */
-    /* Links starten wir bei 5% Tiefe, Rechts gehen wir auf 0% (ganz hoch) */
-    /* Das erzeugt den Anstieg nach rechts oben */
-    clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0% 100%);
-    
-    /* 4. Platz schaffen für den Text, damit er nicht abgeschnitten wird */
-    padding-top: 8vw; 
-    padding-bottom: 50px;
+    text-align: left; /* Linksbuendig wie im Design */
+    padding-right: 20px; /* Sicherheitspadding rechts */
 }
 
-/* Innerer Container: Hält den Text mittig (1000px) */
-.content-inner {
-    width: 100%;
-    max-width: var(--content-width);
-    margin: 0 auto; /* Zentriert den Block horizontal */
-    padding: 0 20px;
-    box-sizing: border-box;
-    text-align: left;
+/* Mobile Anpassung */
+@media screen and (max-width: 800px) {
+    .content-overlap {
+        margin-top: -50px !important; /* Weniger Überlappung am Handy */
+    }
+    .header-wrapper::after {
+        height: 50px;
+    }
 }
 
 
@@ -114,7 +114,6 @@ h1 {
     text-transform: none;
     margin-top: 0;
     margin-bottom: 1.5rem;
-    /* Leichte Umrandung für Schärfe */
     -webkit-text-stroke: 1px var(--develey-green);
 }
 
@@ -122,38 +121,37 @@ h1 {
 .angled-box,
 div[style*="background-color: rgb(0, 119, 52)"] {
     background-color: var(--develey-green) !important;
-    color: #ffffff !important;
+    color: rgb(255, 255, 255) !important;
     padding: 3rem !important;
     margin-top: 40px;
     position: relative;
-    /* Auch die Box bekommt die passende Schräge */
+    /* Auch die Box bekommt eine leichte Schräge passend zum Header */
     clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%);
 }
 
 .angled-box h2, div[style*="background-color: rgb(0, 119, 52)"] h2 {
-    color: #ffffff !important;
+    color: rgb(255, 255, 255) !important;
     font-family: "Open Sans", sans-serif;
     font-weight: 800;
     -webkit-text-stroke: 0px !important;
 }
-.angled-box p { color: #ffffff !important; }
+.angled-box p { color: rgb(255, 255, 255) !important; }
 
 
 /* ==========================================
    5. MOBILE ANPASSUNG
 ========================================== */
 @media screen and (max-width: 800px) {
-    /* Handy: Weniger extreme Überlappung */
+    /* Am Handy weniger Überlappung, damit Titel nicht im Gesicht der Person ist */
     .content-overlap {
         margin-top: -15vw !important; 
         padding-top: 15vw;
-        /* Etwas steilerer Winkel wirkt am Handy besser */
         clip-path: polygon(0 8vw, 100% 0, 100% 100%, 0% 100%);
     }
     
     h1 { font-size: 2rem; }
     
     .header-wrapper img.header-bg {
-        padding-bottom: 20vw; 
+        padding-bottom: 20vw; /* Mehr Platz unten am Bild lassen */
     }
 }
