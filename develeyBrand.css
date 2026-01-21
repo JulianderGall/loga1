@@ -268,7 +268,6 @@ li {
     
     /* Text-Styling für gute Lesbarkeit */
     color: #ffffff; 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.7); /* Schwarzer Schatten für Kontrast */
 }
 
 /* Optional: Headlines im Overlay anpassen */
