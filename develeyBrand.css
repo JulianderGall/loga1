@@ -177,3 +177,32 @@ li {
         font-size: 1.5rem;
     }
 }
+/* ==========================================
+   MOBILE TABELLEN-ANPASSUNG (STACKING)
+========================================== */
+@media screen and (max-width: 800px) {
+    
+    /* Macht aus der Tabelle, den Zeilen und Zellen "Block-Elemente" */
+    table, tbody, tr, td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
+    }
+
+    /* Entfernt feste Höhen, falls im Editor welche gesetzt wurden */
+    td, tr {
+        height: auto !important;
+    }
+
+    /* Optional: Kleiner Abstand zwischen den gestapelten Zellen */
+    td {
+        padding-bottom: 20px !important;
+        padding-left: 0 !important; /* Nimmt seitlichen Platz weg für mehr Textbreite */
+        padding-right: 0 !important;
+    }
+
+    /* Entfernt den Abstand bei der allerletzten Zelle, damit es unten bündig ist */
+    td:last-child {
+        padding-bottom: 0 !important;
+    }
+}
