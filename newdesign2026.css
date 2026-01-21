@@ -71,10 +71,10 @@ body {
 /* Dieser Container zieht den Text garantiert nach oben */
 .content-overlap {
     position: relative;
-    z-index: 20; /* Liegt ÜBER dem weißen Schnitt */
+    z-index: 40; /* Liegt ÜBER dem weißen Schnitt */
     
     /* Zieht den ganzen Block massiv nach oben in das Bild rein */
-    margin-top: -8vw !important; 
+    margin-top: -16vw !important; 
     
     text-align: left; /* Linksbuendig wie im Design */
     padding-right: 20px; /* Sicherheitspadding rechts */
