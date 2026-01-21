@@ -16,49 +16,71 @@
    HEADER WRAPPER (Bild + Logo + Schräge)
 ========================================== */
 
+/* ==========================================
+   FIX: TEXT-ÜBERLAPPUNG (Overlap)
+========================================== */
+
+/* 1. Sicherstellen, dass das Header-Bild Platz für den Schnitt hat */
 .header-wrapper {
     position: relative;
     width: 100vw;
     left: 50%;
-    right: 50%;
     margin-left: -50vw;
-    margin-right: -50vw;
     margin-top: -20px;
-    
-    /* Wichtig: Kein Margin unten, damit der Text direkt anschließt */
-    margin-bottom: 0px !important; 
-    padding: 0;
-    overflow: hidden;
+    margin-bottom: 0 !important; /* Kein Abstand nach unten */
+    z-index: 1;
 }
 
-.header-wrapper img.header-bg {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    
-    /* Wir müssen das Bild etwas "länger" lassen, damit hinter der Schräge noch Bild ist */
-    padding-bottom: 2vw; 
-}
-
-/* --- HIER ENTSTEHT DIE SCHRÄGE (DER "OVERLAP"-EFFEKT) --- */
 .header-wrapper::after {
     content: "";
     position: absolute;
-    bottom: -1px; /* -1px verhindert weiße Blitzer-Linien */
+    bottom: -1px; /* Kleine Korrektur gegen Blitzer */
     left: 0;
     width: 100%;
+    height: 8vw; /* Höhe des weißen Keils (Winkel) */
+    min-height: 80px; /* Mindesthöhe auf Handy */
+    background-color: #ffffff;
+    z-index: 5; 
+    /* Der Schnitt: Steigt nach rechts oben an */
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+/* 2. DEN TEXT NACH OBEN ZIEHEN */
+/* Wir ziehen den Intro-Text ("Starte durch...") massiv nach oben */
+.intro-text,
+.BW-MainPanel > p:nth-of-type(1) { 
+    position: relative;
+    z-index: 20; /* WICHTIG: Muss ÜBER dem weißen Keil liegen */
     
-    /* Höhe der Schräge: Je höher dieser Wert, desto steiler der Schnitt */
-    height: 6vw; 
-    min-height: 50px; /* Mindesthöhe, damit es immer wirkt */
+    /* Hier passiert die Magie: Negativer Abstand zieht es hoch */
+    margin-top: -6vw !important; 
     
-    background-color: #ffffff; /* Muss exakt die Hintergrundfarbe der Seite sein */
-    z-index: 5;
+    /* Sicherheitsabstand links (falls nötig) */
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+/* Falls Sie die Klasse .intro-text im HTML vergessen haben, 
+   versuchen wir den Text direkt über seine Position zu fangen: */
+.header-wrapper + p,
+.header-wrapper + div,
+.header-wrapper + h1 {
+    position: relative;
+    z-index: 20;
+    margin-top: -6vw !important;
+}
+
+/* Mobile Korrektur: Auf dem Handy weniger hochziehen */
+@media screen and (max-width: 800px) {
+    .intro-text,
+    .BW-MainPanel > p:nth-of-type(1),
+    .header-wrapper + p {
+        margin-top: -40px !important;
+    }
     
-    /* Die Form: Links tief (100%), Rechts hoch (0%) */
-    /* Polygon Punkte: Oben-Links, Oben-Rechts, Unten-Rechts, Unten-Links */
-    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0% 100%);
+    .header-wrapper::after {
+        min-height: 50px;
+    }
 }
 /* ==========================================
    LOGO OVERLAY (Die "Develey-Ecke")
