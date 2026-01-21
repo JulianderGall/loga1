@@ -64,7 +64,7 @@ body {
     
     /* WICHTIG: margin-left und margin-right auf AUTO zentriert den Block */
     /* Der negative Top-Margin (-12vw) zieht ihn über das Bild */
-    margin: -12vw auto 50px auto; 
+    margin: -12vw auto auto auto; 
     
     /* Neigung der gesamten Säule */
     transform: skewY(var(--skew-angle));
