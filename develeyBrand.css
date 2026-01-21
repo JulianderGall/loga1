@@ -101,7 +101,7 @@
 }
 
 /* ==========================================
-   TYPOGRAFIE (Update: Larger Fonts)
+   TYPOGRAFIE (Update: XL Headlines)
 ========================================== */
 .develey-job-ad {
     font-family: "Montserrat", sans-serif;
@@ -109,38 +109,41 @@
 
 .intro-text {
     font-weight: 700;
-    font-size: 1.3rem; /* Vorher 1rem */
+    font-size: 1.5rem; /* Auch leicht angepasst */
     color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 h1 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 800;
-    /* Richtig groß: Startet bei 3.8rem (Handy) und geht bis 8.5rem (Desktop) */
-    font-size: clamp(3.5rem, 9vw, 6.5rem); 
-    line-height: 1.05;
+    /* Startet mobil bei 5rem (sehr groß) und wächst am Desktop auf 12rem (riesig).
+       Das entspricht ca. +100% zur vorherigen Version.
+    */
+    font-size: clamp(5rem, 15vw, 12rem); 
+    line-height: 0.9; /* Engerer Zeilenabstand ist bei dieser Größe wichtig */
     color: var(--develey-green);
-    margin: 0 0 2rem 0;
-    -webkit-text-stroke: 2px var(--develey-green); /* Etwas dickere Kontur bei der Größe */
+    margin: 0 0 2.5rem 0;
+    -webkit-text-stroke: 3px var(--develey-green); /* Kontur angepasst */
 }
 
 h2 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 700;
-    font-size: 3.8rem; /* Vorher 2rem */
-    line-height: 1.2;
+    /* +50% größer als vorher */
+    font-size: 4.2rem; 
+    line-height: 1.1;
     margin-bottom: 1.5rem;
     margin-top: 0;
 }
 
 p, li {
-    font-size: 1.4rem; /* Vorher 1.1rem - deutlich besser lesbar */
+    font-size: 1.4rem; 
     line-height: 1.6;
     margin-bottom: 1.2rem;
 }
@@ -153,6 +156,26 @@ li {
     margin-bottom: 10px;
 }
 
+/* ==========================================
+   MOBILE ANPASSUNG
+   Damit die riesigen Schriften das Handy nicht sprengen
+========================================== */
+@media screen and (max-width: 800px) {
+    h1 {
+        /* Mobil: Groß, aber passend für den Screen */
+        font-size: 4rem; 
+        -webkit-text-stroke: 1px var(--develey-green);
+        line-height: 1;
+        margin-bottom: 1.5rem;
+    }
+    h2 {
+        /* Mobil: Etwas kleiner als am Desktop, damit Wörter nicht umbrechen */
+        font-size: 2.5rem;
+    }
+    .intro-text {
+        font-size: 1.1rem;
+    }
+}
 /* Mobile Anpassung, damit es auf dem Handy nicht ZU riesig wird */
 @media screen and (max-width: 800px) {
     h1 {
