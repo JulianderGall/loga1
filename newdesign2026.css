@@ -11,7 +11,7 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: rgb(255, 255, 255);
     margin: 0;
     overflow-x: hidden; /* Verhindert Scrollbalken durch Vollbreite */
     font-family: "Montserrat", sans-serif;
@@ -58,7 +58,7 @@ body {
     left: 0;
     width: 100%;
     height: 8vw; /* Winkel der Schräge */
-    background-color: #ffffff; /* Muss weiß sein */
+    background-color: rgb(255, 255, 255); /* Muss weiß sein */
     z-index: 5;
     /* Dreieck: Steigt von links unten nach rechts oben an */
     clip-path: polygon(0 100%, 100% 0, 100% 100%);
@@ -121,7 +121,7 @@ h1 {
 .angled-box,
 div[style*="background-color: rgb(0, 119, 52)"] {
     background-color: var(--develey-green) !important;
-    color: #ffffff !important;
+    color: rgb(255, 255, 255) !important;
     padding: 3rem !important;
     margin-top: 40px;
     position: relative;
@@ -130,12 +130,12 @@ div[style*="background-color: rgb(0, 119, 52)"] {
 }
 
 .angled-box h2, div[style*="background-color: rgb(0, 119, 52)"] h2 {
-    color: #ffffff !important;
+    color: rgb(255, 255, 255) !important;
     font-family: "Open Sans", sans-serif;
     font-weight: 800;
     -webkit-text-stroke: 0px !important;
 }
-.angled-box p { color: #ffffff !important; }
+.angled-box p { color: rgb(255, 255, 255) !important; }
 
 
 /* ==========================================
