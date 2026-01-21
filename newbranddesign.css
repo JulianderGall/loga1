@@ -18,7 +18,7 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-/* LOGA CONTAINER RESETS (Wichtig!) */
+/* LOGA CONTAINER RESETS */
 .BW-WebPositionPage {
     width: 100% !important;
     max-width: 100% !important;
@@ -28,7 +28,7 @@ body {
     overflow: visible !important;
 }
 
-/* Wir müssen auch das MainPanel öffnen, falls es stört */
+/* Sicherstellen, dass auch der innere Loga-Container Platz macht */
 .BW-MainPanel {
     width: 100% !important;
     max-width: 100% !important;
@@ -68,14 +68,12 @@ body {
     
     width: var(--container-width-desktop);
     
-    /* --- DIE NEUE ZENTRIERUNG (Ignoriert Eltern-Breite) --- */
+    /* ZENTRIERUNG (Der Fix, der funktioniert hat) */
     left: 50%;
-    /* Wir schieben ihn zur Mitte (left 50%) und dann um die Hälfte seiner Breite zurück (-50%) */
-    /* Gleichzeitig wenden wir die Schräge (Skew) an */
     transform: translateX(-50%) skewY(var(--skew-angle));
     transform-origin: center center;
     
-    margin-top: -12vw; /* Überlappung */
+    margin-top: -12vw; 
     margin-bottom: 50px;
     
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
@@ -89,7 +87,7 @@ body {
 
 .skew-section {
     position: relative;
-    padding: 40px 0;
+    padding: 45px 0; /* Etwas mehr Platz vertikal für die großen Schriften */
 }
 
 .bg-white {
@@ -108,12 +106,12 @@ body {
 }
 
 .skew-section.first {
-    padding-top: 60px; 
+    padding-top: 70px; 
 }
 
 
 /* ==========================================
-   5. TEXT CONTENT (Randabstand & Gerade)
+   5. TEXT CONTENT
 ========================================== */
 
 .content-inner {
@@ -127,9 +125,8 @@ body {
     text-align: left;
     box-sizing: border-box;
     
-    /* --- TEXT NÄHER AN DEN RAND --- */
-    /* Hier stellen wir den Abstand ein. Vorher waren es ca. 40px+ */
-    padding: 0 25px; 
+    /* Abstand zum Rand (wie gewünscht nah dran) */
+    padding: 0 30px; 
 }
 
 /* Farben in grüner Box */
@@ -143,52 +140,60 @@ body {
 
 
 /* ==========================================
-   6. TYPOGRAFIE
+   6. TYPOGRAFIE (JETZT DEUTLICH GRÖSSER)
 ========================================== */
 
+/* Die kleine Zeile oben drüber */
 .intro-text {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    font-size: 1.1rem;
+    font-size: 1.35rem; /* War 1.1rem */
     color: rgb(51, 51, 51);
     margin-bottom: 0.5rem;
     display: block;
 }
 
+/* Hauptüberschrift (Jobtitel) */
 h1 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 800;
-    font-size: 3rem;
-    line-height: 1.1;
+    
+    font-size: 4rem; /* War 3rem -> Jetzt riesig */
+    line-height: 1.05; /* Enger Zeilenabstand für kompakten Look */
+    
     color: var(--develey-green);
     text-transform: none;
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     -webkit-text-stroke: 1px var(--develey-green);
 }
 
+/* Zwischenüberschriften (Mission, Profil etc.) */
 h2 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 700;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
+    
+    font-size: 2.5rem; /* War 1.8rem */
+    
+    margin-bottom: 1.2rem;
     margin-top: 0;
 }
 
+/* Fließtext und Listen */
 p, li {
-    font-size: 1.1rem;
+    font-size: 1.25rem; /* War 1.1rem */
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
 }
 
 ul {
-    padding-left: 20px;
+    padding-left: 25px;
 }
 
 li {
-    margin-bottom: 5px;
+    margin-bottom: 8px;
 }
 
 
@@ -205,5 +210,8 @@ li {
         padding: 0 20px;
     }
     
-    h1 { font-size: 2rem; }
+    /* Mobil auch etwas größer, aber passend zum Screen */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    p, li { font-size: 1.1rem; }
 }
