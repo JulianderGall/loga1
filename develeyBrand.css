@@ -350,3 +350,24 @@ input.ORANGE:hover {
     background-color: rgba(0, 0, 0, 0.05) !important; /* Ganz leicht grau */
     cursor: text;
 }
+/* ==========================================
+   RESPONSIVE ICONS
+========================================== */
+.develey-icon {
+    /* Desktop: Füllt die Tabellenspalte komplett aus */
+    width: 100%; 
+    height: auto;
+    display: inline-block;
+    
+    /* Optional: Maximale Größe, damit sie auf riesigen Bildschirmen nicht gigantisch werden */
+    max-width: 120px; 
+}
+
+/* Mobile Ansicht (unter 800px) */
+@media screen and (max-width: 800px) {
+    .develey-icon {
+        /* Handy: Nur 40% der Breite, damit es harmonisch aussieht */
+        width: 40% !important; 
+        max-width: none; /* Hebt die Begrenzung auf */
+    }
+}
