@@ -279,28 +279,42 @@ li {
     -webkit-text-stroke: 0 !important; /* Entfernt Outline falls vorhanden */
 }
 /* ==========================================
-   ZEBRA-TABELLEN (Jede 2. Zeile hervorgehoben)
+   SPEZIAL-TABELLE: "ZEBRA-TABLE"
+   Nur Tabellen mit der Klasse class="zebra-table" bekommen 
+   das Streifenmuster und die Montserrat-Schrift.
 ========================================== */
 
-/* 1. Grundzustand: Alles komplett durchsichtig */
-table, tbody, tr, td {
-    background-color: transparent !important;
-    background-image: none !important;
+/* 1. Schriftart & Größe erzwingen (NUR in Zebra-Tabelle) */
+table.zebra-table, 
+table.zebra-table tbody, 
+table.zebra-table tr, 
+table.zebra-table td,
+table.zebra-table td p, 
+table.zebra-table td span, 
+table.zebra-table td li {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.4rem !important; /* Passt zum Rest der Seite */
+    line-height: 1.5 !important;
+    color: inherit;
 }
 
-/* 2. Nur gerade Zeilen (2, 4, 6...) bekommen den Glas-Effekt */
-tr:nth-child(even) {
+/* 2. Zebra-Streifen (NUR in Zebra-Tabelle) */
+/* Reset: Erstmal alles transparent machen */
+table.zebra-table tr {
+    background-color: transparent !important;
+}
+
+/* Jede zweite Zeile bekommt den Glas-Effekt */
+table.zebra-table tr:nth-child(even) {
     background-color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* Optional: Wenn die ungeraden Zeilen (1, 3, 5...) statt "nichts" 
-   eine andere Farbe haben sollen, kannst du diesen Block nutzen: 
-*/
-/* tr:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.1) !important; 
-} 
-*/
-
+/* Mobile-Ausnahme: Auf dem Handy keine Streifen, da alles untereinander steht */
+@media screen and (max-width: 800px) {
+    table.zebra-table tr:nth-child(even) {
+        background-color: transparent !important;
+    }
+}
 /* ==========================================
    LOGA FORMULARFELDER ANPASSEN
    Macht die Eingabefelder "unsichtbar" (kein Rahmen, kein Hintergrund),
@@ -335,25 +349,4 @@ input.ReadOnlyRedactorField:hover,
 input.ORANGE:hover {
     background-color: rgba(0, 0, 0, 0.05) !important; /* Ganz leicht grau */
     cursor: text;
-}
-/* ==========================================
-   TABELLEN-SCHRIFTART FIX
-   Zwingt alle Elemente innerhalb der Tabelle zur korrekten Schriftart.
-========================================== */
-
-/* Wir sprechen gezielt die Tabelle und alle möglichen Textelemente darin an */
-table, tbody, tr, td, 
-td p, td span, td div, td li {
-    font-family: "Montserrat", sans-serif !important;
-    
-    /* Optional: Damit die Größe auch sicher passt (wie im Fließtext definiert) */
-    font-size: 1.4rem !important; 
-    line-height: 1.5 !important;
-    color: inherit; /* Behält die Textfarbe (schwarz/weiß) bei */
-}
-
-/* Falls du Überschriften in der Tabelle hast (h1, h2, h3), 
-   sollen die natürlich die Open Sans (die Headline-Schrift) behalten */
-td h1, td h2, td h3 {
-    font-family: "Open Sans", sans-serif !important;
 }
