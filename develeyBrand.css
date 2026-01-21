@@ -336,3 +336,24 @@ input.ORANGE:hover {
     background-color: rgba(0, 0, 0, 0.05) !important; /* Ganz leicht grau */
     cursor: text;
 }
+/* ==========================================
+   TABELLEN-SCHRIFTART FIX
+   Zwingt alle Elemente innerhalb der Tabelle zur korrekten Schriftart.
+========================================== */
+
+/* Wir sprechen gezielt die Tabelle und alle möglichen Textelemente darin an */
+table, tbody, tr, td, 
+td p, td span, td div, td li {
+    font-family: "Montserrat", sans-serif !important;
+    
+    /* Optional: Damit die Größe auch sicher passt (wie im Fließtext definiert) */
+    font-size: 1.4rem !important; 
+    line-height: 1.5 !important;
+    color: inherit; /* Behält die Textfarbe (schwarz/weiß) bei */
+}
+
+/* Falls du Überschriften in der Tabelle hast (h1, h2, h3), 
+   sollen die natürlich die Open Sans (die Headline-Schrift) behalten */
+td h1, td h2, td h3 {
+    font-family: "Open Sans", sans-serif !important;
+}
