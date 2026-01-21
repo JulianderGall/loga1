@@ -28,17 +28,17 @@ body {
 }
 
 /* ==========================================
-   2. HEADER BILD (Vollbildbreite)
+   HEADER WRAPPER (Bild + Weißer Keil)
 ========================================== */
 .header-wrapper {
     position: relative;
-    /* Der Breakout-Trick für volle Breite */
-    width: 100vw; 
+    width: 100vw;
     left: 50%;
     margin-left: -50vw;
-    
-    margin-top: -20px; /* Zieht Bild ganz nach oben an den Rand */
-    z-index: 1; /* Ebene 1 (unten) */
+    margin-top: -20px;
+    margin-bottom: 0 !important; /* Kein Abstand nach unten! */
+    overflow: hidden;
+    z-index: 1;
 }
 
 .header-wrapper img.header-bg {
@@ -46,47 +46,48 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
-    /* WICHTIG: Viel Platz unten lassen, damit der Text darüber rutschen kann, 
-       ohne das Bild komplett zu verdecken */
-    padding-bottom: 15vw; 
+    /* Extra Platz unten im Bild lassen für den Schnitt */
+    padding-bottom: 8vw; 
+}
+
+/* Der weiße Schnitt im Bild */
+.header-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 8vw; /* Winkel der Schräge */
+    background-color: #ffffff; /* Muss weiß sein */
+    z-index: 5;
+    /* Dreieck: Steigt von links unten nach rechts oben an */
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
 }
 
 
 /* ==========================================
-   3. CONTENT OVERLAP (Der weiße Bereich)
+   TEXT ÜBERLAPPUNG (NEU)
 ========================================== */
-
+/* Dieser Container zieht den Text garantiert nach oben */
 .content-overlap {
     position: relative;
-    z-index: 10; /* Ebene 10 (muss ÜBER dem Bild liegen) */
+    z-index: 20; /* Liegt ÜBER dem weißen Schnitt */
     
-    /* Hintergrund: Weiß & volle Breite */
-    background-color: #ffffff;
-    width: 100vw;
-    left: 50%;
-    margin-left: -50vw;
-    
-    /* --- HIER IST DIE ÜBERLAPPUNG --- */
-    /* Zieht den weißen Block 8% der Bildschirmbreite nach OBEN in das Bild */
+    /* Zieht den ganzen Block massiv nach oben in das Bild rein */
     margin-top: -8vw !important; 
     
-    /* --- HIER IST DIE SCHRÄGE KANTE --- */
-    /* Polygon: Links starten wir tiefer (bei 5vw), Rechts ganz oben (0) */
-    clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0% 100%);
-    
-    /* Innenabstand oben, damit der Text nicht von der Schräge abgeschnitten wird */
-    padding-top: 8vw; 
-    padding-bottom: 50px;
+    text-align: left; /* Linksbuendig wie im Design */
+    padding-right: 20px; /* Sicherheitspadding rechts */
 }
 
-/* Der innere Container, der den Text mittig hält */
-.content-inner {
-    width: 100%;
-    max-width: var(--content-width); /* Begrenzung auf 1000px */
-    margin: 0 auto; /* Zentriert den Block horizontal */
-    padding: 0 20px; /* Abstand links/rechts auf Handy */
-    box-sizing: border-box;
-    text-align: left; /* Text selbst ist linksbündig */
+/* Mobile Anpassung */
+@media screen and (max-width: 800px) {
+    .content-overlap {
+        margin-top: -50px !important; /* Weniger Überlappung am Handy */
+    }
+    .header-wrapper::after {
+        height: 50px;
+    }
 }
 
 
