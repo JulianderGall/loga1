@@ -9,11 +9,10 @@
     --develey-yellow: rgb(255, 200, 46);
     --skew-angle: -2deg; /* Der Winkel für ALLE Schrägen */
     --container-width-desktop: 70vw; /* Breite des Hauptcontainers */
-    --text-width-desktop: 65vw;      /* Breite des Textes */
 }
 
 body {
-    background-color: rgb(240, 240, 240); /* Hintergrund leicht grau, damit der weiße Container wirkt */
+    background-color: rgb(240, 240, 240);
     margin: 0;
     overflow-x: hidden;
     font-family: "Montserrat", sans-serif;
@@ -60,34 +59,31 @@ body {
     position: relative;
     z-index: 10;
     
-    /* Zentrierung und Breite (70% Desktop) */
+    /* Zentrierung und Breite */
     width: var(--container-width-desktop);
-    margin: 0 auto;
     
-    /* Überlappung mit dem Header */
-    margin-top: -12vw;
-    margin-bottom: 50px;
+    /* WICHTIG: margin-left und margin-right auf AUTO zentriert den Block */
+    /* Der negative Top-Margin (-12vw) zieht ihn über das Bild */
+    margin: -12vw auto 50px auto; 
     
-    /* DIE MAGIE: Wir neigen die ganze Säule vertikal (Y-Achse) */
-    /* Dadurch bleiben die Seiten gerade, aber oben/unten/Trennlinien werden schräg */
+    /* Neigung der gesamten Säule */
     transform: skewY(var(--skew-angle));
+    transform-origin: center; /* Dreht sich um die eigene Mitte */
     
-    /* Der gewünschte seitliche Schatten (Weichgezeichnet) */
+    /* Seitlicher Schatten */
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
     
-    /* Hintergrund weiß als Basis */
     background-color: rgb(255, 255, 255);
 }
 
 
 /* ==========================================
-   4. SECTIONS (Die 5 Farb-Container)
+   4. SECTIONS (Die Farb-Container)
 ========================================== */
 
 .skew-section {
     position: relative;
     padding: 40px 0;
-    /* Da der Eltern-Container geneigt ist, sind diese Boxen automatisch auch geneigt! */
 }
 
 /* Farben */
@@ -106,31 +102,36 @@ body {
     color: rgb(0, 0, 0);
 }
 
-/* Anpassung für den ersten Container (Titel) */
+/* Erster Container braucht oben mehr Platz wegen Header-Kante */
 .skew-section.first {
-    padding-top: 60px; /* Mehr Platz oben wegen der Header-Kante */
+    padding-top: 60px; 
 }
 
 
 /* ==========================================
-   5. TEXT CONTENT (Gerade rücken & Breite)
+   5. TEXT CONTENT (Anpassung Rand & Mitte)
 ========================================== */
 
 .content-inner {
-    /* Breite des Textes begrenzen (ca. 65% Screen Width) */
-    /* Da wir im 70% Container sind, entspricht 93% ca. 65vw */
-    width: 93%; 
-    max-width: 1000px;
+    /* 1. Volle Breite nutzen (keine 93% Einschränkung mehr) */
+    width: 100%; 
+    max-width: 100%;
+    
+    /* 2. Zentrierung im Container */
     margin: 0 auto;
     
-    /* WICHTIG: Text zurück-neigen, damit er gerade steht */
+    /* Text gerade rücken */
     transform: skewY(calc(var(--skew-angle) * -1));
     
     text-align: left;
     box-sizing: border-box;
+    
+    /* 3. Abstand zum Rand: Hier steuern wir, wie nah der Text am Rand ist. */
+    /* 40px war zu viel, jetzt nehmen wir 25px -> Text rutscht nach außen */
+    padding: 0 25px; 
 }
 
-/* Textfarben in grüner Box anpassen */
+/* Textfarben in grüner Box */
 .bg-green .content-inner h1,
 .bg-green .content-inner h2,
 .bg-green .content-inner p,
@@ -141,7 +142,7 @@ body {
 
 
 /* ==========================================
-   6. TYPOGRAFIE & LISTEN
+   6. TYPOGRAFIE
 ========================================== */
 
 .intro-text {
@@ -195,14 +196,13 @@ li {
 ========================================== */
 @media screen and (max-width: 1000px) {
     .main-column {
-        width: 95vw; /* Auf Handy fast volle Breite */
-        margin-top: -20vw; /* Stärkerer Überlapp */
+        width: 95vw; /* Handy: fast volle Breite */
+        margin-top: -20vw;
     }
     
     .content-inner {
-        width: 90%; /* Text nutzt Platz besser */
+        padding: 0 20px; /* Auch am Handy nah am Rand */
     }
     
     h1 { font-size: 2rem; }
-    h2 { font-size: 1.5rem; }
 }
