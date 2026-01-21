@@ -8,12 +8,13 @@
     --develey-green: rgb(0, 119, 52);
     --develey-yellow: rgb(255, 200, 46);
     --content-width: 1000px;
+    --skew-angle: -2deg; /* Hier stellen wir die Schräge zentral ein */
 }
 
 body {
     background-color: rgb(255, 255, 255);
     margin: 0;
-    overflow-x: hidden; /* Wichtig bei Vollbild-Elementen */
+    overflow-x: hidden;
     font-family: "Montserrat", sans-serif;
 }
 
@@ -23,12 +24,12 @@ body {
     max-width: 100% !important;
     margin: 0 !important;
     padding: 0 !important;
-    background: rgb(255, 255, 255);
+    background: transparent;
     overflow: visible !important;
 }
 
 /* ==========================================
-   2. HEADER WRAPPER (Nur das Bild)
+   2. HEADER WRAPPER (Bild)
 ========================================== */
 .header-wrapper {
     position: relative;
@@ -36,7 +37,7 @@ body {
     left: 50%;
     margin-left: -50vw;
     margin-top: -20px;
-    z-index: 1; /* Liegt unten */
+    z-index: 1; 
 }
 
 .header-wrapper img.header-bg {
@@ -44,50 +45,90 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
-    /* WICHTIG: Viel Platz unten lassen, damit wir es verdecken können */
-    padding-bottom: 15vw; 
+    /* Platz unten lassen, damit der erste Container drüber rutschen kann */
+    padding-bottom: 10vw; 
 }
 
 /* ==========================================
-   3. CONTENT OVERLAP (Weißer Kasten mit Schräge)
+   3. SECTIONS (Die 5 Container)
 ========================================== */
 
-/* Äußerer Container: Weißer Hintergrund & Schräge Form */
-.content-overlap {
+/* Basis-Klasse für alle schrägen Sektionen */
+.skew-section {
     position: relative;
-    z-index: -20; /* Liegt ÜBER dem Bild */
-    
-    /* 1. Volle Breite erzwingen */
     width: 100vw;
     left: 50%;
     margin-left: -50vw;
-    background-color: rgb(255, 255, 255);
     
-    /* 2. Überlappung: Zieht den weißen Block 10% der Breite nach OBEN */
-    margin-top: -20vw !important; 
+    padding: 60px 0; /* Innenabstand oben/unten */
     
-    /* 3. Die Schräge (Der Schnitt) */
-    /* Links starten wir bei 5% Tiefe (5vw), Rechts gehen wir auf 0% (ganz hoch) */
-    clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0% 100%);
+    /* Die Magie: Der ganze Streifen wird geneigt */
+    transform: skewY(var(--skew-angle));
+    transform-origin: center;
     
-    /* 4. Platz schaffen für den Text, damit er nicht abgeschnitten wird */
-    padding-top: 8vw; 
-    padding-bottom: 50px;
+    /* Kleine Überlappung der Sektionen untereinander, um weiße Blitzer zu vermeiden */
+    margin-top: -5px; 
 }
 
-/* Innerer Container: Hält den Text mittig (1000px) */
-.content-inner {
-    width: 100%;
-    max-width: var(--content-width);
-    margin: 0 auto; /* Zentriert den Block horizontal */
-    padding: 0 20px;
-    box-sizing: border-box;
-    text-align: left;
+/* Spezifische Farben */
+.bg-white {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.bg-green {
+    background-color: var(--develey-green);
+    color: rgb(255, 255, 255);
+}
+
+.bg-yellow {
+    background-color: var(--develey-yellow);
+    color: rgb(0, 0, 0);
+}
+
+/* Sonderregel für den 1. Container (Überlappung mit Bild) */
+.skew-section.first-overlap {
+    z-index: 10;
+    margin-top: -10vw; /* Zieht ihn über das Bild */
+    padding-top: 8vw;  /* Text wieder runterschieben, damit er nicht abgeschnitten ist */
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.1); /* Optional: Schatten oben auf das Bild */
 }
 
 
 /* ==========================================
-   4. TEXT STYLING
+   4. CONTENT INNER (Inhalt gerade rücken)
+========================================== */
+
+/* Der innere Container hält den Text und den Schatten */
+.content-inner {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    
+    /* WICHTIG: Neigung zurücksetzen, damit Text gerade ist */
+    transform: skewY(calc(var(--skew-angle) * -1));
+    
+    text-align: left;
+    box-sizing: border-box;
+    padding: 20px 40px;
+    
+    /* Der gewünschte Schatten links und rechts (hoher Weichzeichner) */
+    /* Wir geben dem inneren Container eine Hintergrundfarbe (inherit), damit der Schatten wirkt */
+    background-color: inherit; 
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.15); 
+}
+
+/* Anpassung der Textfarben in der grünen Box */
+.bg-green .content-inner h1,
+.bg-green .content-inner h2,
+.bg-green .content-inner p {
+    color: rgb(255, 255, 255) !important;
+    -webkit-text-stroke: 0px !important;
+}
+
+
+/* ==========================================
+   5. TYPOGRAFIE
 ========================================== */
 
 .intro-text {
@@ -112,42 +153,28 @@ h1 {
     -webkit-text-stroke: 1px var(--develey-green);
 }
 
-/* Grüne Box (angepasst an die Schräge) */
-.angled-box,
-div[style*="background-color: rgb(0, 119, 52)"] {
-    background-color: var(--develey-green) !important;
-    color: rgb(255, 255, 255) !important;
-    padding: 3rem !important;
-    margin-top: 40px;
-    position: relative;
-    /* Auch die Box bekommt die passende Schräge */
-    clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%);
-}
-
-.angled-box h2, div[style*="background-color: rgb(0, 119, 52)"] h2 {
-    color: rgb(255, 255, 255) !important;
+h2 {
     font-family: "Open Sans", sans-serif;
-    font-weight: 800;
-    -webkit-text-stroke: 0px !important;
+    font-variation-settings: "wdth" 75;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1rem;
 }
-.angled-box p { color: rgb(255, 255, 255) !important; }
 
 
 /* ==========================================
-   5. MOBILE ANPASSUNG
+   6. MOBILE ANPASSUNG
 ========================================== */
 @media screen and (max-width: 800px) {
-    /* Handy: Weniger extreme Überlappung */
-    .content-overlap {
-        margin-top: -15vw !important; 
+    .skew-section.first-overlap {
+        margin-top: -20vw; /* Stärkerer Pull am Handy */
         padding-top: 15vw;
-        /* Etwas steilerer Winkel wirkt am Handy besser */
-        clip-path: polygon(0 8vw, 100% 0, 100% 100%, 0% 100%);
+    }
+    
+    .content-inner {
+        padding: 20px; /* Weniger Padding am Handy */
+        width: 90%; /* Etwas schmaler */
     }
     
     h1 { font-size: 2rem; }
-    
-    .header-wrapper img.header-bg {
-        padding-bottom: 20vw; 
-    }
 }
