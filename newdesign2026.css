@@ -49,7 +49,7 @@
     margin-left: -50vw;
     
     /* 2. Weißer Hintergrund für den Text */
-    background-color: #ffffff;
+    background-color: RGB(255,255,255);
     
     /* 3. Den ganzen Block nach oben schieben (über das Bild) */
     margin-top: -8vw !important; 
@@ -75,7 +75,7 @@
     /* Höhe der Schräge (Winkel) */
     height: 8vw; 
     
-    background-color: #ffffff;
+    background-color: RGB(255,255,255);
     
     /* Die Form: Dreieck, das nach rechts oben ansteigt */
     clip-path: polygon(0 100%, 100% 0, 100% 100%);
