@@ -292,3 +292,39 @@ table, tbody, tr, td {
     /* Stellt sicher, dass keine alten Hintergrundbilder stören */
     background-image: none !important; 
 }
+
+/* ==========================================
+   LOGA FORMULARFELDER ANPASSEN
+   Macht die Eingabefelder "unsichtbar" (kein Rahmen, kein Hintergrund),
+   damit sie wie normaler Text im Design aussehen.
+========================================== */
+
+input.ReadOnlyRedactorField,
+input.ORANGE { /* Die Klasse, die Loga oft nutzt */
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    
+    /* Schriftarten vom Eltern-Element (z.B. h1 oder p) erben */
+    font-family: inherit !important;
+    font-size: inherit !important;
+    font-weight: inherit !important;
+    color: inherit !important;
+    
+    /* Ausrichtung und Größe */
+    text-align: inherit !important; /* Nimmt Zentrierung vom Eltern-Element an */
+    width: 100% !important;         /* Nutzt den vollen Platz */
+    min-width: 200px;              /* Mindestbreite, damit man sie trifft */
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block;
+}
+
+/* Optional: Wenn man mit der Maus drüber fährt, sieht man, dass es ein Feld ist */
+input.ReadOnlyRedactorField:hover,
+input.ORANGE:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important; /* Ganz leicht grau */
+    cursor: text;
+}
