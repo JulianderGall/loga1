@@ -59,7 +59,7 @@ body {
 /* Äußerer Container: Weißer Hintergrund & Schräge Form */
 .content-overlap {
     position: relative;
-    z-index: -20; /* Liegt ÜBER dem Bild */
+    z-index: 10; /* Liegt ÜBER dem Bild */
     
     /* 1. Volle Breite erzwingen */
     width: 100vw;
