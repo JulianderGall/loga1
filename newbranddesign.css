@@ -7,8 +7,8 @@
 :root {
     --develey-green: rgb(0, 119, 52);
     --develey-yellow: rgb(255, 200, 46);
-    --skew-angle: -2deg; /* Der Winkel für ALLE Schrägen */
-    --container-width-desktop: 70vw; /* Breite des Hauptcontainers */
+    --skew-angle: -2deg; 
+    --container-width-desktop: 70vw; 
 }
 
 body {
@@ -18,7 +18,7 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-/* LOGA CONTAINER RESET */
+/* LOGA CONTAINER RESETS (Wichtig!) */
 .BW-WebPositionPage {
     width: 100% !important;
     max-width: 100% !important;
@@ -26,6 +26,14 @@ body {
     padding: 0 !important;
     background: transparent;
     overflow: visible !important;
+}
+
+/* Wir müssen auch das MainPanel öffnen, falls es stört */
+.BW-MainPanel {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 
@@ -46,39 +54,37 @@ body {
     height: auto;
     display: block;
     object-fit: cover;
-    /* Platz lassen für den Überlapp */
     padding-bottom: 10vw; 
 }
 
 
 /* ==========================================
-   3. MAIN CONTAINER (Die 70% Säule)
+   3. MAIN CONTAINER (Zentriert & Angeschrägt)
 ========================================== */
 
 .main-column {
     position: relative;
     z-index: 10;
     
-    /* Zentrierung und Breite */
     width: var(--container-width-desktop);
     
-    /* WICHTIG: margin-left und margin-right auf AUTO zentriert den Block */
-    /* Der negative Top-Margin (-12vw) zieht ihn über das Bild */
-    margin: -12vw auto auto auto; 
+    /* --- DIE NEUE ZENTRIERUNG (Ignoriert Eltern-Breite) --- */
+    left: 50%;
+    /* Wir schieben ihn zur Mitte (left 50%) und dann um die Hälfte seiner Breite zurück (-50%) */
+    /* Gleichzeitig wenden wir die Schräge (Skew) an */
+    transform: translateX(-50%) skewY(var(--skew-angle));
+    transform-origin: center center;
     
-    /* Neigung der gesamten Säule */
-    transform: skewY(var(--skew-angle));
-    transform-origin: center; /* Dreht sich um die eigene Mitte */
+    margin-top: -12vw; /* Überlappung */
+    margin-bottom: 50px;
     
-    /* Seitlicher Schatten */
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
-    
     background-color: rgb(255, 255, 255);
 }
 
 
 /* ==========================================
-   4. SECTIONS (Die Farb-Container)
+   4. SECTIONS
 ========================================== */
 
 .skew-section {
@@ -86,7 +92,6 @@ body {
     padding: 40px 0;
 }
 
-/* Farben */
 .bg-white {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
@@ -102,22 +107,18 @@ body {
     color: rgb(0, 0, 0);
 }
 
-/* Erster Container braucht oben mehr Platz wegen Header-Kante */
 .skew-section.first {
     padding-top: 60px; 
 }
 
 
 /* ==========================================
-   5. TEXT CONTENT (Anpassung Rand & Mitte)
+   5. TEXT CONTENT (Randabstand & Gerade)
 ========================================== */
 
 .content-inner {
-    /* 1. Volle Breite nutzen (keine 93% Einschränkung mehr) */
     width: 100%; 
     max-width: 100%;
-    
-    /* 2. Zentrierung im Container */
     margin: 0 auto;
     
     /* Text gerade rücken */
@@ -126,12 +127,12 @@ body {
     text-align: left;
     box-sizing: border-box;
     
-    /* 3. Abstand zum Rand: Hier steuern wir, wie nah der Text am Rand ist. */
-    /* 40px war zu viel, jetzt nehmen wir 25px -> Text rutscht nach außen */
+    /* --- TEXT NÄHER AN DEN RAND --- */
+    /* Hier stellen wir den Abstand ein. Vorher waren es ca. 40px+ */
     padding: 0 25px; 
 }
 
-/* Textfarben in grüner Box */
+/* Farben in grüner Box */
 .bg-green .content-inner h1,
 .bg-green .content-inner h2,
 .bg-green .content-inner p,
@@ -196,12 +197,12 @@ li {
 ========================================== */
 @media screen and (max-width: 1000px) {
     .main-column {
-        width: 95vw; /* Handy: fast volle Breite */
+        width: 95vw;
         margin-top: -20vw;
     }
     
     .content-inner {
-        padding: 0 20px; /* Auch am Handy nah am Rand */
+        padding: 0 20px;
     }
     
     h1 { font-size: 2rem; }
