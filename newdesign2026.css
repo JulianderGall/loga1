@@ -105,7 +105,115 @@
     }
 }
 
+/* ==========================================
+   HEADER WRAPPER (Bild + Weißer Keil)
+========================================== */
 
+.header-wrapper {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    margin-top: -20px;
+    
+    /* WICHTIG: Negativer Margin unten zieht den Text nach oben! */
+    margin-bottom: -5vw; 
+    
+    padding: 0;
+    overflow: hidden;
+    z-index: 1; /* Basis-Ebene */
+}
+
+.header-wrapper img.header-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* Platz unten lassen für den Schnitt */
+    padding-bottom: 5vw; 
+}
+
+/* --- DER WEISSE SCHNITT (OVERLAY) --- */
+.header-wrapper::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Höhe des weißen Keils -> bestimmt den Winkel */
+    height: 10vw; 
+    
+    background-color: #ffffff;
+    z-index: 5; /* Liegt ÜBER dem Bild */
+    
+    /* Form: Dreieck, das nach rechts oben ansteigt */
+    /* Links unten (0% Höhe) bis Rechts oben (100% Höhe) */
+    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
+}
+
+/* ==========================================
+   TEXT HOCHZIEHEN (Damit er im Schnitt liegt)
+========================================== */
+
+/* Zieht die erste Zeile ("Starte durch...") nach oben */
+.BW-MainPanel > p:first-of-type,
+.BW-MainPanel > div:first-of-type {
+    position: relative;
+    z-index: 10; /* Muss über dem Header-Overlay liegen */
+    margin-top: -2vw; /* Feinjustierung, falls nötig */
+}
+
+/* Die Hauptüberschrift (H1) */
+.BW-MainPanel h1 {
+    position: relative;
+    z-index: 10;
+    margin-top: 0;
+    padding-top: 10px;
+    
+    /* Develey-Grün & Fett */
+    color: rgb(0, 119, 52);
+    font-family: "Open Sans", sans-serif;
+    font-weight: 800;
+    font-size: 3rem; /* Schön groß */
+    line-height: 1.1;
+    text-transform: none; 
+}
+
+/* Die kleine Zeile darüber ("Starte durch mit Develey...") */
+.intro-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Update für die grüne Box (Parallel zum Header) */
+.angled-box,
+div[style*="background-color: rgb(0, 119, 52)"] {
+    background-color: rgb(0, 119, 52) !important;
+    color: #ffffff !important;
+    padding: 4rem 3rem 3rem 3rem !important; /* Oben mehr Platz wegen der Schräge */
+    margin-top: 30px;
+    position: relative;
+    
+    /* Schräger Schnitt oben (parallel zum Header) */
+    clip-path: polygon(0 50px, 100% 0, 100% 100%, 0 100%);
+    
+    /* Reset von vorherigen Transformationen, falls noch vorhanden */
+    transform: none !important; 
+    box-shadow: none;
+}
+
+/* Inhalt darin */
+.angled-box h2, 
+.angled-box p {
+    color: #fff !important;
+    /* Kein Zurück-Kippen mehr nötig, da wir clip-path nutzen */
+    transform: none !important; 
+}
 /* ==========================================
    2. VARIABLEN & GRUNDEINSTELLUNGEN
 ========================================== */
