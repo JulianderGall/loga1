@@ -1,5 +1,5 @@
 /* ==========================================
-   1. FONT IMPORTS & BASIS
+   1. SCHRIFTARTEN & VARIABLEN
 ========================================== */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
@@ -13,59 +13,60 @@
 body {
     background-color: #ffffff;
     margin: 0;
-    overflow-x: hidden; /* Verhindert seitliches Scrollen durch Vollbild-Elemente */
+    overflow-x: hidden; /* Wichtig gegen Scrollbalken */
     font-family: "Montserrat", sans-serif;
 }
 
-/* Der Hauptcontainer von Loga - wir setzen ihn auf "offen", damit wir ausbrechen können */
+/* ==========================================
+   2. LOGA CONTAINER RESET
+   (Damit wir volle Breite nutzen können)
+========================================== */
 .BW-WebPositionPage {
-    width: 100%;
-    max-width: var(--content-width);
-    margin: 0 auto;
-    background: transparent; /* Transparent, damit unsere eigenen Hintergründe wirken */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
     padding: 0 !important;
-    position: relative;
+    background: transparent;
     overflow: visible !important;
 }
 
 /* ==========================================
-   2. HEADER BEREICH (Bild + Logo)
+   3. HEADER WRAPPER (Bild + Logo)
 ========================================== */
-
-/* Wrapper für volle Bildschirmbreite */
 .header-wrapper {
     position: relative;
+    /* Breakout-Trick: Zwingt den Container auf volle Bildschirmbreite */
     width: 100vw;
     left: 50%;
-    margin-left: -50vw; /* Zentrierungstrick für Vollbild */
-    margin-top: -20px;  /* Zieht alles ganz nach oben */
-    margin-bottom: 0;
+    margin-left: -50vw;
+    margin-top: -20px; /* Zieht alles ganz nach oben */
     z-index: 1;
 }
 
+/* Das Hintergrundbild */
 .header-wrapper img.header-bg {
     width: 100%;
     height: auto;
     display: block;
     object-fit: cover;
-    /* Wir lassen unten Platz, damit die Schräge das Bild nicht zu früh abschneidet */
-    padding-bottom: 10vw; 
+    /* Wir lassen unten viel Platz, damit die weiße Schräge das Bild überlappen kann */
+    padding-bottom: 15vw; 
 }
 
-/* --- LOGO (Ganz links am Bildschirmrand) --- */
+/* --- LOGO (Oben Links) --- */
 .logo-badge {
     position: absolute;
     top: 0;
-    z-index: 1000;
+    z-index: 999;
     
-    /* Trick: Startet in der Mitte, geht halben Bildschirm nach links -> landet am Rand */
+    /* Positionierung: Klebt am linken Bildschirmrand */
     left: 50% !important;
     margin-left: -50vw !important;
     
     background-color: #ffffff;
-    padding: 20px 80px 20px 20px; /* Rechts viel Platz für die Schräge */
+    padding: 20px 80px 20px 20px; /* Rechts Platz für Schräge */
     
-    /* Die Schräge am Logo */
+    /* Die schräge Kante am Logo */
     clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
     filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.15));
 }
@@ -76,50 +77,46 @@ body {
     height: auto;
 }
 
-
 /* ==========================================
-   3. CONTENT OVERLAP (Die weiße Schräge)
+   4. CONTENT OVERLAP (Weißer Hintergrund + Text)
 ========================================== */
 
-/* Der Container für den Text, der in das Bild hineinragt */
+/* ÄUSSERER Container: Macht den Hintergrund weiß & vollbreit */
 .content-overlap {
     position: relative;
-    z-index: 10; /* Liegt ÜBER dem Bild */
+    z-index: 10;
     
-    /* Macht den weißen Hintergrund über die volle Bildschirmbreite */
+    /* Volle Breite erzwingen */
     width: 100vw;
     left: 50%;
     margin-left: -50vw;
     
     background-color: #ffffff;
     
-    /* --- HIER ENTSTEHT DIE SCHRÄGE --- */
-    /* Der Block wird nach oben geschoben (-8vw) */
-    margin-top: -8vw !important;
+    /* Schiebt den weißen Block nach oben ÜBER das Bild */
+    margin-top: -10vw !important; 
     
-    /* Damit der Text nicht abgeschnitten wird, geben wir oben inneren Abstand */
-    padding-top: 5vw; 
-    padding-bottom: 40px;
-    
-    /* Der schräge Schnitt oben: Links tiefer (5vw), Rechts ganz oben (0) */
+    /* Der schräge Schnitt oben: Steigt nach rechts oben an */
     clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0% 100%);
+    
+    padding-top: 8vw; /* Platz oben, damit Text nicht abgeschnitten wird */
+    padding-bottom: 40px;
 }
 
-/* WICHTIG: Damit der Text nicht am Bildschirmrand klebt, zentrieren wir ihn */
+/* INNERER Container: Hält den Text mittig (1000px) */
 .content-inner {
     width: 100%;
-    max-width: var(--content-width); /* Hier begrenzen wir auf 1000px */
-    margin: 0 auto; /* Zentriert den Textblock */
-    padding: 0 20px; /* Sicherheitsabstand auf Handys */
+    max-width: var(--content-width);
+    margin: 0 auto; /* Das zentriert den Text horizontal! */
+    padding: 0 20px;
     box-sizing: border-box;
+    text-align: left; /* Text selbst ist linksbündig */
 }
 
-
 /* ==========================================
-   4. TYPOGRAFIE (Überschriften & Text)
+   5. TYPOGRAFIE & BOXEN
 ========================================== */
 
-/* Die kleine Zeile "Starte durch..." */
 .intro-text {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -129,7 +126,6 @@ body {
     display: block;
 }
 
-/* Die Hauptüberschrift H1 */
 h1 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
@@ -139,16 +135,10 @@ h1 {
     color: var(--develey-green);
     text-transform: none;
     margin-top: 0;
-    
-    /* Leichte Outline wie gewünscht */
     -webkit-text-stroke: 1px var(--develey-green);
 }
 
-
-/* ==========================================
-   5. GRÜNE BOX (Angeschrägt)
-========================================== */
-
+/* Grüne Box */
 .angled-box,
 div[style*="background-color: rgb(0, 119, 52)"] {
     background-color: var(--develey-green) !important;
@@ -156,48 +146,34 @@ div[style*="background-color: rgb(0, 119, 52)"] {
     padding: 3rem !important;
     margin-top: 40px;
     position: relative;
-    
-    /* Schräge oben parallel zum Header */
     clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%);
 }
 
-.angled-box h2,
-div[style*="background-color: rgb(0, 119, 52)"] h2 {
+.angled-box h2, div[style*="background-color: rgb(0, 119, 52)"] h2 {
     color: #ffffff !important;
     font-family: "Open Sans", sans-serif;
     font-weight: 800;
     -webkit-text-stroke: 0px !important;
 }
-
-.angled-box p {
-    color: #ffffff !important;
-    font-size: 1.1rem;
-}
-
+.angled-box p { color: #ffffff !important; }
 
 /* ==========================================
    6. MOBILE ANPASSUNG
 ========================================== */
 @media screen and (max-width: 1000px) {
-    /* Logo am Handy anpassen */
     .logo-badge {
         left: 0 !important;
         margin-left: 0 !important;
         padding: 15px 50px 15px 15px;
         clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
     }
-    .logo-badge img {
-        width: 140px !important;
-    }
+    .logo-badge img { width: 140px !important; }
     
-    /* Schräge am Handy flacher machen */
     .content-overlap {
         margin-top: -50px !important;
-        padding-top: 40px;
+        padding-top: 60px;
         clip-path: polygon(0 30px, 100% 0, 100% 100%, 0% 100%);
     }
     
-    h1 {
-        font-size: 2rem;
-    }
+    h1 { font-size: 2rem; }
 }
