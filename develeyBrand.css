@@ -121,7 +121,7 @@ h1 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 800;
-    /* Richtig groß: Startet bei 3.5rem (Handy) und geht bis 6.5rem (Desktop) */
+    /* Richtig groß: Startet bei 3.8rem (Handy) und geht bis 8.5rem (Desktop) */
     font-size: clamp(3.5rem, 9vw, 6.5rem); 
     line-height: 1.05;
     color: var(--develey-green);
@@ -133,7 +133,7 @@ h2 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 700;
-    font-size: 2.8rem; /* Vorher 2rem */
+    font-size: 3.8rem; /* Vorher 2rem */
     line-height: 1.2;
     margin-bottom: 1.5rem;
     margin-top: 0;
