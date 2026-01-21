@@ -97,51 +97,6 @@
 }
 
 /* ==========================================
-   LOGO OVERLAY (Die "Develey-Ecke")
-========================================== */
-
-.logo-badge {
-    position: absolute;
-    top: 0;
-    z-index: 1000; /* Muss ganz oben liegen */
-    
-    /* --- HIER IST DIE HEADER-LOGIK --- */
-    /* 1. Wir starten genau in der Mitte des Containers */
-    left: 50% !important;
-    
-    /* 2. Wir ziehen die halbe Bildschirmbreite ab -> Landung am linken Rand */
-    margin-left: -50vw !important;
-    /* ---------------------------------- */
-    
-    background-color: #ffffff;
-    
-    /* Padding und Form */
-    padding: 25px 90px 25px 20px; /* Rechts mehr Platz für die Schräge */
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-    filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.2));
-}
-
-.logo-badge img {
-    display: block;
-    width: 280px !important; /* Größe wie gewünscht */
-    height: auto;
-}
-
-/* MOBILE ANPASSUNG */
-@media screen and (max-width: 1000px) {
-    .logo-badge {
-        /* Auf dem Handy darf es einfach links kleben */
-        left: 0 !important;
-        margin-left: 0 !important;
-        padding: 15px 50px 15px 15px;
-    }
-    
-    .logo-badge img {
-        width: 150px !important;
-    }
-}
-
-/* ==========================================
    HEADER WRAPPER (Bild + Weißer Keil)
 ========================================== */
 
@@ -180,7 +135,7 @@
     /* Höhe des weißen Keils -> bestimmt den Winkel */
     height: 10vw; 
     
-    background-color: #ffffff;
+    background-color: rgb(255,255,255);
     z-index: 5; /* Liegt ÜBER dem Bild */
     
     /* Form: Dreieck, das nach rechts oben ansteigt */
