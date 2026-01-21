@@ -1,23 +1,45 @@
 /* ==========================================
-   1. FONT IMPORTS
+   1. FONT IMPORTS & BASIS
 ========================================== */
-
-/* Montserrat (Medium 500 & SemiBold 600) für Fließtext */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap');
-
-/* Open Sans (Variable Font für Width 75 Einstellung) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
+
+:root {
+    --develey-green: rgb(0, 119, 52);
+    --develey-yellow: rgb(255, 200, 46);
+    --content-width: 1000px;
+}
+
+body {
+    background-color: #ffffff;
+    margin: 0;
+    overflow-x: hidden; /* Verhindert seitliches Scrollen durch Vollbild-Elemente */
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Der Hauptcontainer von Loga - wir setzen ihn auf "offen", damit wir ausbrechen können */
+.BW-WebPositionPage {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    background: transparent; /* Transparent, damit unsere eigenen Hintergründe wirken */
+    padding: 0 !important;
+    position: relative;
+    overflow: visible !important;
+}
+
 /* ==========================================
-   HEADER BEREICH (Basis)
+   2. HEADER BEREICH (Bild + Logo)
 ========================================== */
+
+/* Wrapper für volle Bildschirmbreite */
 .header-wrapper {
     position: relative;
     width: 100vw;
     left: 50%;
-    margin-left: -50vw;
-    margin-top: -20px;
-    margin-bottom: 0 !important;
-    overflow: hidden;
+    margin-left: -50vw; /* Zentrierungstrick für Vollbild */
+    margin-top: -20px;  /* Zieht alles ganz nach oben */
+    margin-bottom: 0;
     z-index: 1;
 }
 
@@ -26,428 +48,156 @@
     height: auto;
     display: block;
     object-fit: cover;
-    /* Wichtig: Platz unten lassen, damit das Bild nicht abrupt endet */
+    /* Wir lassen unten Platz, damit die Schräge das Bild nicht zu früh abschneidet */
     padding-bottom: 10vw; 
 }
 
-/* HINWEIS: Wir entfernen hier ::after, da wir die Schräge nun direkt am Text bauen */
-.header-wrapper::after {
-    display: none; 
+/* --- LOGO (Ganz links am Bildschirmrand) --- */
+.logo-badge {
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    
+    /* Trick: Startet in der Mitte, geht halben Bildschirm nach links -> landet am Rand */
+    left: 50% !important;
+    margin-left: -50vw !important;
+    
+    background-color: #ffffff;
+    padding: 20px 80px 20px 20px; /* Rechts viel Platz für die Schräge */
+    
+    /* Die Schräge am Logo */
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+    filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.15));
+}
+
+.logo-badge img {
+    display: block;
+    width: 280px !important;
+    height: auto;
 }
 
 
 /* ==========================================
-   TEXT CONTAINER MIT SCHRÄGEM DACH
+   3. CONTENT OVERLAP (Die weiße Schräge)
 ========================================== */
+
+/* Der Container für den Text, der in das Bild hineinragt */
 .content-overlap {
     position: relative;
-    z-index: 10; /* Liegt über dem Bild */
+    z-index: 10; /* Liegt ÜBER dem Bild */
     
-    /* 1. Volle Breite erzwingen (Weißer Balken geht von Rand zu Rand) */
+    /* Macht den weißen Hintergrund über die volle Bildschirmbreite */
     width: 100vw;
     left: 50%;
     margin-left: -50vw;
     
-    /* 2. Weißer Hintergrund für den Text */
-    background-color: RGB(255,255,255);
+    background-color: #ffffff;
     
-    /* 3. Den ganzen Block nach oben schieben (über das Bild) */
-    margin-top: -8vw !important; 
+    /* --- HIER ENTSTEHT DIE SCHRÄGE --- */
+    /* Der Block wird nach oben geschoben (-8vw) */
+    margin-top: -8vw !important;
     
-    /* 4. Text wieder in die Mitte zwingen (auf 1000px begrenzen) */
-    padding-top: 10px;
-    padding-bottom: 20px;
-    /* Dieser Trick sorgt für den Abstand links/rechts wie beim Rest der Seite */
-    padding-left: max(20px, calc(50% - 500px)); 
-    padding-right: max(20px, calc(50% - 500px));
+    /* Damit der Text nicht abgeschnitten wird, geben wir oben inneren Abstand */
+    padding-top: 5vw; 
+    padding-bottom: 40px;
+    
+    /* Der schräge Schnitt oben: Links tiefer (5vw), Rechts ganz oben (0) */
+    clip-path: polygon(0 5vw, 100% 0, 100% 100%, 0% 100%);
+}
+
+/* WICHTIG: Damit der Text nicht am Bildschirmrand klebt, zentrieren wir ihn */
+.content-inner {
+    width: 100%;
+    max-width: var(--content-width); /* Hier begrenzen wir auf 1000px */
+    margin: 0 auto; /* Zentriert den Textblock */
+    padding: 0 20px; /* Sicherheitsabstand auf Handys */
     box-sizing: border-box;
 }
 
-/* DAS SCHRÄGE DACH (Das weiße Dreieck oben drauf) */
-.content-overlap::before {
-    content: "";
-    position: absolute;
-    /* Positioniert sich direkt OBEN auf dem weißen Text-Block */
-    bottom: 100%; 
-    left: 0;
-    width: 100%;
-    
-    /* Höhe der Schräge (Winkel) */
-    height: 8vw; 
-    
-    background-color: RGB(255,255,255);
-    
-    /* Die Form: Dreieck, das nach rechts oben ansteigt */
-    clip-path: polygon(0 100%, 100% 0, 100% 100%);
-    
-    /* Kleine Korrektur gegen Blitzer-Linien */
-    margin-bottom: -1px;
-}
-
-/* Mobile Anpassung */
-@media screen and (max-width: 1040px) {
-    .content-overlap {
-        padding-left: 20px; /* Einfacher Abstand am Handy */
-        padding-right: 20px;
-        margin-top: -50px !important;
-    }
-    .content-overlap::before {
-        height: 50px; /* Kleinerer Winkel am Handy */
-    }
-}
 
 /* ==========================================
-   HEADER WRAPPER (Bild + Weißer Keil)
+   4. TYPOGRAFIE (Überschriften & Text)
 ========================================== */
 
-.header-wrapper {
-    position: relative;
-    width: 100vw;
-    left: 50%;
-    margin-left: -50vw;
-    margin-top: -20px;
-    
-    /* WICHTIG: Negativer Margin unten zieht den Text nach oben! */
-    margin-bottom: -5vw; 
-    
-    padding: 0;
-    overflow: hidden;
-    z-index: 1; /* Basis-Ebene */
-}
-
-.header-wrapper img.header-bg {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    /* Platz unten lassen für den Schnitt */
-    padding-bottom: 5vw; 
-}
-
-/* --- DER WEISSE SCHNITT (OVERLAY) --- */
-.header-wrapper::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    
-    /* Höhe des weißen Keils -> bestimmt den Winkel */
-    height: 10vw; 
-    
-    background-color: rgb(255,255,255);
-    z-index: 5; /* Liegt ÜBER dem Bild */
-    
-    /* Form: Dreieck, das nach rechts oben ansteigt */
-    /* Links unten (0% Höhe) bis Rechts oben (100% Höhe) */
-    clip-path: polygon(0 100%, 100% 0, 100% 100%, 0 100%);
-}
-
-/* ==========================================
-   TEXT HOCHZIEHEN (Damit er im Schnitt liegt)
-========================================== */
-
-/* Zieht die erste Zeile ("Starte durch...") nach oben */
-.BW-MainPanel > p:first-of-type,
-.BW-MainPanel > div:first-of-type {
-    position: relative;
-    z-index: 10; /* Muss über dem Header-Overlay liegen */
-    margin-top: -2vw; /* Feinjustierung, falls nötig */
-}
-
-/* Die Hauptüberschrift (H1) */
-.BW-MainPanel h1 {
-    position: relative;
-    z-index: 10;
-    margin-top: 0;
-    padding-top: 10px;
-    
-    /* Develey-Grün & Fett */
-    color: rgb(0, 119, 52);
-    font-family: "Open Sans", sans-serif;
-    font-weight: 800;
-    font-size: 3rem; /* Schön groß */
-    line-height: 1.1;
-    text-transform: none; 
-}
-
-/* Die kleine Zeile darüber ("Starte durch mit Develey...") */
+/* Die kleine Zeile "Starte durch..." */
 .intro-text {
     font-family: "Montserrat", sans-serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1.1rem;
     color: #333;
-    display: block;
     margin-bottom: 5px;
+    display: block;
 }
 
-/* Update für die grüne Box (Parallel zum Header) */
+/* Die Hauptüberschrift H1 */
+h1 {
+    font-family: "Open Sans", sans-serif;
+    font-variation-settings: "wdth" 75;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 1.1;
+    color: var(--develey-green);
+    text-transform: none;
+    margin-top: 0;
+    
+    /* Leichte Outline wie gewünscht */
+    -webkit-text-stroke: 1px var(--develey-green);
+}
+
+
+/* ==========================================
+   5. GRÜNE BOX (Angeschrägt)
+========================================== */
+
 .angled-box,
 div[style*="background-color: rgb(0, 119, 52)"] {
-    background-color: rgb(0, 119, 52) !important;
-    color: #ffffff !important;
-    padding: 4rem 3rem 3rem 3rem !important; /* Oben mehr Platz wegen der Schräge */
-    margin-top: 30px;
-    position: relative;
-    
-    /* Schräger Schnitt oben (parallel zum Header) */
-    clip-path: polygon(0 50px, 100% 0, 100% 100%, 0 100%);
-    
-    /* Reset von vorherigen Transformationen, falls noch vorhanden */
-    transform: none !important; 
-    box-shadow: none;
-}
-
-/* Inhalt darin */
-.angled-box h2, 
-.angled-box p {
-    color: #fff !important;
-    /* Kein Zurück-Kippen mehr nötig, da wir clip-path nutzen */
-    transform: none !important; 
-}
-/* ==========================================
-   2. VARIABLEN & GRUNDEINSTELLUNGEN
-========================================== */
-
-:root {
-    --develey-green: rgb(0, 119, 52);
-    --develey-yellow: rgb(255, 200, 46);
-    --text-color: #000000;
-    --bg-color: #ffffff;
-    --content-width: 1000px; /* Maximale Breite für den Text */
-}
-/* ==========================================
-   FIX FÜR VOLLBILD-HEADER
-========================================== */
-
-/* 1. Der Container darf Inhalte nicht abschneiden */
-.BW-WebPositionPage {
-    overflow: visible !important; 
-    position: relative;
-    max-width: 1000px; /* Text bleibt schmal */
-    margin: 0 auto;
-}
-
-/* WICHTIG: Damit kein horizontaler Scrollbalken entsteht */
-body {
-    overflow-x: hidden;
-}
-
-/* 2. Das Bild bricht aus dem Container aus */
-.fullwidth-header, 
-/* Fallback: Falls Sie die Klasse nicht setzen können, nehmen wir das erste Bild */
-.BW-MainPanel p:first-of-type img {
-    width: 100vw !important;         /* Breite des gesamten Bildschirms */
-    max-width: 100vw !important;
-    
-    /* Der "Breakout"-Trick: */
-    position: relative !important;
-    left: 50% !important;            /* Schiebt den Startpunkt in die Mitte */
-    right: 50% !important;
-    margin-left: -50vw !important;   /* Zieht das Bild 50% der Screenbreite nach links */
-    margin-right: -50vw !important;  /* Zieht das Bild 50% der Screenbreite nach rechts */
-    
-    display: block !important;
-    height: auto !important;
-    object-fit: cover;
-}
-
-body {
-    background-color: var(--bg-color);
-    margin: 0;
-    overflow-x: hidden; /* Wichtig wegen Full-Width Elementen */
-}
-
-/* Der Hauptcontainer von Loga */
-.BW-WebPositionPage {
-    width: 100%;
-    max-width: var(--content-width);
-    margin: 0 auto;
-    background: #fff;
-    padding: 0 20px 40px 20px !important; /* Oben 0 padding, damit Bild randlos ist */
-    box-sizing: border-box;
-}
-
-/* ==========================================
-   3. TYPOGRAFIE (Montserrat & Open Sans)
-========================================== */
-
-/* Fließtext: Montserrat Medium */
-p, span, div, li, td, button {
-    font-family: "Montserrat", sans-serif;
-    font-weight: 500; /* Medium wie gewünscht */
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-color);
-}
-
-/* Überschriften: Open Sans Width 75 + Outline */
-h1, h2, h3, h4, .open-sans-headline {
-    font-family: "Open Sans", sans-serif;
-    font-variation-settings: "wdth" 75; /* Schmalerer Schnitt */
-    font-weight: 800; /* Extra Bold */
-    color: var(--develey-green);
-    margin-top: 1.5em;
-    margin-bottom: 0.5em;
-    line-height: 1.1;
-    
-    /* Die gewünschte leichte Umrandung */
-    -webkit-text-stroke: 1px currentColor; 
-    /* Fallback für Browser, die text-stroke nicht können: */
-    text-shadow: 0px 0px 1px currentColor; 
-}
-
-/* H1 Spezifisch (Stellentitel) */
-.BW-MainPanel h1 {
-    font-size: 3rem;
-    text-transform: none;
-    margin-top: 40px; 
-    margin-bottom: 30px;
-}
-
-/* ==========================================
-   4. HEADER BILD (Vollbild-Breite)
-========================================== */
-
-/* WICHTIG: Geben Sie dem Bild im Editor KEINE Breite/Höhe, 
-   sondern weisen Sie ihm (wenn möglich) die Klasse "fullwidth-header" zu.
-   Falls Sie keine Klassen zuweisen können, nutzen wir den Trick unten für das erste Bild.
-*/
-
-.fullwidth-header, 
-/* Alternativ: Das allererste Bild im Container automatisch vollbreit machen */
-.BW-MainPanel p:first-of-type img,
-.BW-MainPanel > img:first-child {
-    width: 100vw; /* Volle Bildschirmbreite */
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw); /* Zieht das Bild nach links raus */
-    margin-right: calc(50% - 50vw); /* Zieht das Bild nach rechts raus */
-    display: block;
-    height: auto;
-    object-fit: cover;
-    margin-bottom: 40px; /* Abstand zum Titel */
-}
-
-
-/* ==========================================
-   5. DIE ANGESCHRÄGTE GRÜNE BOX (Slanted)
-========================================== */
-
-/* Anwendung im Editor:
-   Erstellen Sie eine Tabelle oder ein Div.
-   Schreiben Sie in den HTML-Quelltext: class="angled-box"
-   Oder nutzen Sie einen grünen Hintergrund und wir fangen ihn ab.
-*/
-
-.angled-box,
-/* Fängt grüne Tabellen/Divs automatisch ab */
-div[style*="background-color: rgb(0, 119, 52)"],
-td[bgcolor="#007734"] {
     background-color: var(--develey-green) !important;
     color: #ffffff !important;
     padding: 3rem !important;
-    margin: 4rem 0; /* Viel Abstand oben/unten */
+    margin-top: 40px;
     position: relative;
     
-    /* Der Schräg-Effekt (Rotation) */
-    transform: skewY(-2deg); /* Kippt die ganze Box leicht */
-    transform-origin: center;
-    
-    /* Schatten für Tiefe */
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
-}
-
-/* Den Inhalt wieder "gerade rücken", damit der Text lesbar bleibt */
-.angled-box > *,
-div[style*="background-color: rgb(0, 119, 52)"] > *,
-td[bgcolor="#007734"] > * {
-    transform: skewY(2deg); /* Kippt den Text zurück */
-}
-
-/* Texte in der grünen Box müssen weiß sein */
-.angled-box h2, .angled-box p, .angled-box span, .angled-box li,
-div[style*="background-color: rgb(0, 119, 52)"] h2,
-div[style*="background-color: rgb(0, 119, 52)"] span {
-    color: #ffffff !important;
-    -webkit-text-stroke: 0px !important; /* Keine Umrandung in der Box für bessere Lesbarkeit */
-    text-shadow: none !important;
+    /* Schräge oben parallel zum Header */
+    clip-path: polygon(0 30px, 100% 0, 100% 100%, 0 100%);
 }
 
 .angled-box h2,
 div[style*="background-color: rgb(0, 119, 52)"] h2 {
-    font-size: 2.2rem;
-    margin-bottom: 20px;
-}
-
-
-/* ==========================================
-   6. GELBE ELEMENTE (Optional)
-========================================== */
-
-.yellow-highlight {
-    background-color: var(--develey-yellow);
-    padding: 5px 10px;
-    font-weight: 800;
-    color: var(--develey-green);
-    transform: skewX(-10deg); /* Textmarker-Effekt */
-    display: inline-block;
-}
-
-
-/* ==========================================
-   7. INFO GRID (Standort / Zeit)
-========================================== */
-table {
-    width: 100%;
-    margin-bottom: 30px;
-    border-collapse: collapse;
-}
-
-td {
-    vertical-align: top;
-    padding: 10px;
-}
-
-.info-label {
+    color: #ffffff !important;
     font-family: "Open Sans", sans-serif;
     font-weight: 800;
-    font-variation-settings: "wdth" 75;
-    text-transform: uppercase;
-    color: var(--develey-green);
-    display: block;
-    margin-bottom: 5px;
+    -webkit-text-stroke: 0px !important;
+}
+
+.angled-box p {
+    color: #ffffff !important;
+    font-size: 1.1rem;
 }
 
 
 /* ==========================================
-   8. MOBILE ANPASSUNG
+   6. MOBILE ANPASSUNG
 ========================================== */
-@media screen and (max-width: 800px) {
-    /* Container füllt auf Handy den Screen */
-    .BW-WebPositionPage {
-        max-width: 100%;
-        padding: 0 15px !important;
-        overflow-x: hidden;
+@media screen and (max-width: 1000px) {
+    /* Logo am Handy anpassen */
+    .logo-badge {
+        left: 0 !important;
+        margin-left: 0 !important;
+        padding: 15px 50px 15px 15px;
+        clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
     }
-
-    /* Auf Handy Schrägen entfernen, da es sonst Platzprobleme gibt */
-    .angled-box, 
-    div[style*="background-color: rgb(0, 119, 52)"] {
-        transform: none !important;
-        margin: 2rem 0;
-        border-radius: 10px;
+    .logo-badge img {
+        width: 140px !important;
     }
     
-    .angled-box > *,
-    div[style*="background-color: rgb(0, 119, 52)"] > * {
-        transform: none !important;
+    /* Schräge am Handy flacher machen */
+    .content-overlap {
+        margin-top: -50px !important;
+        padding-top: 40px;
+        clip-path: polygon(0 30px, 100% 0, 100% 100%, 0% 100%);
     }
-
-    /* Header Bild */
-    .fullwidth-header,
-    .BW-MainPanel p:first-of-type img {
-        width: 100vw;
-        margin-left: -15px; /* Ausgleich des Paddings */
-        margin-right: -15px;
+    
+    h1 {
+        font-size: 2rem;
     }
 }
