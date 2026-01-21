@@ -1,0 +1,208 @@
+/* ==========================================
+   1. FONTS & GRUNDEINSTELLUNGEN
+========================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75,800&display=swap');
+
+:root {
+    --develey-green: rgb(0, 119, 52);
+    --develey-yellow: rgb(255, 200, 46);
+    --skew-angle: -2deg; /* Der Winkel für ALLE Schrägen */
+    --container-width-desktop: 70vw; /* Breite des Hauptcontainers */
+    --text-width-desktop: 65vw;      /* Breite des Textes */
+}
+
+body {
+    background-color: rgb(240, 240, 240); /* Hintergrund leicht grau, damit der weiße Container wirkt */
+    margin: 0;
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+}
+
+/* LOGA CONTAINER RESET */
+.BW-WebPositionPage {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent;
+    overflow: visible !important;
+}
+
+
+/* ==========================================
+   2. HEADER BILD (Vollbild)
+========================================== */
+.header-wrapper {
+    position: relative;
+    width: 100vw;
+    left: 50%;
+    margin-left: -50vw;
+    margin-top: -20px;
+    z-index: 1; 
+}
+
+.header-wrapper img.header-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    /* Platz lassen für den Überlapp */
+    padding-bottom: 10vw; 
+}
+
+
+/* ==========================================
+   3. MAIN CONTAINER (Die 70% Säule)
+========================================== */
+
+.main-column {
+    position: relative;
+    z-index: 10;
+    
+    /* Zentrierung und Breite (70% Desktop) */
+    width: var(--container-width-desktop);
+    margin: 0 auto;
+    
+    /* Überlappung mit dem Header */
+    margin-top: -12vw;
+    margin-bottom: 50px;
+    
+    /* DIE MAGIE: Wir neigen die ganze Säule vertikal (Y-Achse) */
+    /* Dadurch bleiben die Seiten gerade, aber oben/unten/Trennlinien werden schräg */
+    transform: skewY(var(--skew-angle));
+    
+    /* Der gewünschte seitliche Schatten (Weichgezeichnet) */
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.15);
+    
+    /* Hintergrund weiß als Basis */
+    background-color: rgb(255, 255, 255);
+}
+
+
+/* ==========================================
+   4. SECTIONS (Die 5 Farb-Container)
+========================================== */
+
+.skew-section {
+    position: relative;
+    padding: 40px 0;
+    /* Da der Eltern-Container geneigt ist, sind diese Boxen automatisch auch geneigt! */
+}
+
+/* Farben */
+.bg-white {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+.bg-green {
+    background-color: var(--develey-green);
+    color: rgb(255, 255, 255);
+}
+
+.bg-yellow {
+    background-color: var(--develey-yellow);
+    color: rgb(0, 0, 0);
+}
+
+/* Anpassung für den ersten Container (Titel) */
+.skew-section.first {
+    padding-top: 60px; /* Mehr Platz oben wegen der Header-Kante */
+}
+
+
+/* ==========================================
+   5. TEXT CONTENT (Gerade rücken & Breite)
+========================================== */
+
+.content-inner {
+    /* Breite des Textes begrenzen (ca. 65% Screen Width) */
+    /* Da wir im 70% Container sind, entspricht 93% ca. 65vw */
+    width: 93%; 
+    max-width: 1000px;
+    margin: 0 auto;
+    
+    /* WICHTIG: Text zurück-neigen, damit er gerade steht */
+    transform: skewY(calc(var(--skew-angle) * -1));
+    
+    text-align: left;
+    box-sizing: border-box;
+}
+
+/* Textfarben in grüner Box anpassen */
+.bg-green .content-inner h1,
+.bg-green .content-inner h2,
+.bg-green .content-inner p,
+.bg-green .content-inner li {
+    color: rgb(255, 255, 255) !important;
+    -webkit-text-stroke: 0px !important;
+}
+
+
+/* ==========================================
+   6. TYPOGRAFIE & LISTEN
+========================================== */
+
+.intro-text {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgb(51, 51, 51);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+h1 {
+    font-family: "Open Sans", sans-serif;
+    font-variation-settings: "wdth" 75;
+    font-weight: 800;
+    font-size: 3rem;
+    line-height: 1.1;
+    color: var(--develey-green);
+    text-transform: none;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    -webkit-text-stroke: 1px var(--develey-green);
+}
+
+h2 {
+    font-family: "Open Sans", sans-serif;
+    font-variation-settings: "wdth" 75;
+    font-weight: 700;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+p, li {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+
+/* ==========================================
+   7. MOBILE ANPASSUNG
+========================================== */
+@media screen and (max-width: 1000px) {
+    .main-column {
+        width: 95vw; /* Auf Handy fast volle Breite */
+        margin-top: -20vw; /* Stärkerer Überlapp */
+    }
+    
+    .content-inner {
+        width: 90%; /* Text nutzt Platz besser */
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+}
