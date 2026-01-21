@@ -59,7 +59,7 @@ body {
 /* Äußerer Container: Weißer Hintergrund & Schräge Form */
 .content-overlap {
     position: relative;
-    z-index: -10; /* Liegt ÜBER dem Bild */
+    z-index: -20; /* Liegt ÜBER dem Bild */
     
     /* 1. Volle Breite erzwingen */
     width: 100vw;
@@ -68,7 +68,7 @@ body {
     background-color: rgb(255, 255, 255);
     
     /* 2. Überlappung: Zieht den weißen Block 10% der Breite nach OBEN */
-    margin-top: -30vw !important; 
+    margin-top: -10vw !important; 
     
     /* 3. Die Schräge (Der Schnitt) */
     /* Links starten wir bei 5% Tiefe (5vw), Rechts gehen wir auf 0% (ganz hoch) */
