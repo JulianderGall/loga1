@@ -101,63 +101,104 @@
 }
 
 /* ==========================================
-   1. TYPOGRAFIE (Textgröße wie Zebra-Tabelle)
-   Hier setzen wir den Fließtext auf 1.4rem (ca. 22px),
-   damit er exakt zur Tabelle passt.
+   1. TYPOGRAFIE (FINAL & ROBUST)
 ========================================== */
 
-/* Überschriften (wie zuletzt besprochen, fest & groß) */
+/* BASIS: Intro Text */
+.intro-text {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: #666666 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    display: block !important;
+    margin-bottom: 15px !important;
+}
+
+/* --------------------------------------------------
+   DESKTOP (ab 801px)
+-------------------------------------------------- */
 @media screen and (min-width: 801px) {
     h1, .BW-WebPositionPage h1 {
         font-family: "Open Sans", sans-serif !important;
         font-weight: 800 !important;
-        font-size: 55px !important;
+        font-size: 55px !important;      
         line-height: 1.3 !important;
-        color: rgb(0, 119, 52) !important;
+        color: rgb(0, 119, 52) !important; /* Grün */
         margin: 0 0 2rem 0 !important;
         -webkit-text-stroke: 1px rgb(0, 119, 52) !important;
     }
+
     h2, .BW-WebPositionPage h2 {
         font-family: "Open Sans", sans-serif !important;
         font-weight: 700 !important;
         font-size: 40px !important;
         line-height: 1.4 !important;
-        color: #000 !important;
+        color: #000000 !important; /* Schwarz */
         margin-bottom: 1.5rem !important;
+        -webkit-text-stroke: 0px !important;
     }
 }
 
+/* --------------------------------------------------
+   MOBILE (bis 800px)
+-------------------------------------------------- */
 @media screen and (max-width: 800px) {
     h1, .BW-WebPositionPage h1 {
         font-family: "Open Sans", sans-serif !important;
         font-size: 32px !important;
         line-height: 1.4 !important;
+        /* FIX: Farbe explizit wiederholen, sonst wird es schwarz! */
+        color: rgb(0, 119, 52) !important; 
         -webkit-text-stroke: 0px !important;
     }
+
     h2, .BW-WebPositionPage h2 {
         font-family: "Open Sans", sans-serif !important;
         font-size: 28px !important;
         line-height: 1.4 !important;
+        color: #000000 !important;
+    }
+    
+    .intro-text {
+        font-size: 1rem !important;
     }
 }
 
-/* FLIESSTEXT ANPASSUNG (Zebra-Größe) */
+/* --------------------------------------------------
+   FLIESSTEXT
+-------------------------------------------------- */
 p, li, 
 .BW-WebPositionPage p, 
-.BW-WebPositionPage li,
-.intro-text {
+.BW-WebPositionPage li {
     font-family: "Montserrat", sans-serif !important;
-    /* Hier ist der Wert aus der Zebra-Tabelle */
-    font-size: 1.4rem !important; 
+    font-size: 1.4rem !important;
     line-height: 1.6 !important;
     margin-bottom: 1.2rem !important;
-    color: #000 !important; /* Oder #333 für weicheres Schwarz */
+    color: #000000 !important;
 }
 
 ul {
     padding-left: 25px !important;
 }
 
+/* --------------------------------------------------
+   AUSNAHME: TEXT AUF GRÜNEM HINTERGRUND
+   Dies muss NACH den anderen Regeln stehen!
+-------------------------------------------------- */
+.bg-green h1, 
+.skew-section.bg-green h1,
+.BW-WebPositionPage .bg-green h1,
+.bg-green h2, 
+.skew-section.bg-green h2,
+.BW-WebPositionPage .bg-green h2,
+.bg-green p, 
+.bg-green li {
+    color: #ffffff !important;
+    -webkit-text-stroke: 0px !important;
+    border-color: #ffffff !important;
+}
 
 /* ==========================================
    2. KI DISCLAIMER (Fokus-Version)
