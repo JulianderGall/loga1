@@ -901,39 +901,71 @@ tr:has(#LG_FFC_8) {
 }
 
 /* ==========================================
-   FIX: UPLOAD-FELDER (MEHRERE DATEIEN)
-   Sorgt für sauberen Abstand und flexible Höhe.
+   FIX: UPLOAD-FELDER (FINAL)
+   Sorgt dafür, dass Dateien sauber untereinander stehen.
 ========================================== */
 
-/* 1. Die Upload-Boxen selbst flexibel machen */
-.LG-FileController-Edit {
-    /* WICHTIG: Überschreibt die feste 48px Höhe von oben */
-    height: auto !important; 
-    min-height: 48px !important; /* Mindestens so hoch wie die anderen */
-    
-    /* Etwas Luft innen, damit Text nicht am Rand klebt */
-    padding-top: 8px !important;
-    padding-bottom: 8px !important;
+/* 1. Der Container um JEDE Datei (und den Upload-Button) */
+.LG-FileController {
+    display: block !important;       /* Erzwingt eine neue Zeile pro Datei */
+    width: 100% !important;          /* Volle Breite */
+    margin-bottom: 15px !important;  /* Deutlicher Abstand nach unten */
+    padding: 0 !important;
+    clear: both !important;          /* Sicherheitshalber Floats löschen */
 }
 
-/* 2. Abstand ZWISCHEN den Dateien erzwingen */
-/* Wir sprechen alle direkten Kinder im Upload-Container an */
-.LG-FileController > div {
-    margin-bottom: 10px !important; /* Abstand zum nächsten Element */
-}
-
-/* Beim allerletzten Element (meistens das "Neu hochladen" Feld) keinen Abstand */
-.LG-FileController > div:last-child {
+/* Der allerletzte Container (meist der leere Uploader) braucht unten keinen Abstand */
+div[id^="LG_FFC_"] > .LG-FileController:last-child {
     margin-bottom: 0 !important;
 }
 
-/* 3. Sicherheitsnetz: Layout-Korrektur für den inneren Bereich */
+/* 2. Die grüne Box selbst (Inneres Element) */
+.LG-FileController-Edit {
+    /* Flexibles Layout */
+    height: auto !important; 
+    min-height: 48px !important; 
+    
+    /* Flexbox für saubere Zentrierung von Text & Icon */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    
+    /* Design wie die anderen Felder */
+    background: #fff !important;
+    border: 2px solid rgb(0, 119, 52) !important;
+    border-radius: 4px !important;
+    box-sizing: border-box !important;
+    padding: 5px 10px !important;
+    width: 100% !important;
+}
+
+/* 3. Der Text (Dateiname) */
+.LG-FileController-Text {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.1rem !important;
+    color: #333 !important;
+    word-break: break-all !important; /* Lange Dateinamen umbrechen */
+    flex-grow: 1 !important;          /* Nimmt den Platz ein */
+    margin-right: 10px !important;    /* Abstand zum Icon */
+}
+
+/* 4. Die Icons (Büroklammer oder Mülleimer) */
+.LG-FileController-Icon {
+    /* Develey Grün Filter */
+    filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
+    opacity: 1 !important;
+    cursor: pointer !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important; /* Verhindert Quetschen */
+}
+
+/* 5. Speziell für die Layout-Tabelle der Uploads */
 .LG-FileController-MainPanel {
-    min-height: 30px !important;
+    width: 100% !important;
     display: flex !important;
     align-items: center !important;
 }
-
 
 /* ==========================================
    JOB-INFO STÖRER (META BAR)
