@@ -564,6 +564,75 @@ tr:has(#LG_FFC_1) {
         padding-bottom: 5px !important;
     }
 }
+
+/* ==========================================
+   FEHLERMELDUNGEN (VALIDATION PANEL)
+   Passt die Box an das Seiten-Design an (zentriert, Schriftart).
+========================================== */
+
+/* 1. DER HAUPTCONTAINER */
+.ValidationErrorsPanel {
+    /* Layout: Zentriert & Begrenzte Breite */
+    width: 100% !important;
+    max-width: 1300px !important; /* Gleiche Breite wie das Formular */
+    margin: 30px auto !important;   /* Abstand oben/unten & mittig */
+    
+    /* Box-Design */
+    background-color: #fdf2f2 !important; /* Ganz helles Rot/Rosa */
+    border: 1px solid #eecaca !important; /* Zarter roter Rahmen */
+    border-left: 5px solid #dc3545 !important; /* Dicker roter Strich links als Akzent */
+    border-radius: 4px !important;
+    
+    padding: 20px 25px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 2. DIE ÜBERSCHRIFT ("Bitte beachten Sie...") */
+.ValidationErrorsPanelHeadingText {
+    font-family: "Open Sans", sans-serif !important; /* Deine Headline-Font */
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    color: #dc3545 !important; /* Signalrot für Aufmerksamkeit */
+    margin-bottom: 15px !important;
+    display: block !important;
+}
+
+/* 3. DIE LISTEN & TEXTE */
+.ValidationErrorsPanel ul {
+    margin: 0 !important;
+    padding-left: 20px !important; /* Einrücken der Punkte */
+    list-style-type: disc !important;
+}
+
+/* Die Gruppe ("Sie haben etwas vergessen...") */
+.ValidationErrorsPanelGroup {
+    font-family: "Montserrat", sans-serif !important; /* Deine Body-Font */
+    font-weight: 600 !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    margin-bottom: 10px !important;
+    list-style: none !important; /* Keine Punkte bei der Hauptgruppe */
+    margin-left: -20px !important; /* Ausgleich, damit es bündig steht */
+}
+
+/* Die einzelnen Fehler ("Vorname ist ein Pflichtfeld") */
+.ValidationErrorsMessage {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem !important;
+    color: #555 !important; /* Etwas weicheres Schwarz */
+    margin-bottom: 5px !important;
+    line-height: 1.4 !important;
+}
+
+/* 4. MOBILE ANPASSUNG */
+@media screen and (max-width: 800px) {
+    .ValidationErrorsPanel {
+        width: 95% !important; /* Auf dem Handy fast volle Breite */
+        margin: 20px auto !important;
+    }
+}
+
 /* ==========================================
    RESPONSIVE ICONS
 ========================================== */
