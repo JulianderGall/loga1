@@ -492,7 +492,7 @@ tr:has(#LG_FFC_8) {
     border: 2px solid rgb(0, 119, 52) !important; 
     border-radius: 4px !important;
     font-family: "Montserrat", sans-serif !important;
-    font-size: 1.1rem !important; 
+    font-size: 1.3rem !important; 
     color: #000 !important;
     width: 100% !important;
     box-sizing: border-box !important;
@@ -506,7 +506,7 @@ tr:has(#LG_FFC_8) {
     border: 2px solid rgb(0, 119, 52) !important;
     border-radius: 4px !important;
     font-family: "Montserrat", sans-serif !important;
-    font-size: 1.1rem !important;
+    font-size: 1.3rem !important;
 }
 
 
