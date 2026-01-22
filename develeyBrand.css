@@ -613,7 +613,7 @@ tr:has(#LG_FFC_8) {
     
     /* Größe & Zentrierung (Robuste Methode) */
     display: table !important; /* Trick für Zentrierung */
-    margin: 40px auto !important; /* Oben/Unten Abstand + Mitte */
+    margin: 35px auto !important; /* Oben/Unten Abstand + Mitte */
     float: none !important;
     clear: both !important; /* Rutscht sicher unter alles andere */
     
