@@ -316,14 +316,14 @@ table.zebra-table tr:nth-child(even) {
     }
 }
 /* ==========================================
-   FORMULAR-DESIGN & MOBILE FIX (FINAL v2)
+   FORMULAR-DESIGN & MOBILE FIX (FINAL v3 - inkl. Uploads)
 ========================================== */
 
-/* 1. CONTAINER & LAYOUT (Breite auf 1300px erhöht) */
+/* 1. CONTAINER & LAYOUT */
 .LG-BoxPanel, 
 .LG-BoxPanelRow {
     width: 100% !important;
-    max-width: 1300px !important; /* Update: Jetzt 1300px */
+    max-width: 1300px !important;
     margin: 0 auto !important;
     box-sizing: border-box !important;
 }
@@ -342,16 +342,8 @@ table.zebra-table tr:nth-child(even) {
 }
 
 /* 2. FELDER AUSBLENDEN (Username & Bewerbungsquelle) */
-
-/* Wir blenden die spezifischen IDs für Labels und Inputs aus */
-#LG_FFC_10, label[for="LG_FFC_10"], /* Username */
-#LG_FFC_1,  label[for="LG_FFC_1"]   /* Bewerbungsquelle */
-{
-    display: none !important;
-}
-
-/* Falls möglich, verstecken wir auch die ganze Tabellenzeile, damit kein leerer Platz bleibt */
-/* (Funktioniert in allen modernen Browsern) */
+#LG_FFC_10, label[for="LG_FFC_10"], 
+#LG_FFC_1,  label[for="LG_FFC_1"],
 tr:has(#LG_FFC_10), 
 tr:has(#LG_FFC_1) {
     display: none !important;
@@ -375,7 +367,7 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 4. NORMALE TEXT-FELDER (INPUTS) */
+/* 4. STANDARD TEXT-FELDER */
 .LG-TextBox, 
 .gwt-TextArea {
     background: #fff !important;
@@ -388,25 +380,21 @@ tr:has(#LG_FFC_1) {
     padding: 10px !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    height: auto !important; /* Wichtig gegen Überlappung */
+    height: auto !important;
 }
 
-/* 5. DROPDOWN (SPEZIALBEHANDLUNG FÜR ANREDE & CO) */
-
-/* Der Rahmen kommt um den GESAMTEN Kasten (Text + Pfeil) */
+/* 5. DROPDOWN (ANREDE ETC.) */
 .gwt-combo-box {
     border: 2px solid rgb(0, 119, 52) !important;
     border-radius: 4px !important;
     background: #fff !important;
-    box-sizing: border-box !important;
     width: 100% !important;
-    display: flex !important; /* Hilft bei der Höhe */
+    display: flex !important;
     align-items: center !important;
     padding: 0 !important;
-    overflow: hidden; /* Damit nichts übersteht */
+    overflow: hidden;
 }
 
-/* Das innere Textfeld verliert seinen Rahmen (sonst hätten wir zwei) */
 .gwt-combo-box .gwt-combo-box-input {
     border: none !important;
     outline: none !important;
@@ -415,34 +403,69 @@ tr:has(#LG_FFC_1) {
     background: transparent !important;
 }
 
-/* Der Pfeil (Icon) */
+
+/* 6. UPLOAD-FELDER (NEU!) */
+
+/* Der Rahmen um den Upload-Bereich */
+.LG-FileController-Edit {
+    border: 2px solid rgb(0, 119, 52) !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    min-height: 44px !important; /* Gleiche Höhe wie Textfelder */
+    display: flex !important;
+    align-items: center !important;
+    padding: 5px 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+}
+
+/* Layout im Inneren des Upload-Felds */
+.LG-FileController-MainPanel {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+/* Der Text (Dateiname) */
+.LG-FileController-Text {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    flex-grow: 1 !important;
+}
+
+/* Die Büroklammer (Icon) -> Grün färben */
+.LG-FileController-Icon,
 .combo-box-action-icon {
-    /* Trick: Filter nutzen, um das graue Icon grün zu färben */
+    /* Develey Grün Filter */
     filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
     opacity: 1 !important;
     cursor: pointer;
-    margin-right: 5px !important;
+    width: 25px !important;
+    height: 25px !important;
+    flex-shrink: 0 !important; /* Verhindert das Zusammenquetschen */
+}
+
+/* Fokus-Effekte (für alle Feld-Typen) */
+.LG-TextBox:focus, 
+.gwt-combo-box-input:focus,
+.gwt-combo-box:focus-within,
+.LG-FileController-Edit:focus-within,
+.LG-FileController-Edit:hover {
+    outline: none !important;
+    box-shadow: 0 0 8px rgba(0, 119, 52, 0.4) !important;
+    border-color: rgb(0, 100, 45) !important;
 }
 
 
-/* 6. LAYOUT FIX (GEGEN ÜBERLAPPUNGEN) */
-
-/* Wir geben jeder Tabellenzeile im Formular mehr Luft nach unten */
+/* 7. LAYOUT & MOBILE FIX */
 .LG-Form td {
-    padding-bottom: 25px !important; /* Mehr Abstand zum nächsten Feld */
+    padding-bottom: 25px !important;
     vertical-align: top !important;
 }
 
-/* Fokus-Effekte für alle Felder */
-.LG-TextBox:focus, 
-.gwt-combo-box-input:focus, /* Fokus auf Textfeld im Dropdown */
-.gwt-combo-box:focus-within /* Fokus auf Dropdown Rahmen */
-{
-    outline: none !important;
-    box-shadow: 0 0 8px rgba(0, 119, 52, 0.4) !important;
-}
-
-/* 7. MOBILE ANPASSUNG */
 @media screen and (max-width: 800px) {
     .LG-BoxPanelRow-Column {
         width: 100% !important;
@@ -458,10 +481,9 @@ tr:has(#LG_FFC_1) {
         margin-top: 10px !important;
     }
     .LG-Form td {
-        padding-bottom: 5px !important; /* Mobil etwas weniger Abstand */
+        padding-bottom: 5px !important;
     }
 }
-
 /* ==========================================
    BUTTON "JETZT BEWERBEN" (LG-Button)
    Macht den Button grün, groß und zentriert ihn.
