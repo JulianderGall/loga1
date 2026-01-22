@@ -101,98 +101,102 @@
 }
 
 /* ==========================================
-   TYPOGRAFIE (Update: Mehr Zeilenabstand)
+   TYPOGRAFIE (FIXED SIZE OVERRIDE)
+   Erzwingt die Größe gegen die System-Standards.
 ========================================== */
 .develey-job-ad {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Montserrat", sans-serif !important;
 }
 
 .intro-text {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: #666;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    display: block;
-    margin-bottom: 15px;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: #666 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    display: block !important;
+    margin-bottom: 15px !important;
 }
 
-h1 {
-    font-family: "Open Sans", sans-serif;
-    font-variation-settings: "wdth" 75;
-    font-weight: 800;
+/* --------------------------------------------------
+   DESKTOP ANSICHT (Alles über 800px Breite)
+   Hier knallen wir feste, große Werte rein.
+-------------------------------------------------- */
+@media screen and (min-width: 801px) {
     
-    /* Responsive Schriftgröße */
-    font-size: clamp(32px, 5vw, 5rem); 
-    
-    /* Update: Erhöht von 1.1 auf 1.3 */
-    line-height: 1.3; 
-    
-    color: var(--develey-green);
-    margin: 0 0 2rem 0;
-    -webkit-text-stroke: 1px var(--develey-green);
+    /* Wir sprechen h1 direkt UND über den Container an, um stärker zu sein */
+    h1, 
+    .BW-WebPositionPage h1,
+    .develey-job-ad h1 {
+        font-family: "Open Sans", sans-serif !important;
+        font-weight: 800 !important;
+        
+        /* Hier stellen wir die Wunschgröße fest ein */
+        font-size: 55px !important;  /* Entspricht ca. 3.5rem - schön groß */
+        
+        line-height: 1.3 !important;
+        color: rgb(0, 119, 52) !important; /* Dein Grün fest ausgeschrieben */
+        margin: 0 0 2rem 0 !important;
+        -webkit-text-stroke: 1px rgb(0, 119, 52) !important;
+    }
+
+    h2, 
+    .BW-WebPositionPage h2,
+    .develey-job-ad h2 {
+        font-family: "Open Sans", sans-serif !important;
+        font-weight: 700 !important;
+        
+        /* Wunschgröße H2 Desktop */
+        font-size: 40px !important; /* Entspricht ca. 2.5rem */
+        
+        line-height: 1.4 !important;
+        margin-bottom: 1.5rem !important;
+        margin-top: 0 !important;
+        color: #000 !important; /* Oder dein Grün, falls gewünscht */
+    }
 }
 
-h2 {
-    font-family: "Open Sans", sans-serif;
-    font-variation-settings: "wdth" 75;
-    font-weight: 700;
+/* --------------------------------------------------
+   MOBILE ANSICHT (Handy / Tablet hochkant)
+   Hier nutzen wir die kleineren Werte.
+-------------------------------------------------- */
+@media screen and (max-width: 800px) {
     
-    /* Responsive Schriftgröße */
-    font-size: clamp(28px, 3.5vw, 3.5rem);
+    h1, 
+    .BW-WebPositionPage h1,
+    .develey-job-ad h1 {
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 32px !important; /* Deine Mindestvorgabe */
+        line-height: 1.3 !important;
+        -webkit-text-stroke: 0px !important; /* Mobil oft besser lesbar ohne Stroke */
+    }
+
+    h2, 
+    .BW-WebPositionPage h2,
+    .develey-job-ad h2 {
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 28px !important; /* Deine Mindestvorgabe */
+        line-height: 1.4 !important;
+    }
     
-    /* Update: Erhöht von 1.2 auf 1.4 */
-    line-height: 1.4; 
-    
-    margin-bottom: 1.5rem;
-    margin-top: 0;
+    .intro-text {
+        font-size: 1rem !important;
+    }
 }
 
-p, li {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1.2rem;
+/* Fließtext allgemein */
+p, li, .BW-WebPositionPage p, .BW-WebPositionPage li {
+    font-size: 1.1rem !important;
+    line-height: 1.6 !important;
+    margin-bottom: 1.2rem !important;
 }
 
 ul {
-    padding-left: 25px;
+    padding-left: 25px !important;
 }
 
 li {
-    margin-bottom: 10px;
-}
-
-/* Sicherheitsnetz für Mobile */
-@media screen and (max-width: 800px) {
-    h1 {
-        font-size: 32px !important;
-        -webkit-text-stroke: 0px; 
-        line-height: 1.4 !important; /* Mobil noch etwas mehr Luft */
-    }
-    h2 {
-        font-size: 28px !important;
-        line-height: 1.4 !important;
-    }
-    .intro-text {
-        font-size: 1rem;
-    }
-}
-
-/* Sicherheitsnetz: 
-   Falls clamp() in sehr alten Browsern nicht geht oder 
-   um die Werte auf dem Handy explizit zu erzwingen.
-*/
-@media screen and (max-width: 800px) {
-    h1 {
-        font-size: 32px !important;
-        -webkit-text-stroke: 0px; /* Auf dem Handy evtl. ohne Kontur besser lesbar */
-    }
-    h2 {
-        font-size: 28px !important;
-    }
-    .intro-text {
-        font-size: 1rem;
-    }
+    margin-bottom: 10px !important;
 }
 /* ==========================================
    MOBILE TABELLEN-ANPASSUNG (STACKING)
