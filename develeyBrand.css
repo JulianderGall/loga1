@@ -669,3 +669,121 @@ tr:has(#LG_FFC_1) {
         max-width: none; /* Hebt die Begrenzung auf */
     }
 }
+/* ==========================================
+   DROPDOWN & AUSWAHLLISTE (FINAL FIX)
+========================================== */
+
+/* 1. DAS DROPDOWN-FELD (GESCHLOSSEN) */
+
+.gwt-combo-box {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important; /* Text links, Pfeil rechts */
+    border: 2px solid rgb(0, 119, 52) !important;
+    border-radius: 4px !important;
+    background: #fff !important;
+    height: 48px !important;
+    padding: 0 !important;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Das Textfeld im Dropdown */
+.gwt-combo-box .gwt-combo-box-input {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 15px !important; /* Etwas Abstand von links */
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    
+    /* Vertikale Zentrierung */
+    display: flex !important;
+    align-items: center !important;
+    line-height: normal !important;
+    
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.1rem !important;
+    color: #000 !important;
+}
+
+
+/* 2. DER PFEIL (BUTTON RECHTS) */
+
+/* Wir stellen sicher, dass die Tabellenzelle um den Pfeil keine Farbe hat */
+.gwt-combo-box td {
+    background: transparent !important;
+    background-color: transparent !important;
+    padding: 0 !important;
+    vertical-align: middle !important;
+}
+
+.combo-box-action-icon {
+    /* WICHTIG: Hintergrund transparent zwingen (gegen Türkis) */
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    
+    /* Develey Grün Filter für das Icon selbst */
+    filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
+    
+    opacity: 1 !important;
+    cursor: pointer;
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 15px !important; /* Abstand vom rechten Rand */
+    display: block !important;
+}
+
+
+/* 3. DIE AUFKLAPP-LISTE (POPUP) */
+
+/* Der Container der Liste */
+.gwt-MenuBarPopup,
+.gwt-SuggestBoxPopup {
+    z-index: 9999 !important; /* Immer ganz oben */
+    background-color: #ffffff !important;
+    border: 2px solid rgb(0, 119, 52) !important; /* Grüner Rahmen */
+    border-top: none !important; /* Oben offen, damit es am Feld klebt */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
+    border-radius: 0 0 4px 4px !important;
+}
+
+/* Die Tabelle im Popup (Loga nutzt oft Tabellen hierfür) */
+.gwt-MenuBarPopup table,
+.gwt-SuggestBoxPopup table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+}
+
+/* Ein einzelner Eintrag in der Liste */
+.gwt-MenuItem,
+.gwt-SuggestBoxPopup .item {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem !important;
+    color: #333 !important;
+    padding: 12px 15px !important; /* Schöne Klickfläche */
+    cursor: pointer !important;
+    display: block !important;
+    background: #fff !important;
+    border-bottom: 1px solid #eee !important;
+    transition: all 0.2s ease;
+}
+
+/* Hover-Zustand (Maus drüber) & Ausgewählt */
+.gwt-MenuItem-selected,
+.gwt-MenuItem:hover,
+.gwt-SuggestBoxPopup .item-selected,
+.gwt-SuggestBoxPopup .item:hover {
+    background-color: rgb(0, 119, 52) !important; /* Develey Grün Hintergrund */
+    color: #ffffff !important; /* Weiße Schrift */
+}
+
+/* Entfernt alten Loga-Kram im Popup */
+.gwt-MenuItem td,
+.gwt-SuggestBoxPopup td {
+    padding: 0 !important;
+    font-family: inherit !important;
+    font-size: inherit !important;
+    color: inherit !important;
+}
