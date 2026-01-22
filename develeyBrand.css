@@ -787,3 +787,120 @@ tr:has(#LG_FFC_1) {
     font-size: inherit !important;
     color: inherit !important;
 }
+/* ==========================================
+   KI DISCLAIMER BADGE (Unten Rechts)
+========================================== */
+
+.ki-badge-wrapper {
+    /* Positionierung: Fest unten rechts */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999; /* Immer ganz oben sichtbar */
+    
+    /* Aussehen (Kreis-Zustand) */
+    width: 50px;
+    height: 50px;
+    background-color: rgb(0, 119, 52); /* Develey Grün */
+    border-radius: 50px; /* Macht es kreisrund */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    /* Text-Settings */
+    color: #ffffff;
+    font-family: "Montserrat", sans-serif;
+    overflow: hidden; /* Versteckt den langen Text am Anfang */
+    cursor: help; /* Zeigt ein Fragezeichen-Mauszeiger */
+    
+    /* Animation für das "Aufklappen" */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Das "KI" Label im Kreis */
+.ki-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    font-weight: 700;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+}
+
+/* Der eigentliche Text (am Anfang unsichtbar) */
+.ki-content {
+    opacity: 0;
+    width: 300px; /* Breite der aufgeklappten Box */
+    padding: 25px;
+    
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: left;
+    
+    /* Verschiebt den Text leicht, damit er sanft reinrutscht */
+    transform: translateY(10px);
+    transition: all 0.3s ease 0.1s; /* Kleine Verzögerung */
+}
+
+.ki-content strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: rgb(255, 200, 46); /* Develey Gelb als Akzent */
+}
+
+.ki-content p {
+    margin-bottom: 10px;
+    margin-top: 0;
+    font-size: 0.85rem;
+}
+
+.ki-content p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* === HOVER EFFEKT (Das Aufklappen) === */
+
+.ki-badge-wrapper:hover {
+    /* Box wird groß & eckiger */
+    width: 340px; 
+    height: auto; /* Passt sich dem Text an */
+    min-height: 250px; /* Mindesthöhe damit es gut aussieht */
+    border-radius: 15px; /* Nur noch leicht abgerundet */
+    background-color: rgb(0, 119, 52);
+    
+    /* Schatten verstärken */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* KI-Icon ausblenden beim Hover */
+.ki-badge-wrapper:hover .ki-icon {
+    opacity: 0;
+}
+
+/* Text einblenden beim Hover */
+.ki-badge-wrapper:hover .ki-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* === MOBILE ANPASSUNG === */
+@media screen and (max-width: 800px) {
+    .ki-badge-wrapper {
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    /* Auf dem Handy: Wenn man draufklickt (Hover simuliert),
+       wird die Box fast bildschirmbreit, damit man es lesen kann */
+    .ki-badge-wrapper:hover {
+        width: 300px; /* Etwas schmaler für Handys */
+        right: 50%;   /* Zentrier-Trick */
+        transform: translateX(50%); /* Zentrier-Trick */
+        bottom: 80px; /* Etwas höher rutschen, damit Finger nicht im Weg ist */
+    }
+}
