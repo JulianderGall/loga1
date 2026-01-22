@@ -316,7 +316,9 @@ table.zebra-table tr:nth-child(even) {
     }
 }
 /* ==========================================
-   FORMULAR-DESIGN & MOBILE FIX (FINAL v3 - inkl. Uploads)
+   FORMULAR-DESIGN (FINAL v4)
+   - Einheitliche Höhe (48px)
+   - Größere Schrift (1.1rem)
 ========================================== */
 
 /* 1. CONTAINER & LAYOUT */
@@ -331,7 +333,7 @@ table.zebra-table tr:nth-child(even) {
 .LG-BoxPanelRow-Column {
     width: 48% !important; 
     margin-right: 2% !important; 
-    margin-bottom: 20px !important;
+    margin-bottom: 25px !important; /* Etwas mehr Luft nach unten */
     display: inline-block !important;
     vertical-align: top !important;
     box-sizing: border-box !important;
@@ -341,19 +343,20 @@ table.zebra-table tr:nth-child(even) {
     margin-right: 0 !important;
 }
 
-/* 2. FELDER AUSBLENDEN (Username & Bewerbungsquelle) */
-#LG_FFC_10, label[for="LG_FFC_10"], 
-#LG_FFC_1,  label[for="LG_FFC_1"],
+/* 2. FELDER AUSBLENDEN */
+#LG_FFC_10, label[for="LG_FFC_10"], /* Username */
+#LG_FFC_1,  label[for="LG_FFC_1"],  /* Bewerbungsquelle */
 tr:has(#LG_FFC_10), 
 tr:has(#LG_FFC_1) {
     display: none !important;
 }
 
 
-/* 3. TYPOGRAFIE (LABELS) */
+/* 3. TYPOGRAFIE (LABELS) - GRÖSSER */
 .LG-InputLabel {
     font-family: "Montserrat", sans-serif !important;
-    font-size: 1rem !important;
+    /* Update: Größere Schrift */
+    font-size: 1.1rem !important; 
     font-weight: 700 !important;
     color: #333 !important;
     margin-bottom: 8px !important;
@@ -367,60 +370,74 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 4. STANDARD TEXT-FELDER */
-.LG-TextBox, 
-.gwt-TextArea {
+/* 4. BASIS-STYLING FÜR ALLE FELDTYPEN (SHARED) */
+/* Wir definieren hier die Höhe und Schrift für ALLE Felder gleichzeitig */
+.LG-TextBox,
+.gwt-combo-box,
+.LG-FileController-Edit {
+    /* WICHTIG: Feste Höhe für alle gleich */
+    height: 48px !important; 
+    
     background: #fff !important;
     box-shadow: none !important;
     border: 2px solid rgb(0, 119, 52) !important; 
     border-radius: 4px !important;
+    
+    /* Update: Größere Schrift im Feld */
     font-family: "Montserrat", sans-serif !important;
-    font-size: 1rem !important;
+    font-size: 1.1rem !important; 
     color: #000 !important;
-    padding: 10px !important;
+    
     width: 100% !important;
     box-sizing: border-box !important;
-    height: auto !important;
+    padding: 0 10px !important; /* Seitliches Padding für Text */
 }
 
-/* 5. DROPDOWN (ANREDE ETC.) */
-.gwt-combo-box {
+/* Spezialfall TextArea: Die darf höher sein */
+.gwt-TextArea {
+    height: auto !important;
+    min-height: 100px !important;
+    padding: 10px !important;
     border: 2px solid rgb(0, 119, 52) !important;
     border-radius: 4px !important;
-    background: #fff !important;
-    width: 100% !important;
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.1rem !important;
+}
+
+
+/* 5. DROPDOWN-SPEZIFISCH (ANREDE) */
+.gwt-combo-box {
     display: flex !important;
-    align-items: center !important;
-    padding: 0 !important;
+    align-items: center !important; /* Zentriert Inhalt vertikal */
+    padding: 0 !important; /* Kein Padding am Container, sonst wird er zu dick */
     overflow: hidden;
 }
 
+/* Das innere Input-Feld des Dropdowns */
 .gwt-combo-box .gwt-combo-box-input {
     border: none !important;
     outline: none !important;
-    padding: 10px !important;
-    width: 100% !important;
     background: transparent !important;
+    height: 100% !important; /* Füllt die 48px voll aus */
+    width: 100% !important;
+    padding: 0 10px !important;
+    margin: 0 !important;
+    
+    /* Schrift muss hier auch erzwungen werden */
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.1rem !important;
+    line-height: 48px !important; /* Vertikale Zentrierung */
 }
 
 
-/* 6. UPLOAD-FELDER (NEU!) */
-
-/* Der Rahmen um den Upload-Bereich */
+/* 6. UPLOAD-SPEZIFISCH */
 .LG-FileController-Edit {
-    border: 2px solid rgb(0, 119, 52) !important;
-    border-radius: 4px !important;
-    background: #fff !important;
-    min-height: 44px !important; /* Gleiche Höhe wie Textfelder */
     display: flex !important;
     align-items: center !important;
-    padding: 5px 10px !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
     cursor: pointer !important;
+    padding: 0 10px !important;
 }
 
-/* Layout im Inneren des Upload-Felds */
 .LG-FileController-MainPanel {
     width: 100% !important;
     display: flex !important;
@@ -428,31 +445,31 @@ tr:has(#LG_FFC_1) {
     align-items: center !important;
 }
 
-/* Der Text (Dateiname) */
 .LG-FileController-Text {
     font-family: "Montserrat", sans-serif !important;
-    font-size: 1rem !important;
+    font-size: 1.1rem !important;
     color: #333 !important;
     flex-grow: 1 !important;
 }
 
-/* Die Büroklammer (Icon) -> Grün färben */
+/* Icons (Pfeil & Klammer) */
 .LG-FileController-Icon,
 .combo-box-action-icon {
     /* Develey Grün Filter */
     filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
     opacity: 1 !important;
     cursor: pointer;
-    width: 25px !important;
-    height: 25px !important;
-    flex-shrink: 0 !important; /* Verhindert das Zusammenquetschen */
+    width: 24px !important; /* Icon Größe */
+    height: 24px !important;
+    margin-left: 10px !important;
+    flex-shrink: 0 !important;
 }
 
-/* Fokus-Effekte (für alle Feld-Typen) */
+
+/* 7. FOKUS EFFEKTE */
 .LG-TextBox:focus, 
 .gwt-combo-box-input:focus,
 .gwt-combo-box:focus-within,
-.LG-FileController-Edit:focus-within,
 .LG-FileController-Edit:hover {
     outline: none !important;
     box-shadow: 0 0 8px rgba(0, 119, 52, 0.4) !important;
@@ -460,10 +477,12 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 7. LAYOUT & MOBILE FIX */
+/* 8. LAYOUT & MOBILE FIX */
+/* Verhindert Überlappen durch erzwungenen Abstand */
 .LG-Form td {
     padding-bottom: 25px !important;
     vertical-align: top !important;
+    height: auto !important;
 }
 
 @media screen and (max-width: 800px) {
@@ -478,7 +497,7 @@ tr:has(#LG_FFC_1) {
         width: 100% !important;
     }
     .LG-InputLabel {
-        margin-top: 10px !important;
+        margin-top: 15px !important;
     }
     .LG-Form td {
         padding-bottom: 5px !important;
