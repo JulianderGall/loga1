@@ -782,15 +782,14 @@ tr:has(#LG_FFC_8) {
     }
 }
 /* ==========================================
-   DROPDOWN & AUSWAHLLISTE (FINAL FIX)
+   DROPDOWN & AUSWAHLLISTE (DESIGN UPDATE)
+   Styling für das aufgeklappte Menü (Popup)
 ========================================== */
 
-/* 1. DAS DROPDOWN-FELD (GESCHLOSSEN) */
-
+/* 1. DAS DROPDOWN-FELD (Tabellen-Fix) */
 .gwt-combo-box {
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important; /* Text links, Pfeil rechts */
     border: 2px solid rgb(0, 119, 52) !important;
     border-radius: 4px !important;
     background: #fff !important;
@@ -798,108 +797,137 @@ tr:has(#LG_FFC_8) {
     padding: 0 !important;
     overflow: hidden;
     position: relative;
+    box-sizing: border-box !important;
+}
+
+/* WICHTIG: Die innere Tabelle zwingen, den Platz zu nutzen */
+.gwt-combo-box table {
+    width: 100% !important;
+    height: 100% !important;
+    border-collapse: collapse !important;
+}
+
+/* WICHTIG: Die Zellen vertikal zentrieren (überschreibt 'top' aus dem HTML) */
+.gwt-combo-box td {
+    vertical-align: middle !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
 }
 
 /* Das Textfeld im Dropdown */
 .gwt-combo-box .gwt-combo-box-input {
     border: none !important;
     background: transparent !important;
-    padding: 0 15px !important; /* Etwas Abstand von links */
+    padding: 0 15px !important;
     margin: 0 !important;
     width: 100% !important;
-    height: 100% !important;
-    
-    /* Vertikale Zentrierung */
-    display: flex !important;
-    align-items: center !important;
-    line-height: normal !important;
+    height: 100% !important; /* Füllt die Zelle komplett */
     
     font-family: "Montserrat", sans-serif !important;
     font-size: 1.1rem !important;
     color: #000 !important;
+    
+    /* Flexbox hilft auch im Input beim Zentrieren */
+    display: flex !important;
+    align-items: center !important;
 }
-
-
-/* 2. DER PFEIL (BUTTON RECHTS) */
-
-/* Wir stellen sicher, dass die Tabellenzelle um den Pfeil keine Farbe hat */
+/* 2. DER PFEIL (Icon) */
 .gwt-combo-box td {
     background: transparent !important;
-    background-color: transparent !important;
     padding: 0 !important;
-    vertical-align: middle !important;
 }
 
 .combo-box-action-icon {
-    /* WICHTIG: Hintergrund transparent zwingen (gegen Türkis) */
     background: transparent !important;
-    background-color: transparent !important;
     border: none !important;
-    
-    /* Develey Grün Filter für das Icon selbst */
+    /* Develey Grün Filter für das Icon */
     filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
-    
     opacity: 1 !important;
     cursor: pointer;
-    width: 20px !important;
-    height: 20px !important;
-    margin-right: 15px !important; /* Abstand vom rechten Rand */
+    width: 24px !important;
+    height: 24px !important;
+    margin-right: 10px !important;
     display: block !important;
 }
 
 
-/* 3. DIE AUFKLAPP-LISTE (POPUP) */
+/* 3. DIE AUFGEKLAPPTE LISTE (POPUP DESIGN) */
 
-/* Der Container der Liste */
+/* Der Haupt-Container der Liste */
 .gwt-MenuBarPopup,
-.gwt-SuggestBoxPopup {
-    z-index: 9999 !important; /* Immer ganz oben */
+.gwt-SuggestBoxPopup,
+.gwt-PopupPanel {
+    z-index: 2147483647 !important; /* Über allem anderen */
     background-color: #ffffff !important;
     border: 2px solid rgb(0, 119, 52) !important; /* Grüner Rahmen */
-    border-top: none !important; /* Oben offen, damit es am Feld klebt */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important;
-    border-radius: 0 0 4px 4px !important;
+    border-top: 1px solid rgb(0, 119, 52) !important; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2) !important;
+    border-radius: 0 0 8px 8px !important; /* Unten abrunden */
+    padding: 0 !important;
+    overflow: hidden !important; /* Damit die Ecken wirken */
 }
 
-/* Die Tabelle im Popup (Loga nutzt oft Tabellen hierfür) */
+/* Die Tabelle im Inneren (Layout-Fix) */
 .gwt-MenuBarPopup table,
 .gwt-SuggestBoxPopup table {
     width: 100% !important;
     border-collapse: collapse !important;
+    background: white !important;
 }
 
-/* Ein einzelner Eintrag in der Liste */
+/* 4. DIE EINZELNEN EINTRÄGE (ITEMS) */
 .gwt-MenuItem,
-.gwt-SuggestBoxPopup .item {
+.gwt-SuggestBoxPopup .item,
+.gwt-MenuBarPopup td {
     font-family: "Montserrat", sans-serif !important;
     font-size: 1rem !important;
     color: #333 !important;
-    padding: 12px 15px !important; /* Schöne Klickfläche */
+    padding: 12px 20px !important; /* Viel Platz zum Klicken */
     cursor: pointer !important;
     display: block !important;
-    background: #fff !important;
-    border-bottom: 1px solid #eee !important;
-    transition: all 0.2s ease;
+    background: #ffffff !important;
+    border-bottom: 1px solid #f0f0f0 !important; /* Feine Trennlinie */
+    transition: all 0.1s ease !important;
 }
 
-/* Hover-Zustand (Maus drüber) & Ausgewählt */
+/* 5. HOVER & AUSGEWÄHLT (Das Wichtigste!) */
+/* Wir zielen auf alle möglichen Status-Klassen des Systems */
 .gwt-MenuItem-selected,
 .gwt-MenuItem:hover,
 .gwt-SuggestBoxPopup .item-selected,
-.gwt-SuggestBoxPopup .item:hover {
-    background-color: rgb(0, 119, 52) !important; /* Develey Grün Hintergrund */
-    color: #ffffff !important; /* Weiße Schrift */
+.gwt-SuggestBoxPopup .item:hover,
+.gwt-MenuBarPopup .gwt-MenuItem-selected,
+/* Auch Tabellenzeilen direkt ansprechen für native Listen */
+.gwt-MenuBarPopup tr:hover td {
+    background-color: rgb(0, 119, 52) !important; /* DEVELEY GRÜN */
+    color: #ffffff !important; /* WEISSE SCHRIFT */
 }
 
-/* Entfernt alten Loga-Kram im Popup */
-.gwt-MenuItem td,
-.gwt-SuggestBoxPopup td {
-    padding: 0 !important;
-    font-family: inherit !important;
-    font-size: inherit !important;
-    color: inherit !important;
+
+/* 6. SCROLLBAR STYLING (Modern & Grün) */
+/* Funktioniert in Chrome, Edge, Safari */
+
+/* Breite der Scrollbar */
+.gwt-MenuBarPopup ::-webkit-scrollbar {
+    width: 8px !important;
 }
 
+/* Hintergrund der Leiste */
+.gwt-MenuBarPopup ::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+}
+
+/* Der Schieberegler (Grün) */
+.gwt-MenuBarPopup ::-webkit-scrollbar-thumb {
+    background: rgb(0, 119, 52) !important;
+    border-radius: 4px !important;
+}
+
+/* Hover über Schieberegler */
+.gwt-MenuBarPopup ::-webkit-scrollbar-thumb:hover {
+    background: rgb(0, 90, 40) !important;
+}
 /* ==========================================
    FIX: UPLOAD-FELDER (FLEXBOX STACKING)
    Zwingt Dateien strikt untereinander.
