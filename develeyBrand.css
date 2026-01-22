@@ -316,20 +316,132 @@ table.zebra-table tr:nth-child(even) {
     }
 }
 /* ==========================================
-   FORMULAR-CONTAINER (LG-BoxPanel) ZENTRIEREN
-   Sorgt dafür, dass der Kasten mit den Eingabefeldern 
-   nicht am linken Rand klebt, sondern mittig steht.
+   FORMULAR-DESIGN & MOBILE FIX (FINAL)
 ========================================== */
-.LG-BoxPanel {
-    margin: 0 auto !important;    /* Zentrierung */
-    float: none !important;       /* Verhindert "Links-Schwimmen" */
-    max-width: 900px !important;  /* Begrenzt die Breite, damit es gut aussieht */
-    width: 100% !important;       /* Nutzt den Platz bis max-width */
-    
-    /* Optional: Hintergrund weiß lassen, falls Loga grauen Hintergrund nutzt */
-    background-color: #fff !important; 
-    padding: 20px !important;
+
+/* 1. CONTAINER & SPALTEN (LAYOUT) */
+
+/* Der Hauptcontainer */
+.LG-BoxPanel, 
+.LG-BoxPanelRow {
+    width: 100% !important;
+    max-width: 1000px !important;
+    margin: 0 auto !important;
     box-sizing: border-box !important;
+}
+
+/* Die Spalten (die im HTML starr auf 400px gesetzt sind) */
+.LG-BoxPanelRow-Column {
+    /* Wir überschreiben die 400px mit flexiblen Werten */
+    width: 48% !important; 
+    margin-right: 2% !important; 
+    margin-bottom: 20px !important;
+    display: inline-block !important;
+    vertical-align: top !important;
+    box-sizing: border-box !important;
+}
+
+/* Letzte Spalte braucht keinen Abstand rechts */
+.LG-BoxPanelRow-Column:last-child {
+    margin-right: 0 !important;
+}
+
+/* 2. TYPOGRAFIE (LABELS) */
+
+/* Überschreibt "Verdana" und das Grau aus dem HTML */
+.LG-InputLabel {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem !important; /* ca 16px */
+    font-weight: 700 !important; /* Fett */
+    color: #333 !important;      /* Dunkles Grau/Schwarz statt hellgrau */
+    margin-bottom: 5px !important;
+    display: block !important;
+    line-height: 1.4 !important;
+}
+
+/* Der Stern (*) für Pflichtfelder */
+.requiredSuffix {
+    color: rgb(0, 119, 52) !important; /* Develey Grün statt Rot */
+    font-weight: bold !important;
+}
+
+/* 3. INPUT-FELDER & DROPDOWNS (GRÜNER RAHMEN) */
+
+.LG-TextBox, 
+.gwt-combo-box-input,
+.gwt-TextArea {
+    /* Design Reset */
+    background: #fff !important;
+    box-shadow: none !important;
+    
+    /* Rahmen im Develey Grün */
+    border: 2px solid rgb(0, 119, 52) !important; 
+    border-radius: 4px !important; /* Leicht abgerundet */
+    
+    /* Text im Feld */
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem !important;
+    color: #000 !important;
+    
+    /* Größe */
+    padding: 10px !important;
+    height: auto !important; /* Verhindert abgeschnittene Texte */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    
+    transition: all 0.3s ease;
+}
+
+/* Fokus-Effekt (wenn man reinklickt) */
+.LG-TextBox:focus, 
+.gwt-combo-box-input:focus,
+.gwt-TextArea:focus {
+    outline: none !important;
+    box-shadow: 0 0 8px rgba(0, 119, 52, 0.4) !important; /* Grüner Schein */
+    border-color: rgb(0, 100, 45) !important;
+}
+
+/* Dropdown-Pfeil Container (falls sichtbar) */
+.combo-box-action-icon {
+    opacity: 0.6;
+}
+
+/* 4. MOBILE ANPASSUNG (STACKING) */
+
+@media screen and (max-width: 800px) {
+    
+    /* Spalten untereinander schieben */
+    .LG-BoxPanelRow-Column {
+        width: 100% !important;
+        display: block !important;
+        margin-right: 0 !important;
+        margin-bottom: 30px !important;
+        height: auto !important;
+    }
+
+    /* Innerhalb der Spalte: Label über das Feld schieben */
+    /* Das System nutzt eine Tabelle (Label links, Feld rechts). 
+       Wir machen daraus Block-Elemente. */
+    .LG-Form tr, 
+    .LG-Form td {
+        display: block !important;
+        width: 100% !important;
+    }
+    
+    /* Abstände anpassen */
+    .LG-Form td {
+        padding-bottom: 5px !important;
+    }
+    
+    /* Label bekommt etwas Abstand nach oben */
+    .LG-InputLabel {
+        margin-top: 15px !important;
+    }
+    
+    /* Das erste Label braucht keinen Abstand oben */
+    .LG-Form tr:first-child td:first-child .LG-InputLabel {
+        margin-top: 0 !important;
+    }
 }
 
 /* ==========================================
