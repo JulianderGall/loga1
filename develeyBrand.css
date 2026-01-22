@@ -101,7 +101,7 @@
 }
 
 /* ==========================================
-   TYPOGRAFIE (Update: XL Headlines)
+   TYPOGRAFIE (Update: Optimierte Größen)
 ========================================== */
 .develey-job-ad {
     font-family: "Montserrat", sans-serif;
@@ -109,41 +109,49 @@
 
 .intro-text {
     font-weight: 700;
-    font-size: 1.5rem; /* Auch leicht angepasst */
+    font-size: 1.1rem;
     color: #666;
     text-transform: uppercase;
     letter-spacing: 1px;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 h1 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 800;
-    /* Startet mobil bei 5rem (sehr groß) und wächst am Desktop auf 12rem (riesig).
-       Das entspricht ca. +100% zur vorherigen Version.
+    
+    /* clamp(MIN, IDEAL, MAX)
+       - Mobil (Min): 32px (2rem)
+       - Desktop: Skaliert mit 5vw (bei 1000px Breite sind das 50px -> erfüllt die ">42px" Anforderung)
+       - Max: Begrenzt auf 5rem (80px), damit es nicht zu riesig wird
     */
-    font-size: clamp(5rem, 15vw, 12rem); 
-    line-height: 0.9; /* Engerer Zeilenabstand ist bei dieser Größe wichtig */
+    font-size: clamp(32px, 5vw, 5rem); 
+    
+    line-height: 1.1;
     color: var(--develey-green);
-    margin: 0 0 2.5rem 0;
-    -webkit-text-stroke: 3px var(--develey-green); /* Kontur angepasst */
+    margin: 0 0 2rem 0;
+    -webkit-text-stroke: 1px var(--develey-green); /* Kontur etwas feiner als vorher */
 }
 
 h2 {
     font-family: "Open Sans", sans-serif;
     font-variation-settings: "wdth" 75;
     font-weight: 700;
-    /* +50% größer als vorher */
-    font-size: 4.2rem; 
-    line-height: 1.1;
+    
+    /* - Mobil (Min): 28px (1.75rem)
+       - Desktop: Skaliert mit 3.5vw (bei 1000px Breite sind das 35px)
+    */
+    font-size: clamp(28px, 3.5vw, 3.5rem);
+    
+    line-height: 1.2;
     margin-bottom: 1.5rem;
     margin-top: 0;
 }
 
 p, li {
-    font-size: 1.4rem; 
+    font-size: 1.1rem; /* Lesetext Standardgröße */
     line-height: 1.6;
     margin-bottom: 1.2rem;
 }
@@ -156,55 +164,20 @@ li {
     margin-bottom: 10px;
 }
 
-/* ==========================================
-   MOBILE ANPASSUNG
-   Damit die riesigen Schriften das Handy nicht sprengen
-========================================== */
+/* Sicherheitsnetz: 
+   Falls clamp() in sehr alten Browsern nicht geht oder 
+   um die Werte auf dem Handy explizit zu erzwingen.
+*/
 @media screen and (max-width: 800px) {
     h1 {
-        /* Mobil: Groß, aber passend für den Screen */
-        font-size: 4rem; 
-        -webkit-text-stroke: 1px var(--develey-green);
-        line-height: 1;
-        margin-bottom: 1.5rem;
+        font-size: 32px !important;
+        -webkit-text-stroke: 0px; /* Auf dem Handy evtl. ohne Kontur besser lesbar */
     }
     h2 {
-        /* Mobil: Etwas kleiner als am Desktop, damit Wörter nicht umbrechen */
-        font-size: 2.5rem;
+        font-size: 28px !important;
     }
     .intro-text {
-        font-size: 1.1rem;
-    }
-}
-/* Mobile Anpassung, damit es auf dem Handy nicht ZU riesig wird */
-@media screen and (max-width: 800px) {
-    h1 {
-        /* Auf dem Handy etwas zähmen, aber immer noch wuchtig */
-        font-size: 3rem; 
-        -webkit-text-stroke: 1px var(--develey-green);
-    }
-    h2 {
-        font-size: 2rem;
-    }
-    p, li {
-        font-size: 1.2rem;
-    }
-}
-/* ==========================================
-   MOBILE ANPASSUNG
-========================================== */
-@media screen and (max-width: 800px) {
-    .skew-section {
-        padding: 50px 0;
-    }
-    .header-wrapper {
-        margin-bottom: -15vw; /* Stärkerer Pull am Handy */
-    }
-    h1 {
-        font-size: 2.2rem;
-    }
-    h2 {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 }
 /* ==========================================
