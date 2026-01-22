@@ -316,9 +316,10 @@ table.zebra-table tr:nth-child(even) {
     }
 }
 /* ==========================================
-   FORMULAR-DESIGN (FINAL v4)
-   - Einheitliche Höhe (48px)
-   - Größere Schrift (1.1rem)
+   FORMULAR-DESIGN (FINAL v5)
+   - Button zentriert & höher
+   - Checkbox groß & grün
+   - Dropdown Text mittig
 ========================================== */
 
 /* 1. CONTAINER & LAYOUT */
@@ -333,7 +334,7 @@ table.zebra-table tr:nth-child(even) {
 .LG-BoxPanelRow-Column {
     width: 48% !important; 
     margin-right: 2% !important; 
-    margin-bottom: 25px !important; /* Etwas mehr Luft nach unten */
+    margin-bottom: 25px !important;
     display: inline-block !important;
     vertical-align: top !important;
     box-sizing: border-box !important;
@@ -352,10 +353,9 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 3. TYPOGRAFIE (LABELS) - GRÖSSER */
+/* 3. TYPOGRAFIE (LABELS) */
 .LG-InputLabel {
     font-family: "Montserrat", sans-serif !important;
-    /* Update: Größere Schrift */
     font-size: 1.1rem !important; 
     font-weight: 700 !important;
     color: #333 !important;
@@ -370,30 +370,23 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 4. BASIS-STYLING FÜR ALLE FELDTYPEN (SHARED) */
-/* Wir definieren hier die Höhe und Schrift für ALLE Felder gleichzeitig */
+/* 4. BASIS-STYLING FÜR ALLE FELDTYPEN */
 .LG-TextBox,
 .gwt-combo-box,
 .LG-FileController-Edit {
-    /* WICHTIG: Feste Höhe für alle gleich */
-    height: 48px !important; 
-    
+    height: 48px !important; /* Einheitliche Höhe */
     background: #fff !important;
     box-shadow: none !important;
     border: 2px solid rgb(0, 119, 52) !important; 
     border-radius: 4px !important;
-    
-    /* Update: Größere Schrift im Feld */
     font-family: "Montserrat", sans-serif !important;
     font-size: 1.1rem !important; 
     color: #000 !important;
-    
     width: 100% !important;
     box-sizing: border-box !important;
-    padding: 0 10px !important; /* Seitliches Padding für Text */
+    padding: 0 10px !important;
 }
 
-/* Spezialfall TextArea: Die darf höher sein */
 .gwt-TextArea {
     height: auto !important;
     min-height: 100px !important;
@@ -405,32 +398,50 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 5. DROPDOWN-SPEZIFISCH (ANREDE) */
+/* 5. DROPDOWN (ANREDE) - FIX */
 .gwt-combo-box {
     display: flex !important;
-    align-items: center !important; /* Zentriert Inhalt vertikal */
-    padding: 0 !important; /* Kein Padding am Container, sonst wird er zu dick */
-    overflow: hidden;
+    align-items: center !important; /* Vertikale Zentrierung des Inhalts */
+    padding: 0 !important;
+    position: relative;
 }
 
-/* Das innere Input-Feld des Dropdowns */
+/* Das Textfeld im Dropdown */
 .gwt-combo-box .gwt-combo-box-input {
     border: none !important;
     outline: none !important;
     background: transparent !important;
-    height: 100% !important; /* Füllt die 48px voll aus */
+    height: 100% !important;
     width: 100% !important;
     padding: 0 10px !important;
     margin: 0 !important;
     
-    /* Schrift muss hier auch erzwungen werden */
+    /* Vertikale Ausrichtung erzwingen */
+    display: flex !important;
+    align-items: center !important;
+    line-height: normal !important; /* Wichtig für Flexbox */
+    
     font-family: "Montserrat", sans-serif !important;
     font-size: 1.1rem !important;
-    line-height: 48px !important; /* Vertikale Zentrierung */
 }
 
 
-/* 6. UPLOAD-SPEZIFISCH */
+/* 6. ICONS (Pfeil & Klammer) - GRÜN */
+.LG-FileController-Icon,
+.combo-box-action-icon {
+    /* Filter für Develey Grün */
+    filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
+    opacity: 1 !important;
+    cursor: pointer;
+    width: 24px !important;
+    height: 24px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important; /* Abstand nach rechts */
+    flex-shrink: 0 !important;
+}
+
+
+/* 7. UPLOAD-SPEZIFISCH */
 .LG-FileController-Edit {
     display: flex !important;
     align-items: center !important;
@@ -452,21 +463,72 @@ tr:has(#LG_FFC_1) {
     flex-grow: 1 !important;
 }
 
-/* Icons (Pfeil & Klammer) */
-.LG-FileController-Icon,
-.combo-box-action-icon {
-    /* Develey Grün Filter */
-    filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
-    opacity: 1 !important;
-    cursor: pointer;
-    width: 24px !important; /* Icon Größe */
-    height: 24px !important;
-    margin-left: 10px !important;
-    flex-shrink: 0 !important;
+
+/* 8. CHECKBOX (DATENSCHUTZ) - NEU & GROSS */
+.LG-CheckBox input[type="checkbox"] {
+    /* Develey Grün als Akzentfarbe (Chrome/Edge/Firefox) */
+    accent-color: rgb(0, 119, 52) !important;
+    
+    /* Größe skalieren (1.5x) */
+    transform: scale(1.5) !important;
+    transform-origin: center left; /* Damit sie nicht verrutscht */
+    
+    width: 20px !important;
+    height: 20px !important;
+    cursor: pointer !important;
+    margin: 5px 0 !important;
 }
 
 
-/* 7. FOKUS EFFEKTE */
+/* 9. BUTTON "JETZT BEWERBEN" - NEU */
+.LG-Button.primary.LG-Button-up {
+    /* Develey Grün */
+    background-color: rgb(0, 119, 52) !important; 
+    color: #ffffff !important;
+    border: none !important;
+    
+    /* Größe & Zentrierung */
+    height: 60px !important; /* Höher */
+    min-width: 250px !important;
+    width: auto !important; /* Nur so breit wie nötig */
+    margin: 40px auto !important; /* Mittig auf der Seite */
+    padding: 0 40px !important;
+    
+    /* Flexbox für perfekten zentrierten Text */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Text Style */
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important; /* Reset für Flexbox */
+    
+    /* Form */
+    border-radius: 50px !important;
+    box-shadow: 0 5px 15px rgba(0, 119, 52, 0.4) !important;
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Der Text im Button */
+.LG-Button.primary.LG-Button-up .html-face {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+.LG-Button.primary.LG-Button-up:hover {
+    background-color: rgb(0, 100, 45) !important;
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 119, 52, 0.6) !important;
+}
+
+
+/* 10. FOKUS EFFEKTE */
 .LG-TextBox:focus, 
 .gwt-combo-box-input:focus,
 .gwt-combo-box:focus-within,
@@ -477,8 +539,7 @@ tr:has(#LG_FFC_1) {
 }
 
 
-/* 8. LAYOUT & MOBILE FIX */
-/* Verhindert Überlappen durch erzwungenen Abstand */
+/* 11. LAYOUT & MOBILE FIX */
 .LG-Form td {
     padding-bottom: 25px !important;
     vertical-align: top !important;
@@ -502,59 +563,6 @@ tr:has(#LG_FFC_1) {
     .LG-Form td {
         padding-bottom: 5px !important;
     }
-}
-/* ==========================================
-   BUTTON "JETZT BEWERBEN" (LG-Button)
-   Macht den Button grün, groß und zentriert ihn.
-========================================== */
-.LG-Button.primary.LG-Button-up {
-    /* Develey Grün als Hintergrund */
-    background-color: rgb(0, 119, 52) !important; /* oder var(--develey-green) */
-    color: #ffffff !important;
-    border: none !important;
-    
-    /* Größe & Schrift */
-    font-family: "Open Sans", sans-serif !important;
-    font-weight: 800 !important;
-    font-size: 1.5rem !important; /* Deutlich größerer Text */
-    text-transform: uppercase !important;
-    
-    /* Der Button als großer "Block" */
-    display: block !important;
-    width: auto !important;       /* Passt sich dem Text an (oder 100% für volle Breite) */
-    min-width: 300px !important;  /* Mindestbreite, damit er wuchtig wirkt */
-    margin: 40px auto !important; /* Viel Abstand nach oben/unten & Zentrierung */
-    padding: 20px 40px !important; /* Innenabstand für "Fülle" */
-    
-    /* Optik: Abgerundete Ecken & Schatten */
-    border-radius: 50px !important; /* Runde "Pillen"-Form */
-    box-shadow: 0 5px 15px rgba(0, 119, 52, 0.4) !important;
-    cursor: pointer !important;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Hover-Effekt: Button wird beim Drüberfahren etwas größer */
-.LG-Button.primary.LG-Button-up:hover {
-    background-color: rgb(0, 100, 45) !important; /* Etwas dunkleres Grün */
-    transform: scale(1.05); /* Leicht vergrößern */
-    box-shadow: 0 8px 20px rgba(0, 119, 52, 0.6) !important;
-}
-
-/* Falls es noch einen "Zurück" oder "Abbrechen" Button gibt */
-.LG-Button:not(.primary) {
-    background-color: #f0f0f0 !important;
-    color: #333 !important;
-    border: 1px solid #ccc !important;
-    margin: 10px auto !important;
-    padding: 10px 20px !important;
-    font-size: 1rem !important;
-}
-
-/* Optional: Wenn man mit der Maus drüber fährt, sieht man, dass es ein Feld ist */
-input.ReadOnlyRedactorField:hover,
-input.ORANGE:hover {
-    background-color: rgba(0, 0, 0, 0.05) !important; /* Ganz leicht grau */
-    cursor: text;
 }
 /* ==========================================
    RESPONSIVE ICONS
