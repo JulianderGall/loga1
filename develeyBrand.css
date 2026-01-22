@@ -132,7 +132,7 @@
         font-weight: 800 !important;
         
         /* Hier stellen wir die Wunschgröße fest ein */
-        font-size: 55px !important;  /* Entspricht ca. 3.5rem - schön groß */
+        font-size: 60px !important;  /* Entspricht ca. 3.5rem - schön groß */
         
         line-height: 1.3 !important;
         color: rgb(0, 119, 52) !important; /* Dein Grün fest ausgeschrieben */
@@ -144,10 +144,10 @@
     .BW-WebPositionPage h2,
     .develey-job-ad h2 {
         font-family: "Open Sans", sans-serif !important;
-        font-weight: 700 !important;
+        font-weight: 800 !important;
         
         /* Wunschgröße H2 Desktop */
-        font-size: 40px !important; /* Entspricht ca. 2.5rem */
+        font-size: 45px !important; /* Entspricht ca. 2.5rem */
         
         line-height: 1.4 !important;
         margin-bottom: 1.5rem !important;
@@ -169,6 +169,7 @@
         font-size: 32px !important; /* Deine Mindestvorgabe */
         line-height: 1.3 !important;
         -webkit-text-stroke: 0px !important; /* Mobil oft besser lesbar ohne Stroke */
+       color: rgb(0, 119, 52) !important; /* Dein Grün fest ausgeschrieben */
     }
 
     h2, 
