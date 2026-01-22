@@ -195,9 +195,9 @@ ul {
 .BW-WebPositionPage .bg-green h2,
 .bg-green p, 
 .bg-green li {
-    color: #ffffff !important;
+    color: RGB (255, 255, 255) !important;
     -webkit-text-stroke: 0px !important;
-    border-color: #ffffff !important;
+    border-color: RGB (255, 255, 255) !important;
 }
 
 /* ==========================================
