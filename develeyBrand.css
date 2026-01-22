@@ -850,166 +850,152 @@ tr:has(#LG_FFC_1) {
 
 
 /* ==========================================
-   KI DISCLAIMER BADGE (Final mit Mobile-Klick)
+   KI DISCLAIMER BADGE (ROBUST VERSION)
 ========================================== */
 
-/* 1. Container Positionierung */
-.ki-badge-wrapper-final {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 9999;
+/* 1. Haupt-Container: Fixiert unten rechts */
+.ki-badge-wrapper-robust {
+    position: fixed !important;
+    bottom: 30px !important;
+    right: 30px !important;
+    z-index: 2147483647 !important; /* Maximaler Wert, immer ganz oben */
+    font-family: "Montserrat", sans-serif !important;
+    line-height: 1.5 !important;
 }
 
-/* Die Checkbox verstecken wir komplett */
-#ki-mobile-toggle {
-    display: none;
-}
-
-/* 2. Der eigentliche Badge (Label) */
-.ki-badge {
-    display: block;
-    width: 50px;
-    height: 50px;
-    background-color: rgb(0, 119, 52); /* Develey Grün */
-    border-radius: 50px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    
-    color: #ffffff;
-    font-family: "Montserrat", sans-serif;
-    overflow: hidden;
-    cursor: pointer; /* Zeigt, dass man klicken kann */
-    
-    /* Animation für weiches Auf/Zu */
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    
-    /* Wichtig für absolute Positionierung innen */
-    position: relative; 
-}
-
-/* KI-Icon (Zentriert) */
-.ki-icon {
+/* 2. Die Checkbox (Technik: Unsichtbar, aber klickbar) */
+#ki-toggle-checkbox {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 700;
-    font-size: 1.2rem;
-    white-space: nowrap;
-    transition: opacity 0.2s ease;
-}
-
-/* Der Text-Inhalt (Versteckt) */
-.ki-content {
     opacity: 0;
-    width: 300px;
-    padding: 25px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    text-align: left;
-    transform: translateY(10px);
-    transition: all 0.3s ease 0.1s;
-    pointer-events: none; /* Klicks gehen durch, solange unsichtbar */
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    margin: 0;
 }
 
-.ki-content strong {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    color: rgb(255, 200, 46);
+/* 3. Der grüne Kreis (Label) */
+.ki-badge-label {
+    display: block !important;
+    width: 50px !important;
+    height: 50px !important;
+    background-color: rgb(0, 119, 52) !important; /* Develey Grün */
+    border-radius: 50px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+    overflow: hidden !important;
+    user-select: none; /* Verhindert Textmarkierung beim schnellen Klicken */
 }
 
-.ki-content p {
-    margin-bottom: 10px;
-    margin-top: 0;
-    font-size: 0.85rem;
+/* 4. Das "KI" Text-Icon */
+.ki-icon-text {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-weight: 800 !important;
+    font-size: 1.2rem !important;
+    white-space: nowrap !important;
+    transition: opacity 0.2s ease !important;
+    opacity: 1;
 }
 
-.ki-content p:last-child { margin-bottom: 0; }
+/* 5. Der Inhalt (Text) - Anfangs unsichtbar */
+.ki-popup-content {
+    opacity: 0;
+    width: 300px !important;
+    padding: 20px !important;
+    font-size: 0.9rem !important;
+    text-align: left !important;
+    transform: translateY(20px); /* Rutscht von unten rein */
+    transition: all 0.3s ease !important;
+    pointer-events: none; /* Klicks gehen durch solange unsichtbar */
+}
+
+.ki-popup-content strong {
+    display: block !important;
+    margin-bottom: 8px !important;
+    color: rgb(255, 200, 46) !important; /* Develey Gelb */
+    text-transform: uppercase !important;
+}
+
+.ki-popup-content p {
+    margin: 0 0 10px 0 !important;
+    color: #fff !important;
+}
 
 
 /* ==========================================
-   LOGIK: WANN GEHT ES AUF?
+   FUNKTION: DESKTOP (HOVER)
 ========================================== */
-
-/* ZUSTAND: OFFEN (Styles, wenn Badge aktiv ist) */
-/* Wir definieren eine Hilfs-Klasse für "Offen", die wir unten steuern */
-.ki-badge-open-style {
-    width: 340px; 
-    height: auto;
-    min-height: 250px;
-    border-radius: 15px;
-    background-color: rgb(0, 119, 52);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* DESKTOP (> 800px): Öffnen bei MAUS-HOVER */
 @media screen and (min-width: 801px) {
-    .ki-badge:hover {
-        width: 340px; 
-        height: auto;
-        min-height: 250px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    .ki-badge-wrapper-robust:hover .ki-badge-label {
+        width: 350px !important;
+        height: auto !important;
+        min-height: 200px !important;
+        border-radius: 15px !important;
     }
-    
-    .ki-badge:hover .ki-icon { opacity: 0; }
-    
-    .ki-badge:hover .ki-content {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+
+    .ki-badge-wrapper-robust:hover .ki-icon-text {
+        opacity: 0 !important;
+    }
+
+    .ki-badge-wrapper-robust:hover .ki-popup-content {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: auto !important;
     }
 }
 
-/* MOBILE (< 800px): Öffnen bei KLICK (Checkbox Checked) */
+
+/* ==========================================
+   FUNKTION: MOBILE (KLICK / CHECKBOX)
+========================================== */
 @media screen and (max-width: 800px) {
     
-    /* Positionierung anpassen */
-    .ki-badge-wrapper-final {
-        bottom: 20px;
-        right: 20px;
+    .ki-badge-wrapper-robust {
+        bottom: 20px !important;
+        right: 20px !important;
     }
 
-    /* WENN CHECKBOX ANGEHAKT IST (= Klick) -> Dann Styles anwenden */
-    #ki-mobile-toggle:checked + .ki-badge {
-        width: 300px;
-        min-height: 250px;
-        height: auto;
-        border-radius: 15px;
+    /* Wenn Checkbox ANGEHAKT ist (durch Klick auf Kreis) */
+    #ki-toggle-checkbox:checked + .ki-badge-label {
+        width: 300px !important;
+        height: auto !important;
+        min-height: 250px !important;
+        border-radius: 15px !important;
         
-        /* Zentrier-Trick auf Handy: Mittig rutschen */
-        position: fixed;
-        bottom: 80px;
-        right: 50%;
-        transform: translateX(50%);
-        margin-right: -25px; /* Korrektur für Transformations-Startpunkt */
-        /* Hinweis: transform right 50% und translate 50% zentriert es zum Viewport */
-        transform: translateX(50%);
-        right: 50%;
-        margin: 0;
+        /* Trick: Positioniert das offene Fenster neu, damit es komplett sichtbar ist */
+        position: fixed !important;
+        bottom: 80px !important; /* Über dem Daumen */
+        right: 50% !important;
+        transform: translateX(50%) !important; /* Exakt mittig */
+        margin: 0 !important;
+        cursor: default !important; /* Zeiger normal */
     }
-    
-    /* Icon ausblenden wenn checked */
-    #ki-mobile-toggle:checked + .ki-badge .ki-icon {
-        opacity: 0;
+
+    /* Icon ausblenden wenn offen */
+    #ki-toggle-checkbox:checked + .ki-badge-label .ki-icon-text {
+        opacity: 0 !important;
     }
-    
-    /* Content einblenden wenn checked */
-    #ki-mobile-toggle:checked + .ki-badge .ki-content {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+
+    /* Text einblenden wenn offen */
+    #ki-toggle-checkbox:checked + .ki-badge-label .ki-popup-content {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: auto !important;
     }
-    
-    /* Kleines "X" zum Schließen simulieren (Optional) */
-    #ki-mobile-toggle:checked + .ki-badge::after {
+
+    /* Schließen-Button (X) simulieren */
+    #ki-toggle-checkbox:checked + .ki-badge-label::after {
         content: "✕";
         position: absolute;
-        top: 15px;
+        top: 10px;
         right: 15px;
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         color: rgba(255,255,255,0.7);
+        cursor: pointer;
     }
 }
