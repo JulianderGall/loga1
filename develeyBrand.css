@@ -899,6 +899,40 @@ tr:has(#LG_FFC_8) {
     font-size: inherit !important;
     color: inherit !important;
 }
+
+/* ==========================================
+   FIX: UPLOAD-FELDER (MEHRERE DATEIEN)
+   Sorgt für sauberen Abstand und flexible Höhe.
+========================================== */
+
+/* 1. Die Upload-Boxen selbst flexibel machen */
+.LG-FileController-Edit {
+    /* WICHTIG: Überschreibt die feste 48px Höhe von oben */
+    height: auto !important; 
+    min-height: 48px !important; /* Mindestens so hoch wie die anderen */
+    
+    /* Etwas Luft innen, damit Text nicht am Rand klebt */
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+}
+
+/* 2. Abstand ZWISCHEN den Dateien erzwingen */
+/* Wir sprechen alle direkten Kinder im Upload-Container an */
+.LG-FileController > div {
+    margin-bottom: 10px !important; /* Abstand zum nächsten Element */
+}
+
+/* Beim allerletzten Element (meistens das "Neu hochladen" Feld) keinen Abstand */
+.LG-FileController > div:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* 3. Sicherheitsnetz: Layout-Korrektur für den inneren Bereich */
+.LG-FileController-MainPanel {
+    min-height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+}
 /* ==========================================
    KI DISCLAIMER BADGE (Unten Rechts)
 ========================================== */
