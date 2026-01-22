@@ -971,4 +971,27 @@ tr:has(#LG_FFC_1) {
     margin-bottom: 0;
 }
 
+/* ==========================================
+   FIX: WEISSE SCHRIFT AUF GRÜNEM HINTERGRUND (PRIORITÄT)
+   Dieser Block muss GANZ AM ENDE der Datei stehen!
+========================================== */
 
+/* Wir zielen exakt auf den Text innerhalb des grünen Containers */
+.skew-section.bg-green h1,
+.skew-section.bg-green h2,
+.skew-section.bg-green h3,
+.skew-section.bg-green p,
+.skew-section.bg-green li,
+.skew-section.bg-green span,
+.skew-section.bg-green strong,
+.skew-section.bg-green b,
+/* Zur Sicherheit auch nochmal über den inneren Wrapper */
+.skew-section.bg-green .content-inner h1,
+.skew-section.bg-green .content-inner h2,
+.skew-section.bg-green .content-inner p,
+.skew-section.bg-green .content-inner li {
+    color: #ffffff !important;       /* Zwingend Weiß */
+    -webkit-text-stroke: 0px !important; /* Keine Kontur */
+    text-shadow: none !important;    /* Kein Schatten */
+    border-color: #ffffff !important;
+}
