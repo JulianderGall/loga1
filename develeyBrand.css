@@ -1282,3 +1282,45 @@ div[id^="LG_FFC_"] {
         object-position: 75% center !important;
     }
 }
+/* ==========================================
+   HEADER OPTIMIERUNG (LOGO & FOKUS)
+   Logo oben links + Bildfokus rechts
+========================================== */
+
+/* 1. DAS LOGO (Positionierung) */
+.develey-floating-logo {
+    position: absolute !important; /* Schwebt über dem Inhalt */
+    top: -60px !important;  /* Zieht es nach oben in den Header-Bereich */
+    left: 0 !important;     /* Ganz links */
+    width: 220px !important; /* Größe für Desktop */
+    height: auto !important;
+    z-index: 100 !important; /* Liegt über allem */
+    
+    /* Optional: Ein leichter Schatten macht es lesbarer */
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)) !important;
+}
+
+/* 2. MOBILE ANPASSUNG FÜR LOGO */
+@media screen and (max-width: 800px) {
+    .develey-floating-logo {
+        width: 140px !important; /* Kleiner auf dem Handy */
+        top: -40px !important;   /* Position anpassen */
+        left: 0 !important;
+    }
+}
+
+
+/* 3. HINTERGRUNDBILD FOKUS (Dein Wunsch: Mehr rechts!) */
+@media screen and (max-width: 800px) {
+    
+    /* Wir zielen auf den Container mit dem Hintergrundbild */
+    .skew-section.first-overlap,
+    .header-image,
+    div[style*="background-image"] {
+        
+        /* 85% = Der Fokus liegt bei 85% der Bildbreite (also weit rechts).
+           center = Vertikal mittig.
+        */
+        background-position: 85% center !important; 
+    }
+}
