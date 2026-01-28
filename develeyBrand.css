@@ -1283,61 +1283,46 @@ div[id^="LG_FFC_"] {
     }
 }
 /* ==========================================
-   HEADER FIX: RESET & POSITIONIERUNG
-   Entfernt alle weißen Ränder und Lücken.
+   HEADER FIX (LOGO RIESIG & KORRIGIERT)
+   Logo startet bündig oben (kein Abschneiden).
 ========================================== */
 
-/* 1. Den Container "entlüften" (Hard Reset) */
-.header-wrapper, 
-.develey-job-ad .header-wrapper {
+/* 1. Container vorbereiten */
+.header-wrapper {
     position: relative !important;
-    display: block !important;
     width: 100% !important;
-    
-    /* WICHTIG: Killt Abstände durch Schrift */
-    line-height: 0 !important; 
-    font-size: 0 !important;
-    
-    /* WICHTIG: Killt Außenabstände */
-    margin: 0 !important; 
-    padding: 0 !important;
-    
-    overflow: hidden !important;
+    display: block !important;
+    /* overflow muss sichtbar sein, falls Schatten über den Rand ragen */
+    overflow: visible !important; 
     z-index: 1 !important;
 }
 
-/* 2. Das Logo (Muss "Develey_Logo_Ecke.png" sein) */
+/* 2. Das Logo Positionieren (Desktop) */
 .develey-floating-logo {
     position: absolute !important;
     
-    /* Nagelt es oben links fest */
-    top: 0 !important;
-    left: 0 !important;
-    margin: 0 !important;
+    /* FIX: Startet genau an der Kante -> Nichts wird abgeschnitten! */
+    top: -8px !important;    
+    left: 0 !important;   
     
-    /* GRÖSSE: Passt sich an */
+    /* NEUE GRÖSSE: Noch mächtiger (ca. 2.5x so groß wie am Anfang) */
     width: 550px !important; 
-    max-width: 65% !important; /* Damit es mobil nicht alles verdeckt */
+    max-width: 80% !important; /* Sicherheit, damit es nicht alles verdeckt */
     height: auto !important;
     
     z-index: 100 !important; 
     
-    /* Falls das Bild selbst oben transparenten Platz hat:
-       Hier negativen Wert probieren (z.B. -10px), sonst 0 lassen */
-    transform: translateY(0) !important; 
+    /* Schatten für den 3D-Effekt */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)) !important;
 }
 
-/* 3. Das Hintergrundbild (Muss Header (2).png sein) */
+/* 3. Das Header-Bild (Hintergrund) */
 .header-bg {
-    display: block !important;
     width: 100% !important;
     height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-    
-    /* Stellt sicher, dass es ganz links klebt */
-    float: left !important; 
+    display: block !important;
+    position: relative !important;
+    z-index: 0 !important;
 }
 
 
@@ -1346,19 +1331,82 @@ div[id^="LG_FFC_"] {
 ========================================== */
 @media screen and (max-width: 800px) {
     
-    /* A) Logo mobil: Immer noch groß, aber passend */
+    /* A) Logo mobil anpassen */
     .develey-floating-logo {
-        width: 70% !important; /* Nutzt die Breite gut aus */
-        max-width: 300px !important;
+        /* Auch mobil deutlich größer */
+        width: 65% !important; 
         top: 0 !important;
         left: 0 !important;
     }
 
     /* B) Bild-Fokus auf Gesicht (Rechts) */
     .header-bg {
-        /* Wichtig: Genug Höhe erzwingen, damit Bild nicht zu schmal wird */
         height: 350px !important; 
         object-fit: cover !important; 
         object-position: 75% center !important; 
+    }
+}
+/* ==========================================
+   TITEL ALS GELBER STÖRER (VARIANTE 1)
+   Kompakte Box mit grünem Schatten.
+========================================== */
+
+/* 1. Die Box selbst */
+.skew-section.first-overlap h1 {
+    /* Design: Gelber Hintergrund, Schwarze Schrift */
+    background-color: rgb(255, 200, 46) !important; 
+    color: rgb(0, 0, 0) !important;
+    
+    /* Der Develey-Look: Harter grüner Schatten */
+    box-shadow: 8px 8px 0px rgb(0, 119, 52) !important;
+    
+    /* Verhalten: Nur so breit wie der Text (schmiegt sich an) */
+    display: inline-block !important; 
+    
+    /* Innenabstand für "Luft" um den Text */
+    padding: 15px 30px !important;
+    
+    /* Abstand nach unten zum grünen Info-Balken */
+    margin-bottom: 30px !important; 
+    
+    /* Text-Formatierung */
+    line-height: 1.2 !important;
+    border-radius: 2px !important; /* Minimale Abrundung */
+    
+    /* Sicherheit, damit es nicht breiter als der Bildschirm wird */
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Das Input-Feld im Inneren (Transparent machen) */
+.skew-section.first-overlap h1 input {
+    background: transparent !important;
+    border: none !important;
+    color: inherit !important; /* Nimmt Schwarz an */
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    font-size: inherit !important;
+    
+    /* WICHTIG: Überschreibt die 100% Breite aus dem HTML,
+       damit die gelbe Box nicht immer über die ganze Seite geht,
+       sondern sich dem Text anpasst */
+    width: auto !important; 
+    min-width: 50px !important; /* Damit man es im Editor noch anklicken kann */
+}
+
+/* 3. Mobile Anpassung (Handy) */
+@media screen and (max-width: 600px) {
+    .skew-section.first-overlap h1 {
+        display: block !important; /* Auf Handy lieber volle Breite */
+        width: 100% !important;
+        font-size: 1.8rem !important; /* Etwas kleiner, damit es passt */
+        padding: 15px 20px !important;
+        box-shadow: 5px 5px 0px rgb(0, 119, 52) !important; /* Etwas kleinerer Schatten */
+    }
+    
+    .skew-section.first-overlap h1 input {
+        width: 100% !important; /* Auf Handy volle Breite */
     }
 }
