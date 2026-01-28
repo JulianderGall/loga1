@@ -389,22 +389,27 @@ ul {
     -webkit-text-stroke: 0 !important; /* Entfernt Outline falls vorhanden */
 }
 /* ==========================================
-   BENEFITS GRID (FINAL UPDATE)
-   Macht aus der Tabelle moderne Cards
-   ohne Kreise, mit 3 Spalten.
+   BENEFITS GRID (FINAL: FLOATING ICONS)
+   Karten mit Icons, die oben überlappen.
 ========================================== */
 
 /* 1. DAS GRID (Der Container) */
-/* Wir wandeln den tbody der Tabelle in ein Grid um */
 .skew-section.bg-yellow table.zebra-table tbody {
     display: grid !important;
-    /* 3 Spalten mit exakt gleicher Breite (1fr = 1 fraction) */
+    /* 3 Spalten (1fr 1fr 1fr) */
     grid-template-columns: repeat(3, 1fr) !important; 
-    gap: 30px !important; /* Abstand zwischen den Karten */
+    
+    /* WICHTIG: Viel Platz zwischen den Zeilen (80px), 
+       damit die überstehenden Icons Platz haben */
+    gap: 80px 30px !important; 
+    
     width: 100% !important;
+    
+    /* Platz oben für die erste Reihe Icons */
+    padding-top: 50px !important; 
 }
 
-/* Fallback: Die Tabelle selbst muss sich wie ein Block verhalten */
+/* Fallback für die Tabelle selbst */
 .skew-section.bg-yellow table.zebra-table {
     display: block !important;
     width: 100% !important;
@@ -414,19 +419,23 @@ ul {
 /* 2. DIE KARTE (Die Tabellenzeile) */
 .skew-section.bg-yellow table.zebra-table tr {
     display: flex !important;
-    flex-direction: column !important; /* Icon oben, Text unten */
-    align-items: center !important;    /* Alles zentriert */
+    flex-direction: column !important;
+    align-items: center !important;
     justify-content: flex-start !important;
     
-    background-color: #ffffff !important; /* Weiße Karte */
+    background-color: #ffffff !important;
     border-radius: 15px !important;
-    padding: 30px 20px !important;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
-    height: 100% !important; /* Damit alle gleich hoch sind */
-    box-sizing: border-box !important;
     
-    /* Reset der Zebra-Streifen */
+    /* Padding oben muss Platz machen für den negativen Margin */
+    padding: 0 20px 30px 20px !important; 
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
     background-image: none !important; 
+    
+    /* WICHTIG: Damit das Icon über den Rand ragen darf! */
+    overflow: visible !important; 
 }
 
 
@@ -440,35 +449,39 @@ ul {
 }
 
 
-/* 4. DAS ICON (Freigestellt mit Schatten) */
+/* 4. DAS ICON (Floating Effect) */
 .skew-section.bg-yellow table.zebra-table img.develey-icon {
-    /* Größe anpassen */
-    width: 80px !important; 
+    /* Größer machen */
+    width: 110px !important; 
     height: auto !important;
+    
+    /* DER TRICK: Nach oben ziehen */
+    /* Berechnung: 110px Höhe / 2 = 55px (Hälfte) + etwas Puffer */
+    margin-top: -65px !important; 
     margin-bottom: 20px !important;
     
-    /* Runden Kreis entfernen */
     background: transparent !important;
     border-radius: 0 !important;
     padding: 0 !important;
     
-    /* Der gewünschte Schlagschatten auf das Bild selbst */
-    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2)) !important;
+    /* Schlagschatten */
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.2)) !important;
+    
+    position: relative !important;
+    z-index: 10 !important;
 }
 
 
-/* 5. DER TEXT (Größe angepasst) */
+/* 5. DER TEXT (Typografie) */
 .skew-section.bg-yellow table.zebra-table td:last-child {
     font-family: "Montserrat", sans-serif !important;
-    /* Angepasst an deine restliche Typografie */
     font-size: 1.25rem !important; 
     line-height: 1.5 !important;
     color: #333 !important;
 }
 
-/* Fettgedrucktes im Benefit-Text hervorheben */
 .skew-section.bg-yellow table.zebra-table td:last-child strong {
-    color: rgb(0, 119, 52) !important; /* Develey Grün */
+    color: rgb(0, 119, 52) !important;
 }
 
 
@@ -480,6 +493,7 @@ ul {
 @media screen and (max-width: 1000px) {
     .skew-section.bg-yellow table.zebra-table tbody {
         grid-template-columns: repeat(2, 1fr) !important;
+        gap: 70px 20px !important;
     }
 }
 
@@ -487,10 +501,13 @@ ul {
 @media screen and (max-width: 600px) {
     .skew-section.bg-yellow table.zebra-table tbody {
         grid-template-columns: 1fr !important;
+        gap: 70px !important; /* Vertikaler Abstand wichtig */
     }
     
-    .skew-section.bg-yellow table.zebra-table tr {
-        margin-bottom: 0 !important; /* Gap regelt das jetzt */
+    /* Auf dem Handy etwas kleinere Icons */
+    .skew-section.bg-yellow table.zebra-table img.develey-icon {
+        width: 90px !important;
+        margin-top: -55px !important;
     }
 }
 /* ==========================================
