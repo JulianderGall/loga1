@@ -389,40 +389,100 @@ ul {
     -webkit-text-stroke: 0 !important; /* Entfernt Outline falls vorhanden */
 }
 /* ==========================================
-   SPEZIAL-TABELLE: "ZEBRA-TABLE"
-   Nur Tabellen mit der Klasse class="zebra-table" bekommen 
-   das Streifenmuster und die Montserrat-Schrift.
+   TRANSFORMATION: TABELLE ZU CARD-GRID
+   Ersetzt die Liste durch moderne Karten
 ========================================== */
 
-/* 1. Schriftart & Größe erzwingen (NUR in Zebra-Tabelle) */
+/* 1. Den Tabellen-Container auflösen und zum Grid machen */
 table.zebra-table, 
-table.zebra-table tbody, 
-table.zebra-table tr, 
-table.zebra-table td,
-table.zebra-table td p, 
-table.zebra-table td span, 
-table.zebra-table td li {
-    font-family: "Montserrat", sans-serif !important;
-    font-size: 1.4rem !important; /* Passt zum Rest der Seite */
-    line-height: 1.5 !important;
-    color: inherit;
+table.zebra-table tbody {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 30px !important; /* Abstand zwischen den Karten */
+    justify-content: center !important; /* Zentriert die Karten */
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-top: 20px !important;
 }
 
-/* 2. Zebra-Streifen (NUR in Zebra-Tabelle) */
-/* Reset: Erstmal alles transparent machen */
+/* 2. Die einzelne Karte (ehemals Tabellenzeile) */
 table.zebra-table tr {
-    background-color: transparent !important;
+    /* Layout der Karte */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    
+    /* Größe der Karte */
+    flex: 0 1 300px !important; /* Basisbreite 300px, darf schrumpfen */
+    margin-top: 30px !important; /* Platz nach oben für das Icon */
+    padding: 40px 20px 20px 20px !important; /* Oben viel Padding für Icon-Platz */
+    
+    /* Karten-Look */
+    background-color: #ffffff !important;
+    border-radius: 15px !important; /* Abgerundete Ecken */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08) !important; /* Leichter Schatten */
+    position: relative !important; /* Wichtig für Icon-Positionierung */
+    border: none !important;
+    
+    /* Zebra-Streifen überschreiben */
+    background: #fff !important; 
 }
 
-/* Jede zweite Zeile bekommt den Glas-Effekt */
-table.zebra-table tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.4) !important;
+/* Überschreibt den Zebra-Effekt aus dem alten CSS sicher */
+table.zebra-table tr:nth-child(even),
+table.zebra-table tr:nth-child(odd) {
+    background-color: #ffffff !important;
 }
 
-/* Mobile-Ausnahme: Auf dem Handy keine Streifen, da alles untereinander steht */
-@media screen and (max-width: 800px) {
-    table.zebra-table tr:nth-child(even) {
-        background-color: transparent !important;
+/* 3. Die Zellen innerhalb der Karte aufräumen */
+table.zebra-table td {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* 4. DAS ICON (Das erste Feld) - Überlappend positionieren */
+table.zebra-table td:first-child {
+    position: absolute !important;
+    top: -30px !important; /* Schiebt das Icon zur Hälfte oben raus */
+    left: 50% !important;
+    transform: translateX(-50%) !important; /* Exakt mittig */
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
+}
+
+/* Das Bild selbst stylen */
+table.zebra-table img.develey-icon {
+    width: 60px !important;  /* Feste Größe für Einheitlichkeit */
+    height: 60px !important;
+    object-fit: contain !important;
+    
+    background-color: #ffffff !important; /* Weißer Hintergrund hinter Icon */
+    border-radius: 50% !important; /* Kreisrund */
+    padding: 10px !important; /* Etwas Luft im Kreis */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important; /* Eigener Schatten für Icon */
+}
+
+/* 5. DER TEXT (Das zweite Feld) */
+table.zebra-table td:last-child {
+    margin-top: 10px !important;
+    font-size: 0.95rem !important;
+    line-height: 1.5 !important;
+    color: #333 !important;
+}
+
+/* 6. MOBILE ANPASSUNG */
+@media screen and (max-width: 600px) {
+    table.zebra-table tr {
+        flex: 0 1 100% !important; /* Auf Handy volle Breite */
+        width: 100% !important;
+        margin-bottom: 30px !important;
     }
 }
 /* ==========================================
