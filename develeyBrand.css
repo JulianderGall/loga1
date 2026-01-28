@@ -1346,3 +1346,23 @@ div[id^="LG_FFC_"] {
         object-position: 75% center !important; 
     }
 }
+/* ==========================================
+   GLOBALER TABELLEN-RESET
+   Entfernt alle Rahmenlinien standardmäßig.
+========================================== */
+
+/* Wir zielen auf alle Tabellen, Zeilen und Zellen in deinem Layout */
+.develey-job-ad table,
+.develey-job-ad tr,
+.develey-job-ad td,
+.skew-section table, 
+.skew-section tr, 
+.skew-section td {
+    border: none !important;
+    border-width: 0 !important;
+    border-style: none !important;
+    outline: none !important;
+    
+    /* Optional: Verhindert doppelte Linien, falls doch welche da wären */
+    border-collapse: collapse !important; 
+}
