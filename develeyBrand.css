@@ -1366,3 +1366,32 @@ div[id^="LG_FFC_"] {
     /* Optional: Verhindert doppelte Linien, falls doch welche da wären */
     border-collapse: collapse !important; 
 }
+/* ==========================================
+   FLAT SECTION (GERADE BOX)
+   Für Formulare & Uploads: Ohne Schräge/Versatz.
+========================================== */
+.flat-section {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    background-color: #ffffff !important; /* Weißer Hintergrund */
+    
+    /* WICHTIG: Normale Abstände, keine Überlappung */
+    padding: 40px 0 !important; 
+    margin: 0 !important;
+    
+    /* Resettet jegliche Schräge */
+    transform: none !important;
+    clip-path: none !important;
+    border: none !important;
+    z-index: 10 !important;
+}
+
+/* Damit der Inhalt mittig bleibt (wie bei den anderen) */
+.flat-section .content-inner {
+    width: 100% !important;
+    max-width: 960px !important; /* Standardbreite */
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+    box-sizing: border-box !important;
+}
