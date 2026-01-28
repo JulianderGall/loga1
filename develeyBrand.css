@@ -1283,44 +1283,63 @@ div[id^="LG_FFC_"] {
     }
 }
 /* ==========================================
-   HEADER OPTIMIERUNG (LOGO & FOKUS)
-   Logo oben links + Bildfokus rechts
+   HEADER FIX (LOGO GROSS & BILD-FOKUS)
+   Logo deutlich größer, kein Abschneiden mehr.
 ========================================== */
 
-/* 1. DAS LOGO (Positionierung) */
+/* 1. Container vorbereiten */
+.header-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    display: block !important;
+    /* WICHTIG: overflow MUSS sichtbar sein, damit das Logo ragen darf! */
+    overflow: visible !important;
+    z-index: 1 !important;
+}
+
+/* 2. Das Logo Positionieren (Desktop - SEHR GROSS) */
 .develey-floating-logo {
-    position: absolute !important; /* Schwebt über dem Inhalt */
-    top: -60px !important;  /* Zieht es nach oben in den Header-Bereich */
-    left: 0 !important;     /* Ganz links */
-    width: 220px !important; /* Größe für Desktop */
+    position: absolute !important;
+    /* Zieht es weit nach oben und links raus */
+    top: -50px !important;    
+    left: -30px !important;   
+    
+    /* NEUE GRÖSSE: Mehr als verdoppelt! */
+    width: 450px !important; 
     height: auto !important;
-    z-index: 100 !important; /* Liegt über allem */
     
-    /* Optional: Ein leichter Schatten macht es lesbarer */
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1)) !important;
+    z-index: 100 !important; /* Liegt weit über allem */
+    
+    /* Stärkerer Schatten für den "Schwebe-Effekt" */
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)) !important;
 }
 
-/* 2. MOBILE ANPASSUNG FÜR LOGO */
+/* 3. Das Header-Bild (Desktop Standard) */
+.header-bg {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+
+/* ==========================================
+   MOBILE ANPASSUNG (Handy)
+========================================== */
 @media screen and (max-width: 800px) {
+    
+    /* A) Logo verkleinern (aber immer noch groß) */
     .develey-floating-logo {
-        width: 140px !important; /* Kleiner auf dem Handy */
-        top: -40px !important;   /* Position anpassen */
-        left: 0 !important;
+        width: 200px !important; /* War 140px */
+        top: -30px !important;
+        left: -20px !important;
     }
-}
 
-
-/* 3. HINTERGRUNDBILD FOKUS (Dein Wunsch: Mehr rechts!) */
-@media screen and (max-width: 800px) {
-    
-    /* Wir zielen auf den Container mit dem Hintergrundbild */
-    .skew-section.first-overlap,
-    .header-image,
-    div[style*="background-image"] {
-        
-        /* 85% = Der Fokus liegt bei 85% der Bildbreite (also weit rechts).
-           center = Vertikal mittig.
-        */
-        background-position: 85% center !important; 
+    /* B) Bild-Fokus verschieben (Rechts auf das Gesicht) */
+    .header-bg {
+        height: 350px !important; /* Etwas höher für mehr Bild */
+        object-fit: cover !important; 
+        object-position: 75% center !important; /* Fokus rechts */
     }
 }
