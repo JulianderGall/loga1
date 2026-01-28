@@ -1188,55 +1188,61 @@ div[id^="LG_FFC_"] {
     border-color: #ffffff !important;
 }
 /* ==========================================
-   MOBILE KARUSSELL (SWIPER)
-   Macht aus der Liste auf dem Handy einen Slider.
+   MOBILE KARUSSELL (SWIPER - FIX)
+   Icons werden nicht mehr abgeschnitten.
 ========================================== */
 @media screen and (max-width: 800px) {
     
     /* 1. DER CONTAINER (Scroll-Bereich) */
     .skew-section.bg-yellow table.zebra-table tbody {
-        display: flex !important; /* Nebeneinander anordnen */
-        flex-wrap: nowrap !important; /* Nicht umbrechen! */
-        overflow-x: auto !important; /* Horizontales Scrollen an */
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: visible !important; /* Versuchen, vertikal nichts abzuschneiden */
         
-        /* Das Einrasten (Snapping) */
         scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch; /* Flüssiges Scrollen auf iOS */
+        -webkit-overflow-scrolling: touch;
         
-        /* Abstände */
         gap: 20px !important;
-        padding: 70px 20px 40px 20px !important; /* Oben viel Platz für die Icons! */
-        margin: 0 -20px !important; /* Zieht den Slider bis an den Rand */
         
-        /* Scrollbar Styling (Modern Browsers) */
+        /* FIX: Padding oben massiv erhöht (120px), 
+           damit die Icons (-85px) Platz haben! */
+        padding: 120px 20px 40px 20px !important; 
+        
+        margin: 0 -20px !important; 
+        
         scrollbar-width: thin;
         scrollbar-color: rgb(0, 119, 52) transparent;
     }
 
     /* 2. DIE KARTEN (Slides) */
     .skew-section.bg-yellow table.zebra-table tr {
-        /* Feste Breite pro Karte */
-        flex: 0 0 85% !important; /* Karte nimmt 85% des Bildschirms ein */
+        flex: 0 0 85% !important;
         width: 85% !important;
         max-width: 350px !important;
-        
-        /* Einrast-Punkt */
         scroll-snap-align: center;
         
-        /* Optik */
         margin-bottom: 0 !important;
         margin-right: 0 !important;
-        height: auto !important; /* Automatische Höhe */
+        height: auto !important;
         min-height: 250px !important;
+        
+        /* Wichtig: Überlauf sichtbar lassen */
+        overflow: visible !important;
     }
 
     /* 3. ICON ANPASSUNG FÜR SLIDER */
     .skew-section.bg-yellow table.zebra-table img.develey-icon {
-        margin-top: -85px !important; /* Muss im Slider etwas höher sitzen */
+        /* Zieht das Icon nach oben */
+        margin-top: -85px !important; 
         width: 100px !important;
+        
+        /* Stellt sicher, dass es über allem liegt */
+        position: relative !important;
+        z-index: 50 !important;
     }
     
-    /* Scrollbar für Chrome/Safari/Edge noch hübsch machen */
+    /* Scrollbar Styling */
     .skew-section.bg-yellow table.zebra-table tbody::-webkit-scrollbar {
         height: 6px;
     }
