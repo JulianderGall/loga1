@@ -1302,7 +1302,7 @@ div[id^="LG_FFC_"] {
     position: absolute !important;
     
     /* FIX: Startet genau an der Kante -> Nichts wird abgeschnitten! */
-    top: -4px !important;    
+    top: -8px !important;    
     left: 0 !important;   
     
     /* NEUE GRÖSSE: Noch mächtiger (ca. 2.5x so groß wie am Anfang) */
