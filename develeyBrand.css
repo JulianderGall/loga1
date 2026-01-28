@@ -541,6 +541,14 @@ ul {
 
 /* 2. FELDER AUSBLENDEN */
 
+#LG_FFC_8, label[for="LG_FFC_8"], /* Username */
+#LG_FFC_1,  label[for="LG_FFC_1"],  /* Bewerbungsquelle */
+
+tr:has(#LG_FFC_1),
+tr:has(#LG_FFC_8) {
+    display: none !important;
+}
+
 
 
 /* 3. TYPOGRAFIE (LABELS) */
