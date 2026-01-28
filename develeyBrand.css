@@ -1283,8 +1283,8 @@ div[id^="LG_FFC_"] {
     }
 }
 /* ==========================================
-   HEADER FIX (LOGO GROSS & BILD-FOKUS)
-   Logo deutlich größer, kein Abschneiden mehr.
+   HEADER FIX (LOGO RIESIG & KORRIGIERT)
+   Logo startet bündig oben (kein Abschneiden).
 ========================================== */
 
 /* 1. Container vorbereiten */
@@ -1292,29 +1292,31 @@ div[id^="LG_FFC_"] {
     position: relative !important;
     width: 100% !important;
     display: block !important;
-    /* WICHTIG: overflow MUSS sichtbar sein, damit das Logo ragen darf! */
-    overflow: visible !important;
+    /* overflow muss sichtbar sein, falls Schatten über den Rand ragen */
+    overflow: visible !important; 
     z-index: 1 !important;
 }
 
-/* 2. Das Logo Positionieren (Desktop - SEHR GROSS) */
+/* 2. Das Logo Positionieren (Desktop) */
 .develey-floating-logo {
     position: absolute !important;
-    /* Zieht es weit nach oben und links raus */
-    top: -50px !important;    
-    left: -30px !important;   
     
-    /* NEUE GRÖSSE: Mehr als verdoppelt! */
-    width: 450px !important; 
+    /* FIX: Startet genau an der Kante -> Nichts wird abgeschnitten! */
+    top: 0 !important;    
+    left: 0 !important;   
+    
+    /* NEUE GRÖSSE: Noch mächtiger (ca. 2.5x so groß wie am Anfang) */
+    width: 550px !important; 
+    max-width: 80% !important; /* Sicherheit, damit es nicht alles verdeckt */
     height: auto !important;
     
-    z-index: 100 !important; /* Liegt weit über allem */
+    z-index: 100 !important; 
     
-    /* Stärkerer Schatten für den "Schwebe-Effekt" */
+    /* Schatten für den 3D-Effekt */
     filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2)) !important;
 }
 
-/* 3. Das Header-Bild (Desktop Standard) */
+/* 3. Das Header-Bild (Hintergrund) */
 .header-bg {
     width: 100% !important;
     height: auto !important;
@@ -1329,17 +1331,18 @@ div[id^="LG_FFC_"] {
 ========================================== */
 @media screen and (max-width: 800px) {
     
-    /* A) Logo verkleinern (aber immer noch groß) */
+    /* A) Logo mobil anpassen */
     .develey-floating-logo {
-        width: 200px !important; /* War 140px */
-        top: -30px !important;
-        left: -20px !important;
+        /* Auch mobil deutlich größer */
+        width: 65% !important; 
+        top: 0 !important;
+        left: 0 !important;
     }
 
-    /* B) Bild-Fokus verschieben (Rechts auf das Gesicht) */
+    /* B) Bild-Fokus auf Gesicht (Rechts) */
     .header-bg {
-        height: 350px !important; /* Etwas höher für mehr Bild */
+        height: 350px !important; 
         object-fit: cover !important; 
-        object-position: 75% center !important; /* Fokus rechts */
+        object-position: 75% center !important; 
     }
 }
