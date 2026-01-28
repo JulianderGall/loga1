@@ -1254,3 +1254,31 @@ div[id^="LG_FFC_"] {
         border-radius: 10px;
     }
 }
+/* ==========================================
+   MOBILE HEADER: BILD-FOKUS
+   Verschiebt den Ausschnitt nach rechts.
+========================================== */
+@media screen and (max-width: 800px) {
+    
+    /* Wir zielen auf die typischen Klassen für Header-Bilder */
+    .header-image, 
+    .keyvisual, 
+    .banner,
+    div[class*="header"], /* Fängt alles was "header" im Namen hat */
+    .skew-section.first-overlap { 
+        
+        /* HIER EINSTELLEN:
+           center = Mitte (Standard)
+           right  = Ganz rechts
+           80%    = Fokus liegt bei 80% der Breite (also weit rechts)
+        */
+        background-position: 75% center !important; 
+    }
+
+    /* Falls das Bild ein echtes <img> Tag ist und kein Hintergrund */
+    .header-image img, 
+    .keyvisual img,
+    .banner img {
+        object-position: 75% center !important;
+    }
+}
