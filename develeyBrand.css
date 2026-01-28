@@ -389,100 +389,108 @@ ul {
     -webkit-text-stroke: 0 !important; /* Entfernt Outline falls vorhanden */
 }
 /* ==========================================
-   TRANSFORMATION: TABELLE ZU CARD-GRID
-   Ersetzt die Liste durch moderne Karten
+   BENEFITS GRID (FINAL UPDATE)
+   Macht aus der Tabelle moderne Cards
+   ohne Kreise, mit 3 Spalten.
 ========================================== */
 
-/* 1. Den Tabellen-Container auflösen und zum Grid machen */
-table.zebra-table, 
-table.zebra-table tbody {
-    display: flex !important;
-    flex-wrap: wrap !important;
+/* 1. DAS GRID (Der Container) */
+/* Wir wandeln den tbody der Tabelle in ein Grid um */
+.skew-section.bg-yellow table.zebra-table tbody {
+    display: grid !important;
+    /* 3 Spalten mit exakt gleicher Breite (1fr = 1 fraction) */
+    grid-template-columns: repeat(3, 1fr) !important; 
     gap: 30px !important; /* Abstand zwischen den Karten */
-    justify-content: center !important; /* Zentriert die Karten */
-    background: transparent !important;
-    box-shadow: none !important;
-    border: none !important;
-    padding: 0 !important;
-    margin-top: 20px !important;
+    width: 100% !important;
 }
 
-/* 2. Die einzelne Karte (ehemals Tabellenzeile) */
-table.zebra-table tr {
-    /* Layout der Karte */
+/* Fallback: Die Tabelle selbst muss sich wie ein Block verhalten */
+.skew-section.bg-yellow table.zebra-table {
+    display: block !important;
+    width: 100% !important;
+}
+
+
+/* 2. DIE KARTE (Die Tabellenzeile) */
+.skew-section.bg-yellow table.zebra-table tr {
     display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    text-align: center !important;
+    flex-direction: column !important; /* Icon oben, Text unten */
+    align-items: center !important;    /* Alles zentriert */
+    justify-content: flex-start !important;
     
-    /* Größe der Karte */
-    flex: 0 1 300px !important; /* Basisbreite 300px, darf schrumpfen */
-    margin-top: 30px !important; /* Platz nach oben für das Icon */
-    padding: 40px 20px 20px 20px !important; /* Oben viel Padding für Icon-Platz */
+    background-color: #ffffff !important; /* Weiße Karte */
+    border-radius: 15px !important;
+    padding: 30px 20px !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05) !important;
+    height: 100% !important; /* Damit alle gleich hoch sind */
+    box-sizing: border-box !important;
     
-    /* Karten-Look */
-    background-color: #ffffff !important;
-    border-radius: 15px !important; /* Abgerundete Ecken */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08) !important; /* Leichter Schatten */
-    position: relative !important; /* Wichtig für Icon-Positionierung */
-    border: none !important;
-    
-    /* Zebra-Streifen überschreiben */
-    background: #fff !important; 
+    /* Reset der Zebra-Streifen */
+    background-image: none !important; 
 }
 
-/* Überschreibt den Zebra-Effekt aus dem alten CSS sicher */
-table.zebra-table tr:nth-child(even),
-table.zebra-table tr:nth-child(odd) {
-    background-color: #ffffff !important;
-}
 
-/* 3. Die Zellen innerhalb der Karte aufräumen */
-table.zebra-table td {
+/* 3. DIE ZELLEN (Aufräumen) */
+.skew-section.bg-yellow table.zebra-table td {
     display: block !important;
     width: 100% !important;
     padding: 0 !important;
     border: none !important;
-    background: transparent !important;
+    text-align: center !important;
 }
 
-/* 4. DAS ICON (Das erste Feld) - Überlappend positionieren */
-table.zebra-table td:first-child {
-    position: absolute !important;
-    top: -30px !important; /* Schiebt das Icon zur Hälfte oben raus */
-    left: 50% !important;
-    transform: translateX(-50%) !important; /* Exakt mittig */
-    width: auto !important;
+
+/* 4. DAS ICON (Freigestellt mit Schatten) */
+.skew-section.bg-yellow table.zebra-table img.develey-icon {
+    /* Größe anpassen */
+    width: 80px !important; 
     height: auto !important;
-    overflow: visible !important;
-}
-
-/* Das Bild selbst stylen */
-table.zebra-table img.develey-icon {
-    width: 60px !important;  /* Feste Größe für Einheitlichkeit */
-    height: 60px !important;
-    object-fit: contain !important;
+    margin-bottom: 20px !important;
     
-    background-color: #ffffff !important; /* Weißer Hintergrund hinter Icon */
-    border-radius: 50% !important; /* Kreisrund */
-    padding: 10px !important; /* Etwas Luft im Kreis */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important; /* Eigener Schatten für Icon */
+    /* Runden Kreis entfernen */
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    
+    /* Der gewünschte Schlagschatten auf das Bild selbst */
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2)) !important;
 }
 
-/* 5. DER TEXT (Das zweite Feld) */
-table.zebra-table td:last-child {
-    margin-top: 10px !important;
-    font-size: 0.95rem !important;
+
+/* 5. DER TEXT (Größe angepasst) */
+.skew-section.bg-yellow table.zebra-table td:last-child {
+    font-family: "Montserrat", sans-serif !important;
+    /* Angepasst an deine restliche Typografie */
+    font-size: 1.25rem !important; 
     line-height: 1.5 !important;
     color: #333 !important;
 }
 
-/* 6. MOBILE ANPASSUNG */
+/* Fettgedrucktes im Benefit-Text hervorheben */
+.skew-section.bg-yellow table.zebra-table td:last-child strong {
+    color: rgb(0, 119, 52) !important; /* Develey Grün */
+}
+
+
+/* ==========================================
+   RESPONSIVE (Anpassung an Bildschirme)
+========================================== */
+
+/* Tablet (bis 1000px): 2 Spalten */
+@media screen and (max-width: 1000px) {
+    .skew-section.bg-yellow table.zebra-table tbody {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Handy (bis 600px): 1 Spalte */
 @media screen and (max-width: 600px) {
-    table.zebra-table tr {
-        flex: 0 1 100% !important; /* Auf Handy volle Breite */
-        width: 100% !important;
-        margin-bottom: 30px !important;
+    .skew-section.bg-yellow table.zebra-table tbody {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .skew-section.bg-yellow table.zebra-table tr {
+        margin-bottom: 0 !important; /* Gap regelt das jetzt */
     }
 }
 /* ==========================================
