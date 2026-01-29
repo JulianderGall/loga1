@@ -1396,3 +1396,83 @@ div[id^="LG_FFC_"] {
     padding: 0 20px !important;
     box-sizing: border-box !important;
 }
+/* ==========================================
+   HEADER HOVER EFFECT (SURPRISE!)
+   Gelber Overlay mit Text bei Mauszeiger.
+========================================== */
+
+/* 1. Wrapper interaktiv machen */
+.header-wrapper {
+    cursor: help !important; /* Zeigt ein "?" oder Hand-Symbol an */
+}
+
+/* 2. Der Overlay Container (Unsichtbar am Anfang) */
+.header-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    
+    /* Develey Gelb mit leichter Transparenz (95%) */
+    background-color: rgba(255, 200, 46, 0.96) !important; 
+    
+    /* Flexbox zum Zentrieren des Textes */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    opacity: 0 !important; /* Unsichtbar */
+    transition: opacity 0.4s ease-in-out !important; /* Weicher Übergang */
+    
+    /* Z-Index: Über dem Bild (0), aber UNTER dem Logo (100) */
+    z-index: 50 !important; 
+    
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+}
+
+/* 3. Der Inhalt (Text Styling) */
+.overlay-content {
+    max-width: 800px !important; /* Damit die Zeilen nicht zu lang werden */
+    color: #000000 !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.overlay-content p {
+    font-size: 1.25rem !important; /* Gut lesbar */
+    line-height: 1.6 !important;
+    color: #000 !important;
+}
+
+
+/* 4. HOVER-EFFEKT (Desktop) */
+/* Wenn man über den Wrapper fährt, wird das Overlay sichtbar */
+.header-wrapper:hover .header-overlay {
+    opacity: 1 !important;
+}
+
+
+/* 5. MOBILE ANPASSUNG (Touch) */
+@media screen and (max-width: 800px) {
+    
+    /* Schrift etwas kleiner auf dem Handy */
+    .overlay-content p {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* Logo muss auf dem Handy vielleicht überdeckt werden, 
+       damit der Text Platz hat? 
+       Falls ja: z-index auf 101 setzen. 
+       Hier lassen wir es erstmal unter dem Logo (z-index 50). */
+    
+    /* TAP EFFECT: Auf Handy gibt es keinen Hover.
+       ":active" reagiert auf das Tippen/Halten des Fingers. */
+    .header-wrapper:active .header-overlay,
+    .header-wrapper:focus-within .header-overlay {
+        opacity: 1 !important;
+    }
+}
