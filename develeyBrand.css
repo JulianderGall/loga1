@@ -1307,7 +1307,7 @@ div[id^="LG_FFC_"] {
     left: 0 !important;   
     
     /* NEUE GRÖSSE: Noch mächtiger (ca. 2.5x so groß wie am Anfang) */
-    width: 425px !important; 
+    width: 350px !important; 
     max-width: 40% !important; /* Sicherheit, damit es nicht alles verdeckt */
     height: auto !important;
     
@@ -1336,7 +1336,7 @@ div[id^="LG_FFC_"] {
     .develey-floating-logo {
         /* Auch mobil deutlich größer */
         width: 65% !important; 
-        top: 0 !important;
+        top: -8 !important;
         left: 0 !important;
     }
 
@@ -1455,24 +1455,77 @@ div[id^="LG_FFC_"] {
 }
 
 
-/* 5. MOBILE ANPASSUNG (Touch) */
+/* ==========================================
+   MOBILE ANPASSUNG (Touch & Layout Fixes)
+========================================== */
 @media screen and (max-width: 800px) {
     
-    /* Schrift etwas kleiner auf dem Handy */
-    .overlay-content p {
-        font-size: 1rem !important;
+    /* --- HEADER BILD & LOGO --- */
+    
+    /* A) Logo mobil anpassen */
+    .develey-floating-logo {
+        width: 70% !important;
+        max-width: 280px !important; /* Etwas begrenzen */
+        top: 0 !important;
+        left: 0 !important;
+    }
+
+    /* B) Bild-Fokus auf Gesicht (Rechts) */
+    .header-bg {
+        height: 400px !important; /* Mehr Höhe für Handy, damit Text Platz hat */
+        object-fit: cover !important; 
+        object-position: 75% center !important; 
+    }
+
+
+    /* --- SURPRISE OVERLAY (Gelbe Fläche) --- */
+
+    .header-overlay {
+        padding: 20px !important;
+        /* WICHTIG: Nicht mehr zentrieren, sondern oben anfangen */
+        justify-content: flex-start !important; 
+    }
+
+    /* WICHTIG: Der Text-Container im Overlay */
+    .overlay-content {
+        /* Schiebt den Text nach unten, unter das Logo */
+        margin-top: 130px !important; 
+    }
+
+    .header-overlay h3 {
+        font-size: 1.6rem !important;
+        margin-bottom: 10px !important;
+    }
+
+    .header-overlay p {
+        font-size: 0.9rem !important;
         line-height: 1.4 !important;
     }
-    
-    /* Logo muss auf dem Handy vielleicht überdeckt werden, 
-       damit der Text Platz hat? 
-       Falls ja: z-index auf 101 setzen. 
-       Hier lassen wir es erstmal unter dem Logo (z-index 50). */
-    
-    /* TAP EFFECT: Auf Handy gibt es keinen Hover.
-       ":active" reagiert auf das Tippen/Halten des Fingers. */
-    .header-wrapper:active .header-overlay,
-    .header-wrapper:focus-within .header-overlay {
+
+    /* Touch-Aktivierung für Handy */
+    .header-wrapper:active .header-overlay {
         opacity: 1 !important;
+    }
+
+
+    /* --- SONSTIGE MOBILE FIXES --- */
+    
+    /* Titel-Störer */
+    .skew-section.first-overlap h1 {
+        display: block !important;
+        width: 100% !important;
+        font-size: 1.8rem !important;
+        padding: 15px 20px !important;
+    }
+    
+    /* Upload-Felder untereinander */
+    .flat-section table td {
+        display: block !important;
+        width: 100% !important;
+        padding: 0 0 15px 0 !important;
+    }
+     .flat-section {
+        margin-top: -50px !important;
+        padding-top: 100px !important;
     }
 }
