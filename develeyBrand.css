@@ -1307,8 +1307,8 @@ div[id^="LG_FFC_"] {
     left: 0 !important;   
     
     /* NEUE GRÖSSE: Noch mächtiger (ca. 2.5x so groß wie am Anfang) */
-    width: 550px !important; 
-    max-width: 80% !important; /* Sicherheit, damit es nicht alles verdeckt */
+    width: 425px !important; 
+    max-width: 40% !important; /* Sicherheit, damit es nicht alles verdeckt */
     height: auto !important;
     
     z-index: 100 !important; 
