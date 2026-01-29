@@ -1486,3 +1486,86 @@ div[id^="LG_FFC_"] {
         opacity: 1 !important;
     }
 }
+/* ==========================================
+   IMAGE QUOTE OVERLAY (ZITAT IM FLIESSTEXT)
+   Gelbes Overlay für das Bild im Aufgaben-Teil.
+========================================== */
+
+/* 1. Der Wrapper (Der Auslöser) */
+.image-quote-wrapper {
+    cursor: help !important; /* Zeigt an, dass hier was passiert */
+    /* Wichtig: border-radius, damit das Gelb nicht eckig über das Bild ragt, 
+       falls das Bild abgerundet wäre (optional) */
+    border-radius: 4px !important; 
+}
+
+/* 2. Das Overlay (Standard: Unsichtbar) */
+.quote-overlay {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    
+    /* Das bekannte Develey Gelb, leicht transparent */
+    background-color: rgba(255, 200, 46, 0.96) !important;
+    
+    /* Flexbox zum Zentrieren des Textes */
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+    /* Animation */
+    opacity: 0 !important;
+    transition: opacity 0.3s ease-in-out !important;
+    z-index: 10 !important;
+    
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    text-align: center !important;
+}
+
+/* 3. Text-Styling im Overlay */
+.quote-text {
+    font-size: 1.1rem !important;
+    line-height: 1.5 !important;
+    font-style: italic !important; /* Kursiv für Zitat-Look */
+    color: #000 !important;
+    margin-bottom: 15px !important;
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.quote-author {
+    font-size: 0.9rem !important;
+    font-weight: bold !important;
+    color: #000 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* 4. DER TRIGGER (Maus drüber -> Sichtbar) */
+.image-quote-wrapper:hover .quote-overlay {
+    opacity: 1 !important;
+}
+
+
+/* ==========================================
+   MOBILE ANPASSUNG (Touch für Zitat)
+========================================== */
+@media screen and (max-width: 800px) {
+    /* Schrift etwas kleiner, da das Bild mobil schmaler ist */
+    .quote-text {
+        font-size: 1rem !important; 
+        line-height: 1.4 !important;
+    }
+    
+    .quote-overlay {
+         padding: 15px !important;
+    }
+
+    /* Touch-Aktivierung (Tippen & Halten) */
+    .image-quote-wrapper:active .quote-overlay {
+        opacity: 1 !important;
+    }
+}
