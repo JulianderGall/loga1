@@ -1569,3 +1569,211 @@ div[id^="LG_FFC_"] {
         opacity: 1 !important;
     }
 }
+/* ==========================================
+   DEVELEY INFO SLIDER (TABELLEN-BASIS)
+   Verwandelt die Tabelle in einen horizontalen Slider
+========================================== */
+
+/* 1. DER SLIDER-CONTAINER (TBODY) */
+table.develey-info-slider,
+table.develey-info-slider tbody {
+    display: flex !important;
+    /* Ermöglicht horizontales Scrollen */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important; /* Rastet beim Scrollen ein */
+    
+    width: 100% !important;
+    max-width: 100% !important;
+    
+    /* Abstände zwischen den Slides */
+    gap: 40px !important;
+    
+    /* Platz für Schatten und Überlappungen */
+    padding: 40px 20px 60px 20px !important;
+    box-sizing: border-box !important;
+    
+    /* Scrollbalken stylen */
+    scrollbar-width: thin;
+    scrollbar-color: rgb(0, 119, 52) transparent;
+}
+
+/* 2. DIE EINZELNE SLIDE (TR) */
+table.develey-info-slider tr {
+    /* Layout: Bild links, Text rechts */
+    display: flex !important;
+    align-items: center !important;
+    
+    /* Größe einer Slide: fast volle Breite auf Desktop */
+    flex: 0 0 90% !important; 
+    width: 90% !important;
+    max-width: 1000px !important;
+    
+    scroll-snap-align: center !important; /* Zentriert die Slide beim Stop */
+    
+    background: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+/* 3. BILD-SPALTE (TD LINKS) */
+table.develey-info-slider td:first-child {
+    display: block !important;
+    width: 55% !important; /* Bild ist etwas breiter */
+    padding: 0 !important;
+    border: none !important;
+    
+    /* WICHTIG: Überlappung ermöglichen */
+    position: relative !important;
+    z-index: 10 !important; /* Liegt ÜBER dem Text */
+    margin-right: -60px !important; /* Zieht das Bild in den Text rein */
+}
+
+/* Das Bild selbst */
+.slider-img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    border-radius: 15px !important;
+    
+    /* Der Develey-Schatten */
+    box-shadow: 15px 15px 0px rgb(255, 200, 46) !important;
+    transform: rotate(-1deg) !important;
+    transition: transform 0.4s ease !important;
+}
+
+/* Effekt: Bild dreht sich beim Hover über die Zeile */
+table.develey-info-slider tr:hover .slider-img {
+    transform: rotate(0deg) scale(1.02) !important;
+}
+
+/* 4. TEXT-SPALTE (TD RECHTS) */
+table.develey-info-slider td:last-child {
+    display: block !important;
+    width: 50% !important; /* Restbreite (55+50 > 100 wegen Overlap) */
+    padding: 0 !important;
+    border: none !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Die grüne Karte im TD */
+.slider-content {
+    background-color: rgb(0, 119, 52) !important;
+    color: #ffffff !important;
+    border-radius: 20px !important;
+    
+    /* Padding links extra groß wegen Überlappung */
+    padding: 50px 40px 50px 80px !important; 
+    
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.4s ease !important;
+    min-height: 250px !important;
+    
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+}
+
+/* HOVER auf der Zeile ändert die Karte */
+table.develey-info-slider tr:hover .slider-content {
+    background-color: rgb(0, 90, 40) !important; /* Dunkler */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
+    transform: translateX(10px) !important; /* Rutscht leicht nach rechts */
+}
+
+/* 5. TYPOGRAFIE & VERSTECKTER TEXT */
+
+/* Überschrift */
+.slider-content h2 {
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 2.2rem !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    margin: 0 0 10px 0 !important;
+    -webkit-text-stroke: 0 !important;
+}
+
+/* Der versteckte Text */
+.slider-hidden-text {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+    transition: all 0.5s ease !important;
+}
+
+.slider-hidden-text p {
+    color: #f0f0f0 !important;
+    font-size: 1.1rem !important;
+    margin-top: 15px !important;
+    margin-bottom: 0 !important;
+}
+
+/* HOVER: Text anzeigen */
+table.develey-info-slider tr:hover .slider-hidden-text {
+    max-height: 200px !important; /* Genug Platz geben */
+    opacity: 1 !important;
+}
+
+/* Der kleine Pfeil unten rechts */
+.slider-arrow {
+    font-size: 2rem !important;
+    position: absolute !important;
+    bottom: 20px !important;
+    right: 30px !important;
+    opacity: 0.6 !important;
+    color: #fff !important;
+    transition: transform 0.3s ease !important;
+}
+
+table.develey-info-slider tr:hover .slider-arrow {
+    opacity: 0 !important; /* Verschwindet wenn Text kommt */
+    transform: translateX(20px) !important;
+}
+
+
+/* ==========================================
+   MOBILE ANPASSUNG (Responsive)
+========================================== */
+@media screen and (max-width: 900px) {
+    
+    /* Slides werden schmaler, damit man sieht, dass es weitergeht */
+    table.develey-info-slider tr {
+        flex: 0 0 90% !important;
+        flex-direction: column !important; /* Untereinander */
+        margin-right: 0 !important;
+    }
+    
+    /* Bild volle Breite */
+    table.develey-info-slider td:first-child {
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: -40px !important; /* Rutscht von oben rein */
+        padding: 0 20px !important; /* Seitenabstand */
+        box-sizing: border-box !important;
+    }
+    
+    /* Schatten etwas kleiner mobil */
+    .slider-img {
+        box-shadow: 10px 10px 0px rgb(255, 200, 46) !important;
+    }
+    
+    /* Text Container */
+    table.develey-info-slider td:last-child {
+        width: 100% !important;
+    }
+    
+    .slider-content {
+        padding: 60px 30px 30px 30px !important; /* Oben mehr Platz für Bild */
+        min-height: auto !important;
+    }
+    
+    /* Mobil: Text vielleicht immer anzeigen? 
+       Falls ja, einfach diesen Block einkommentieren: */
+    /*
+    .slider-hidden-text {
+        max-height: none !important;
+        opacity: 1 !important;
+    }
+    */
+}
