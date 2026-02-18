@@ -1570,8 +1570,8 @@ div[id^="LG_FFC_"] {
     }
 }
 /* ==========================================
-   DEVELEY INFO SLIDER (2 KARTEN ANSICHT)
-   Zeigt auf Desktop 2 Karten nebeneinander.
+   DEVELEY INFO SLIDER (AUTO-GROW FIX)
+   Karte wächst mit dem Text mit.
 ========================================== */
 
 /* 1. CONTAINER */
@@ -1582,10 +1582,7 @@ table.develey-info-slider tbody {
     scroll-snap-type: x mandatory !important;
     width: 100% !important;
     max-width: 100% !important;
-    
-    /* Abstand zwischen den Karten */
-    gap: 30px !important; 
-    
+    gap: 30px !important;
     padding: 30px 20px 50px 20px !important;
     box-sizing: border-box !important;
     
@@ -1597,27 +1594,22 @@ table.develey-info-slider tbody {
 table.develey-info-slider tr {
     display: flex !important;
     align-items: center !important;
-    
-    /* --- HIER IST DIE ÄNDERUNG FÜR 2 KARTEN --- */
-    /* Wir nehmen 50% der Breite minus die Hälfte des Abstands (15px) */
+    /* 2 Karten pro Zeile: 50% minus halber Abstand */
     flex: 0 0 calc(50% - 15px) !important; 
     width: calc(50% - 15px) !important;
-    /* ------------------------------------------ */
     
-    max-width: none !important; /* Begrenzung aufheben */
-    
-    /* 'start' sorgt dafür, dass die linke Karte bündig am Rand einrastet */
-    scroll-snap-align: start !important; 
-    
+    scroll-snap-align: start !important;
     background: transparent !important;
     border: none !important;
     margin: 0 !important;
+    
+    /* WICHTIG: Damit die Karte nach unten wachsen darf */
+    height: auto !important; 
 }
 
 /* 3. BILD (Links) */
 table.develey-info-slider td:first-child {
     display: block !important;
-    /* Bild kompakt halten */
     width: auto !important; 
     max-width: 220px !important; 
     min-width: 180px !important;
@@ -1659,11 +1651,12 @@ table.develey-info-slider td:last-child {
     color: #ffffff !important;
     border-radius: 15px !important;
     
-    /* Kompaktes Padding */
     padding: 30px 30px 30px 50px !important; 
     
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
     transition: all 0.4s ease !important;
+    
+    /* Mindesthöhe für den Start, aber darf wachsen (height: auto ist Standard) */
     min-height: 180px !important; 
     
     display: flex !important;
@@ -1676,13 +1669,13 @@ table.develey-info-slider tr:hover .slider-content {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* 5. WECHSEL-EFFEKT (Überschrift vs Text) */
+/* 5. WECHSEL-EFFEKT */
 
 /* Überschrift */
 .slider-content h2 {
     font-family: "Open Sans", sans-serif !important;
     font-weight: 800 !important;
-    font-size: 2.8rem !important; /* Schön groß */
+    font-size: 2.8rem !important; 
     line-height: 1.1 !important;
     color: #ffffff !important;
     margin: 0 !important;
@@ -1702,6 +1695,7 @@ table.develey-info-slider tr:hover .slider-content h2 {
 
 /* Text Container */
 .slider-hidden-text {
+    /* Startzustand: Versteckt */
     max-height: 0 !important;
     opacity: 0 !important;
     overflow: hidden !important;
@@ -1726,9 +1720,10 @@ table.develey-info-slider tr:hover .slider-content h2 {
     text-decoration: none !important;
 }
 
-/* Hover: Text da */
+/* Hover: Text da & Karte wächst */
 table.develey-info-slider tr:hover .slider-hidden-text {
-    max-height: 200px !important;
+    /* HIER IST DER FIX: Groß genug setzen (z.B. 600px), damit alles reinpasst */
+    max-height: 600px !important; 
     opacity: 1 !important;
 }
 
@@ -1750,16 +1745,15 @@ table.develey-info-slider tr:hover .slider-arrow {
 
 
 /* ==========================================
-   MOBILE ANPASSUNG (Handy & Tablet)
+   MOBILE ANPASSUNG (Handy)
 ========================================== */
 @media screen and (max-width: 900px) {
     
-    /* AUF DEM HANDY: Nur 1 Karte anzeigen (Lesbarkeit!) */
     table.develey-info-slider tr {
-        flex: 0 0 90% !important; /* Wieder fast volle Breite */
+        flex: 0 0 90% !important; 
         width: 90% !important;
-        flex-direction: column !important; /* Untereinander stapeln */
-        scroll-snap-align: center !important; /* Mittig einrasten */
+        flex-direction: column !important; 
+        scroll-snap-align: center !important; 
     }
     
     /* Bild mobil */
