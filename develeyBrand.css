@@ -1570,11 +1570,11 @@ div[id^="LG_FFC_"] {
     }
 }
 /* ==========================================
-   DEVELEY INFO SLIDER (KOMPAKT & WECHSEL-EFFEKT)
-   Karte klein, Bild klein, Links weiß, Hover tauscht Inhalt.
+   DEVELEY INFO SLIDER (2 KARTEN ANSICHT)
+   Zeigt auf Desktop 2 Karten nebeneinander.
 ========================================== */
 
-/* 1. CONTAINER (Slider) */
+/* 1. CONTAINER */
 table.develey-info-slider,
 table.develey-info-slider tbody {
     display: flex !important;
@@ -1582,45 +1582,54 @@ table.develey-info-slider tbody {
     scroll-snap-type: x mandatory !important;
     width: 100% !important;
     max-width: 100% !important;
-    gap: 30px !important; /* Etwas weniger Abstand */
-    padding: 30px 20px 50px 20px !important; /* Weniger Padding allgemein */
+    
+    /* Abstand zwischen den Karten */
+    gap: 30px !important; 
+    
+    padding: 30px 20px 50px 20px !important;
     box-sizing: border-box !important;
     
     scrollbar-width: thin;
     scrollbar-color: rgb(0, 119, 52) transparent;
 }
 
-/* 2. SLIDE (Zeile) */
+/* 2. SLIDE (Die einzelne Karte) */
 table.develey-info-slider tr {
     display: flex !important;
     align-items: center !important;
-    flex: 0 0 90% !important; 
-    width: 90% !important;
-    max-width: 900px !important; /* Maximale Breite begrenzt */
-    scroll-snap-align: center !important;
+    
+    /* --- HIER IST DIE ÄNDERUNG FÜR 2 KARTEN --- */
+    /* Wir nehmen 50% der Breite minus die Hälfte des Abstands (15px) */
+    flex: 0 0 calc(50% - 15px) !important; 
+    width: calc(50% - 15px) !important;
+    /* ------------------------------------------ */
+    
+    max-width: none !important; /* Begrenzung aufheben */
+    
+    /* 'start' sorgt dafür, dass die linke Karte bündig am Rand einrastet */
+    scroll-snap-align: start !important; 
+    
     background: transparent !important;
     border: none !important;
     margin: 0 !important;
 }
 
-/* 3. BILD-BEREICH - DEUTLICH KLEINER */
+/* 3. BILD (Links) */
 table.develey-info-slider td:first-child {
     display: block !important;
-    
-    /* UPDATE: Bild viel kleiner (ca. 240px) */
+    /* Bild kompakt halten */
     width: auto !important; 
-    max-width: 240px !important; 
-    min-width: 200px !important;
+    max-width: 220px !important; 
+    min-width: 180px !important;
     flex-shrink: 0 !important;
     
     padding: 0 !important;
     border: none !important;
     position: relative !important;
     z-index: 10 !important;
-    margin-right: -30px !important; /* Zieht Bild in die Karte */
+    margin-right: -30px !important; /* Überlappung */
 }
 
-/* Das Bild selbst */
 .slider-img {
     width: 100% !important;
     height: auto !important;
@@ -1631,13 +1640,11 @@ table.develey-info-slider td:first-child {
     background: transparent !important;
     transform: none !important; 
     box-shadow: none !important;
-    
-    /* Sanfter Schatten um die Kontur */
     filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2)) !important;
     transition: transform 0.4s ease !important;
 }
 
-/* 4. TEXT-BEREICH (GRÜNE KARTE) - KOMPAKT */
+/* 4. TEXT-KARTE (Rechts) */
 table.develey-info-slider td:last-child {
     display: block !important;
     flex-grow: 1 !important;
@@ -1650,15 +1657,13 @@ table.develey-info-slider td:last-child {
 .slider-content {
     background-color: rgb(0, 119, 52) !important;
     color: #ffffff !important;
-    border-radius: 15px !important; /* Etwas feinere Ecken */
+    border-radius: 15px !important;
     
-    /* UPDATE: Weniger Innenabstand für kompakten Look */
+    /* Kompaktes Padding */
     padding: 30px 30px 30px 50px !important; 
     
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
     transition: all 0.4s ease !important;
-    
-    /* Feste Mindesthöhe verhindert Springen, aber hält es klein */
     min-height: 180px !important; 
     
     display: flex !important;
@@ -1666,76 +1671,68 @@ table.develey-info-slider td:last-child {
     justify-content: center !important;
 }
 
-/* Hover-Effekt Karte: Farbe ändert sich */
 table.develey-info-slider tr:hover .slider-content {
     background-color: rgb(0, 90, 40) !important;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* 5. TYPOGRAFIE & WECHSEL-EFFEKT */
+/* 5. WECHSEL-EFFEKT (Überschrift vs Text) */
 
-/* ÜBERSCHRIFT (Wird beim Hover ausgeblendet) */
+/* Überschrift */
 .slider-content h2 {
     font-family: "Open Sans", sans-serif !important;
     font-weight: 800 !important;
-    
-    /* UPDATE: Größere Schrift */
-    font-size: 2.8rem !important; 
+    font-size: 2.8rem !important; /* Schön groß */
     line-height: 1.1 !important;
-    
     color: #ffffff !important;
     margin: 0 !important;
     
-    /* Animation für das Ausblenden */
     opacity: 1 !important;
-    max-height: 150px !important; /* Platzhalter */
+    max-height: 150px !important;
     overflow: hidden !important;
     transition: all 0.4s ease !important;
 }
 
-/* HOVER: Überschrift verschwindet */
+/* Hover: Überschrift weg */
 table.develey-info-slider tr:hover .slider-content h2 {
     opacity: 0 !important;
     max-height: 0 !important;
     margin-bottom: 0 !important;
 }
 
-/* TEXT (Erscheint beim Hover) */
+/* Text Container */
 .slider-hidden-text {
     max-height: 0 !important;
     opacity: 0 !important;
     overflow: hidden !important;
-    transition: all 0.5s ease 0.1s !important; /* 0.1s Verzögerung */
+    transition: all 0.5s ease 0.1s !important;
 }
 
 .slider-hidden-text p {
-    color: #ffffff !important; /* Reines Weiß für besten Kontrast */
+    color: #ffffff !important;
     font-size: 1.15rem !important;
     line-height: 1.5 !important;
     margin: 0 !important;
 }
 
-/* UPDATE: Links im Text weiß & fett */
+/* LINKS: WEISS & FETT */
 .slider-hidden-text a {
     color: #ffffff !important;
-    font-weight: 800 !important; /* Sehr fett */
+    font-weight: 800 !important;
     text-decoration: underline !important;
-    text-decoration-thickness: 2px !important;
 }
-
 .slider-hidden-text a:hover {
-    color: rgb(255, 200, 46) !important; /* Develey Gelb beim Hover über Link */
+    color: rgb(255, 200, 46) !important;
     text-decoration: none !important;
 }
 
-/* HOVER: Text erscheint */
+/* Hover: Text da */
 table.develey-info-slider tr:hover .slider-hidden-text {
     max-height: 200px !important;
     opacity: 1 !important;
 }
 
-
-/* PFEIL (Indikator) */
+/* Pfeil */
 .slider-arrow {
     font-size: 2rem !important;
     position: absolute !important;
@@ -1746,7 +1743,6 @@ table.develey-info-slider tr:hover .slider-hidden-text {
     transition: all 0.3s ease !important;
 }
 
-/* Pfeil verschwindet beim Hover, da Text Platz braucht */
 table.develey-info-slider tr:hover .slider-arrow {
     opacity: 0 !important;
     transform: translateX(10px);
@@ -1754,17 +1750,22 @@ table.develey-info-slider tr:hover .slider-arrow {
 
 
 /* ==========================================
-   MOBILE ANPASSUNG
+   MOBILE ANPASSUNG (Handy & Tablet)
 ========================================== */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
+    
+    /* AUF DEM HANDY: Nur 1 Karte anzeigen (Lesbarkeit!) */
     table.develey-info-slider tr {
-        flex-direction: column !important;
+        flex: 0 0 90% !important; /* Wieder fast volle Breite */
+        width: 90% !important;
+        flex-direction: column !important; /* Untereinander stapeln */
+        scroll-snap-align: center !important; /* Mittig einrasten */
     }
     
-    /* Bild mobil oben mittig */
+    /* Bild mobil */
     table.develey-info-slider td:first-child {
         width: 100% !important;
-        max-width: 200px !important; /* Noch kleiner am Handy */
+        max-width: 180px !important;
         margin: 0 auto -30px auto !important;
     }
     
@@ -1776,10 +1777,8 @@ table.develey-info-slider tr:hover .slider-arrow {
     .slider-content {
         padding: 50px 20px 30px 20px !important;
         text-align: center !important;
-        min-height: auto !important;
     }
     
-    /* Überschrift mobil etwas kleiner */
     .slider-content h2 {
         font-size: 2rem !important;
     }
