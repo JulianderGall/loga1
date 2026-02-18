@@ -1570,11 +1570,11 @@ div[id^="LG_FFC_"] {
     }
 }
 /* ==========================================
-   DEVELEY INFO SLIDER (UPDATE: EIGENE BILD-KONTUR)
-   Kleineres Bild, kein CSS-Rahmen, leichter Schatten
+   DEVELEY INFO SLIDER (KOMPAKT & WECHSEL-EFFEKT)
+   Karte klein, Bild klein, Links weiß, Hover tauscht Inhalt.
 ========================================== */
 
-/* 1. DER SLIDER-CONTAINER (TBODY) */
+/* 1. CONTAINER (Slider) */
 table.develey-info-slider,
 table.develey-info-slider tbody {
     display: flex !important;
@@ -1582,178 +1582,205 @@ table.develey-info-slider tbody {
     scroll-snap-type: x mandatory !important;
     width: 100% !important;
     max-width: 100% !important;
-    gap: 40px !important;
-    padding: 40px 20px 60px 20px !important;
+    gap: 30px !important; /* Etwas weniger Abstand */
+    padding: 30px 20px 50px 20px !important; /* Weniger Padding allgemein */
     box-sizing: border-box !important;
     
-    /* Scrollbar Styling */
     scrollbar-width: thin;
     scrollbar-color: rgb(0, 119, 52) transparent;
 }
 
-/* 2. DIE EINZELNE SLIDE (TR) */
+/* 2. SLIDE (Zeile) */
 table.develey-info-slider tr {
     display: flex !important;
     align-items: center !important;
-    /* Slide-Breite */
     flex: 0 0 90% !important; 
     width: 90% !important;
-    max-width: 1000px !important;
+    max-width: 900px !important; /* Maximale Breite begrenzt */
     scroll-snap-align: center !important;
     background: transparent !important;
     border: none !important;
     margin: 0 !important;
 }
 
-/* 3. BILD-SPALTE (TD LINKS) - JETZT KLEINER */
+/* 3. BILD-BEREICH - DEUTLICH KLEINER */
 table.develey-info-slider td:first-child {
     display: block !important;
     
-    /* HIER DIE ÄNDERUNG: Feste Maximalbreite statt % */
+    /* UPDATE: Bild viel kleiner (ca. 240px) */
     width: auto !important; 
-    max-width: 320px !important; /* Begrenzt die Bildgröße deutlich */
-    flex-shrink: 0 !important;   /* Verhindert Zusammenquetschen */
+    max-width: 240px !important; 
+    min-width: 200px !important;
+    flex-shrink: 0 !important;
     
     padding: 0 !important;
     border: none !important;
     position: relative !important;
     z-index: 10 !important;
-    
-    /* Zieht das Bild immer noch leicht über den Text */
-    margin-right: -40px !important; 
+    margin-right: -30px !important; /* Zieht Bild in die Karte */
 }
 
-/* Das Bild selbst (Clean) */
+/* Das Bild selbst */
 .slider-img {
     width: 100% !important;
     height: auto !important;
     display: block !important;
-    
-    /* RAHMEN & EFFEKTE ENTFERNT (Da im Bild enthalten) */
     border: none !important;
     border-radius: 0 !important; 
     padding: 0 !important;
     background: transparent !important;
-    transform: none !important; /* Keine Drehung mehr */
-    box-shadow: none !important; /* Kein gelber Block mehr */
+    transform: none !important; 
+    box-shadow: none !important;
     
-    /* NEU: Weicher Schlagschatten (folgt der Bildform/Transparenz) */
-    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.25)) !important;
-    
+    /* Sanfter Schatten um die Kontur */
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2)) !important;
     transition: transform 0.4s ease !important;
 }
 
-/* Kleiner Zoom-Effekt beim Hover bleibt (optional) */
-table.develey-info-slider tr:hover .slider-img {
-    transform: scale(1.03) !important;
-}
-
-/* 4. TEXT-SPALTE (TD RECHTS) */
+/* 4. TEXT-BEREICH (GRÜNE KARTE) - KOMPAKT */
 table.develey-info-slider td:last-child {
     display: block !important;
-    flex-grow: 1 !important; /* Nimmt den restlichen Platz */
+    flex-grow: 1 !important;
     padding: 0 !important;
     border: none !important;
     position: relative !important;
     z-index: 1 !important;
 }
 
-/* Die grüne Karte */
 .slider-content {
     background-color: rgb(0, 119, 52) !important;
     color: #ffffff !important;
-    border-radius: 20px !important;
+    border-radius: 15px !important; /* Etwas feinere Ecken */
     
-    /* Padding links angepasst an kleineres Bild */
-    padding: 50px 40px 50px 60px !important; 
+    /* UPDATE: Weniger Innenabstand für kompakten Look */
+    padding: 30px 30px 30px 50px !important; 
     
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
     transition: all 0.4s ease !important;
-    min-height: 250px !important;
+    
+    /* Feste Mindesthöhe verhindert Springen, aber hält es klein */
+    min-height: 180px !important; 
     
     display: flex !important;
     flex-direction: column !important;
     justify-content: center !important;
 }
 
-/* Hover-Effekt Karte */
+/* Hover-Effekt Karte: Farbe ändert sich */
 table.develey-info-slider tr:hover .slider-content {
     background-color: rgb(0, 90, 40) !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
-    transform: translateX(10px) !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* 5. TYPOGRAFIE */
+/* 5. TYPOGRAFIE & WECHSEL-EFFEKT */
+
+/* ÜBERSCHRIFT (Wird beim Hover ausgeblendet) */
 .slider-content h2 {
     font-family: "Open Sans", sans-serif !important;
     font-weight: 800 !important;
-    font-size: 2.2rem !important;
-    line-height: 1.2 !important;
+    
+    /* UPDATE: Größere Schrift */
+    font-size: 2.8rem !important; 
+    line-height: 1.1 !important;
+    
     color: #ffffff !important;
-    margin: 0 0 10px 0 !important;
-    -webkit-text-stroke: 0 !important;
+    margin: 0 !important;
+    
+    /* Animation für das Ausblenden */
+    opacity: 1 !important;
+    max-height: 150px !important; /* Platzhalter */
+    overflow: hidden !important;
+    transition: all 0.4s ease !important;
 }
 
+/* HOVER: Überschrift verschwindet */
+table.develey-info-slider tr:hover .slider-content h2 {
+    opacity: 0 !important;
+    max-height: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* TEXT (Erscheint beim Hover) */
 .slider-hidden-text {
     max-height: 0 !important;
     opacity: 0 !important;
     overflow: hidden !important;
-    transition: all 0.5s ease !important;
+    transition: all 0.5s ease 0.1s !important; /* 0.1s Verzögerung */
 }
 
 .slider-hidden-text p {
-    color: #f0f0f0 !important;
-    font-size: 1.1rem !important;
-    margin-top: 15px !important;
-    margin-bottom: 0 !important;
+    color: #ffffff !important; /* Reines Weiß für besten Kontrast */
+    font-size: 1.15rem !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
 }
 
+/* UPDATE: Links im Text weiß & fett */
+.slider-hidden-text a {
+    color: #ffffff !important;
+    font-weight: 800 !important; /* Sehr fett */
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+}
+
+.slider-hidden-text a:hover {
+    color: rgb(255, 200, 46) !important; /* Develey Gelb beim Hover über Link */
+    text-decoration: none !important;
+}
+
+/* HOVER: Text erscheint */
 table.develey-info-slider tr:hover .slider-hidden-text {
     max-height: 200px !important;
     opacity: 1 !important;
 }
 
+
+/* PFEIL (Indikator) */
 .slider-arrow {
     font-size: 2rem !important;
     position: absolute !important;
-    bottom: 20px !important;
-    right: 30px !important;
-    opacity: 0.6 !important;
+    bottom: 15px !important;
+    right: 20px !important;
     color: #fff !important;
-    transition: transform 0.3s ease !important;
+    opacity: 0.5 !important;
+    transition: all 0.3s ease !important;
 }
 
+/* Pfeil verschwindet beim Hover, da Text Platz braucht */
 table.develey-info-slider tr:hover .slider-arrow {
     opacity: 0 !important;
-    transform: translateX(20px) !important;
+    transform: translateX(10px);
 }
 
 
 /* ==========================================
-   MOBILE ANPASSUNG (Responsive)
+   MOBILE ANPASSUNG
 ========================================== */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 800px) {
     table.develey-info-slider tr {
         flex-direction: column !important;
     }
     
+    /* Bild mobil oben mittig */
     table.develey-info-slider td:first-child {
         width: 100% !important;
-        max-width: 280px !important; /* Bild mobil nicht zu riesig */
-        margin: 0 auto -40px auto !important; /* Zentriert und rutscht unten rein */
+        max-width: 200px !important; /* Noch kleiner am Handy */
+        margin: 0 auto -30px auto !important;
     }
     
-    /* Mobil: Bild mittig */
     .slider-img {
         margin: 0 auto !important;
     }
     
-    table.develey-info-slider td:last-child {
-        width: 100% !important;
+    /* Karte mobil */
+    .slider-content {
+        padding: 50px 20px 30px 20px !important;
+        text-align: center !important;
+        min-height: auto !important;
     }
     
-    .slider-content {
-        padding: 60px 30px 30px 30px !important;
-        text-align: center !important; /* Mobil zentrierter Text sieht oft besser aus */
+    /* Überschrift mobil etwas kleiner */
+    .slider-content h2 {
+        font-size: 2rem !important;
     }
 }
