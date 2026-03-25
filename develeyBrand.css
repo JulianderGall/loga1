@@ -1778,15 +1778,16 @@ table.develey-info-slider tr:hover .slider-arrow {
     }
 }
 /* ==========================================
-   RECRUITING MESSAGE CARD (Verbessert: Schmaler & Linksbündig)
+   RECRUITING MESSAGE CARD (Final: Volle Breite & Abgerundet)
 ========================================== */
 .recruiting-message-card {
     width: 100% !important;
-    /* INITIAL: Schmaler Störer linksbündig */
-    max-width: 400px !important; 
-    margin: 60px 0 40px 0 !important; /* <--- 60px Abstand nach oben, linksbündig */
-    background-color: #ffffff !important;
-    border-radius: 20px !important;
+    /* INITIAL: Schmaler Störer linksbündig, leicht breiter als vorher */
+    max-width: 480px !important; 
+    margin: 60px 0 40px 0 !important; /* Abstand nach oben, linksbündig */
+    /* GANZE KARTE HELLGRÜN (Wie die vorherige Schräge) */
+    background-color: rgba(0, 119, 52, 0.05) !important; 
+    border-radius: 20px !important; /* <--- SICHERSTELLEN, DASS ALLE ECKEN ABGERUNDET SIND */
     box-shadow: 0 10px 25px rgba(0, 119, 52, 0.08) !important;
     overflow: visible !important; /* Wichtig für das überragende Foto */
     cursor: pointer !important;
@@ -1804,10 +1805,9 @@ table.develey-info-slider tr:hover .slider-arrow {
     /* Angepasst: Mehr padding-top, um das überragende Bild auszugleichen */
     padding: 40px 25px 20px 25px !important;
     position: relative !important;
-    /* Subtile diagonale Kante im Hintergrund */
-    background: linear-gradient(-165deg, rgba(0, 119, 52, 0.05) 45%, #ffffff 46%) !important;
-    border-top-left-radius: 20px !important;
-    border-top-right-radius: 20px !important;
+    /* GRÜNE SCHRÄGE ENTFERNT -> Gesamter Hintergrund hellgrün durch Container */
+    background: transparent !important; 
+    border-radius: 20px 20px 0 0 !important; /* Obere Ecken abrunden, untere scharf (für Body) */
 }
 
 .rmc-avatar {
@@ -1836,7 +1836,7 @@ table.develey-info-slider tr:hover .slider-arrow {
 .rmc-title {
     font-family: "Montserrat", sans-serif !important;
     font-weight: 700 !important;
-    font-size: 1.3rem !important; /* Etwas größer */
+    font-size: 1.3rem !important;
     color: rgb(0, 119, 52) !important;
     display: block !important;
     line-height: 1.1 !important;
@@ -1845,7 +1845,7 @@ table.develey-info-slider tr:hover .slider-arrow {
 .rmc-subtitle {
     font-family: "Montserrat", sans-serif !important;
     font-weight: 400 !important;
-    font-size: 1.1rem !important; /* Etwas größer */
+    font-size: 1.1rem !important;
     color: #666 !important;
     display: block !important;
     margin-top: 6px !important;
@@ -1871,7 +1871,7 @@ table.develey-info-slider tr:hover .slider-arrow {
     font-family: "Montserrat", sans-serif !important;
     font-size: 1rem !important;
     line-height: 1.6 !important;
-    color: #333 !important;
+    color: rgb(0, 119, 52) !important; /* Grün, um auf hellgrün lesbar zu sein */
     transition: all 0.5s ease-in-out !important;
     margin-top: -10px !important;
 }
@@ -1905,8 +1905,9 @@ table.develey-info-slider tr:hover .slider-arrow {
 .recruiting-message-card:focus-within {
     transform: translateY(-2px) !important;
     box-shadow: 0 15px 30px rgba(0, 119, 52, 0.12) !important;
-    /* AUFKLAPPEN: Auf volle Textbreite (600px) */
-    max-width: 600px !important; 
+    /* AUFKLAPPEN: Auf volle verfügbare Breite (100%) */
+    max-width: 100% !important; 
+    width: 100% !important;
 }
 
 .recruiting-message-card:hover .rmc-avatar,
@@ -1915,13 +1916,16 @@ table.develey-info-slider tr:hover .slider-arrow {
     transform: scale(1.03) !important;
 }
 
-/* Textbereich einblenden */
+/* Textbereich einblenden & Ecken abrunden */
 .recruiting-message-card:hover .rmc-body,
 .recruiting-message-card:focus .rmc-body,
 .recruiting-message-card:focus-within .rmc-body {
     max-height: 1000px !important;
     opacity: 1 !important;
     padding-top: 15px !important;
+    /* Textbereich weiß machen für bessere Lesbarkeit */
+    background: #ffffff !important;
+    border-radius: 0 0 20px 20px !important; /* <--- Untere Ecken abrunden */
 }
 
 /* Pfeil-Rotation */
@@ -1939,6 +1943,7 @@ table.develey-info-slider tr:hover .slider-arrow {
         margin-left: 0 !important;
         margin-right: 0 !important;
         left: 0 !important;
+        max-width: 100% !important;
     }
     .rmc-header {
         padding-top: 30px !important;
