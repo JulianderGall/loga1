@@ -1778,113 +1778,166 @@ table.develey-info-slider tr:hover .slider-arrow {
     }
 }
 /* ==========================================
-   RECRUITING MESSAGE BOX (Ausklappbar)
+   RECRUITING MESSAGE CARD (Modern & Integriert)
 ========================================== */
-.recruiting-message-box {
+.recruiting-message-card {
     width: 100% !important;
-    max-width: 600px !important;
-    margin: 10px 0 40px 0 !important; /* Abstand nach oben und unten */
+    max-width: 600px !important; /* Passt sich dem Textcontainer an */
+    margin: 30px auto 40px auto !important; /* Mehr Platz nach oben für das Foto */
     background-color: #ffffff !important;
-    border: 2px solid rgb(0, 119, 52) !important; /* Develey Grün */
-    border-radius: 40px !important; /* Runde Ecken wie eine Pille */
-    overflow: hidden !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 119, 52, 0.08) !important;
+    overflow: visible !important; /* Wichtig für das überragende Foto */
     cursor: pointer !important;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
-    outline: none !important; /* Entfernt Standard-Rahmen beim Klicken */
+    transition: all 0.4s ease-out !important;
+    outline: none !important;
+    position: relative !important;
+    text-align: left !important;
 }
 
-.rm-header {
+.rmc-header {
     display: flex !important;
     align-items: center !important;
-    padding: 5px 20px 5px 5px !important; /* Asymmetrisch, damit das Bild links bündig ist */
+    padding: 20px 25px !important;
+    position: relative !important;
+    /* Subtile diagonale Kante im Hintergrund */
+    background: linear-gradient(-165deg, rgba(0, 119, 52, 0.05) 45%, #ffffff 46%) !important;
+    border-top-left-radius: 20px !important;
+    border-top-right-radius: 20px !important;
 }
 
-.rm-avatar {
-    width: 60px !important;
-    height: 60px !important;
+.rmc-avatar {
+    width: 120px !important; /* Deutlich größer */
+    height: 120px !important;
     border-radius: 50% !important;
     object-fit: cover !important;
-    border: 2px solid #ffffff !important; 
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
-    flex-shrink: 0 !important;
-}
-
-.rm-title-wrap {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-    width: 100% !important;
-    padding-left: 15px !important;
-}
-
-.rm-title {
-    font-family: "Montserrat", sans-serif !important;
-    font-weight: 700 !important;
-    font-size: 1.1rem !important;
-    color: rgb(0, 119, 52) !important; 
-}
-
-.rm-icon {
-    color: rgb(0, 119, 52) !important;
-    font-size: 0.9rem !important;
+    position: absolute !important;
+    top: -40px !important; /* Ragt nach oben über */
+    left: 20px !important;
+    border: 4px solid #ffffff !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
     transition: transform 0.3s ease !important;
 }
 
-/* Der Textbereich (Standard: unsichtbar und Höhe 0) */
-.rm-body {
+.rmc-header-text {
+    margin-left: 155px !important; /* Platz für das große Foto */
+    flex-grow: 1 !important;
+}
+
+.rmc-title {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.2rem !important;
+    color: rgb(0, 119, 52) !important;
+    display: block !important;
+    line-height: 1.2 !important;
+}
+
+.rmc-subtitle {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 1rem !important;
+    color: #666 !important;
+    display: block !important;
+    margin-top: 4px !important;
+}
+
+.rmc-toggle-icon {
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: rgb(0, 119, 52) !important;
+    font-size: 1rem !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Der Textbereich (Auf volle Breite ausgeklappt) */
+.rmc-body {
     max-height: 0 !important;
     opacity: 0 !important;
-    padding: 0 25px !important;
-    margin-left: 65px !important; /* Schön eingerückt unter dem Text, nicht unter dem Bild */
+    overflow: hidden !important;
+    padding: 0 30px !important; /* Gleiche Breite wie der Rest */
     font-family: "Montserrat", sans-serif !important;
     font-size: 1rem !important;
-    line-height: 1.5 !important;
+    line-height: 1.6 !important;
     color: #333 !important;
-    transition: all 0.4s ease !important;
+    transition: all 0.4s ease-in-out !important;
+    margin-top: -10px !important; /* Passt sich an */
 }
 
-.rm-body p {
-    margin-bottom: 15px !important;
+.rmc-body p {
+    margin-bottom: 18px !important;
 }
 
-.rm-body strong {
+.rmc-body strong {
     color: rgb(0, 119, 52) !important;
 }
 
-/* === INTERAKTION: KLICK ODER HOVER === */
-.recruiting-message-box:hover,
-.recruiting-message-box:focus,
-.recruiting-message-box:focus-within {
-    border-radius: 20px !important; /* Wird etwas eckiger, wenn sie sich öffnet */
-    box-shadow: 0 10px 25px rgba(0, 119, 52, 0.15) !important;
+/* Schließen-Link */
+.rmc-close-link {
+    display: block !important;
+    text-align: right !important;
+    color: rgb(0, 119, 52) !important;
+    text-decoration: none !important;
+    font-weight: 700 !important;
+    margin-bottom: 25px !important;
+    transition: opacity 0.3s ease !important;
 }
 
-.recruiting-message-box:hover .rm-body,
-.recruiting-message-box:focus .rm-body,
-.recruiting-message-box:focus-within .rm-body {
-    max-height: 800px !important; /* Gibt genug Platz zum Aufklappen */
+.rmc-close-link:hover {
+    text-decoration: underline !important;
+}
+
+/* === INTERAKTION: KLICK/HOVER === */
+.recruiting-message-card:hover,
+.recruiting-message-card:focus,
+.recruiting-message-card:focus-within {
+    transform: translateY(-2px) !important; /* Subtiler Hover-Effekt */
+    box-shadow: 0 15px 30px rgba(0, 119, 52, 0.12) !important;
+}
+
+.recruiting-message-card:hover .rmc-avatar,
+.recruiting-message-card:focus .rmc-avatar,
+.recruiting-message-card:focus-within .rmc-avatar {
+    transform: scale(1.02) !important; /* Foto vergrößert sich subtil */
+}
+
+/* Aufklappen */
+.recruiting-message-card:hover .rmc-body,
+.recruiting-message-card:focus .rmc-body,
+.recruiting-message-card:focus-within .rmc-body {
+    max-height: 1000px !important; /* Groß genug für den Text */
     opacity: 1 !important;
-    padding-bottom: 20px !important;
-    padding-top: 10px !important;
+    padding-top: 15px !important;
 }
 
-.recruiting-message-box:hover .rm-icon,
-.recruiting-message-box:focus .rm-icon,
-.recruiting-message-box:focus-within .rm-icon {
-    transform: rotate(180deg) !important; /* Pfeil dreht sich nach oben */
+/* Pfeil-Rotation */
+.recruiting-message-card:hover .rmc-icon,
+.recruiting-message-card:focus .rmc-icon,
+.recruiting-message-card:focus-within .rmc-icon {
+    transform: rotate(180deg) !important;
+    display: inline-block !important; /* Wichtig für die Drehung */
 }
 
 /* === MOBILE ANPASSUNG === */
-@media screen and (max-width: 1000px) {
-    .recruiting-message-box {
-        border-radius: 30px !important;
+@media screen and (max-width: 600px) {
+    .recruiting-message-card {
+        margin-top: 50px !important;
+        max-width: 100% !important;
     }
-    .rm-body {
-        margin-left: 0 !important; /* Auf dem Handy die volle Breite für Text nutzen */
+    .rmc-avatar {
+        width: 100px !important;
+        height: 100px !important;
+        left: 15px !important;
+    }
+    .rmc-header-text {
+        margin-left: 125px !important;
+    }
+    .rmc-title {
+        font-size: 1.1rem !important;
+    }
+    .rmc-body {
         padding: 0 20px !important;
-    }
-    .rm-title {
-        font-size: 1rem !important;
     }
 }
