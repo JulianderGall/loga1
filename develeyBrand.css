@@ -1784,56 +1784,127 @@ table.develey-info-slider tr:hover .slider-arrow {
         font-size: 2rem !important;
     }
 }
+/* ==================================================
+   DEVELEY BRANDING STYLESHEET (Finalized Version)
+   Contains global mobile font reduction and 
+   the modernized recruiting message card.
+================================================== */
+
+/* --------------------------------------------------
+   GLOBAL STYLES & TYPOGRAPHY
+-------------------------------------------------- */
+body, .BW-WebPositionPage {
+    font-family: "Open Sans", sans-serif !important;
+    font-size: 1.4rem !important; /* Large desktop font */
+    line-height: 1.7 !important;
+    color: #000000 !important;
+}
+
+h1, .BW-WebPositionPage h1 {
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: bold !important;
+    font-size: 50px !important;
+    line-height: 1.2 !important;
+    color: rgb(0, 119, 52) !important;
+    margin-top: 15px !important;
+    -webkit-text-stroke: 1.5px !important; /* Fine green outline for better readability */
+}
+
+h2, .BW-WebPositionPage h2 {
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: bold !important;
+    font-size: 40px !important;
+    line-height: 1.3 !important;
+    color: #000000 !important;
+    margin-bottom: 25px !important;
+    -webkit-text-stroke: 1px !important;
+}
+
+strong {
+    color: rgb(0, 119, 52) !important;
+}
+
+.skew-section.bg-white {
+    padding: 60px 0 !important;
+}
+
+/* --------------------------------------------------
+   MOBILE FIXES (Global reduction for smartphone)
+-------------------------------------------------- */
+@media screen and (max-width: 800px) {
+    h1, .BW-WebPositionPage h1 {
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 40px !important;
+        line-height: 1.4 !important;
+        color: rgb(0, 119, 52) !important; 
+        -webkit-text-stroke: 0px !important;
+    }
+
+    h2, .BW-WebPositionPage h2 {
+        font-family: "Open Sans", sans-serif !important;
+        font-size: 35px !important;
+        line-height: 1.4 !important;
+        color: #000000 !important;
+    }
+    
+    .intro-text {
+        font-size: 1rem !important;
+    }
+
+    /* NEU: Fließtext und Listen auf dem Smartphone verkleinern */
+    p, li, 
+    .BW-WebPositionPage p, 
+    .BW-WebPositionPage li {
+        font-size: 1.15rem !important; /* Reduced for mobile readability */
+        line-height: 1.5 !important;
+    }
+}
+
 /* ==========================================
-   RECRUITING MESSAGE CARD (Final: Volle Breite & Abgerundet)
+   RECRUITING MESSAGE CARD (Finaled)
 ========================================== */
 .recruiting-message-card {
     width: 100% !important;
-    /* INITIAL: Schmaler Störer linksbündig, leicht breiter als vorher */
-    max-width: 480px !important; 
+    /* INITIAL: Schmaler Störer linksbündig, jetzt 600px breit */
+    max-width: 600px !important; 
     margin: 60px 0 40px 0 !important; /* Abstand nach oben, linksbündig */
-    /* GANZE KARTE HELLGRÜN (Wie die vorherige Schräge) */
-    background-color: rgba(0, 119, 52, 0.05) !important; 
-    border-radius: 20px !important; /* <--- SICHERSTELLEN, DASS ALLE ECKEN ABGERUNDET SIND */
+    /* GANZE KARTE DUNKELGRÜN (Wie von dir gewünscht) */
+    background-color: rgb(0, 119, 52) !important; 
+    border-radius: 20px !important; /* Alle Ecken abgerundet */
     box-shadow: 0 10px 25px rgba(0, 119, 52, 0.08) !important;
     overflow: visible !important; /* Wichtig für das überragende Foto */
     cursor: pointer !important;
-    /* Wir animieren jetzt max-width für den Breiten-Übergang */
     transition: all 0.5s ease-in-out !important; 
     outline: none !important;
     position: relative !important;
     text-align: left !important;
-    left: 0 !important; /* Sicherstellen, dass sie links klebt */
+    left: 0 !important;
 }
 
 .rmc-header {
     display: flex !important;
     align-items: center !important;
-    /* Angepasst: Mehr padding-top, um das überragende Bild auszugleichen */
     padding: 40px 25px 20px 25px !important;
     position: relative !important;
-    /* GRÜNE SCHRÄGE ENTFERNT -> Gesamter Hintergrund hellgrün durch Container */
     background: transparent !important; 
-    border-radius: 20px 20px 0 0 !important; /* Obere Ecken abrunden, untere scharf (für Body) */
+    border-radius: 20px 20px 0 0 !important;
 }
 
 .rmc-avatar {
-    /* Größer und besser positioniert */
     width: 140px !important; 
     height: 140px !important;
     border-radius: 50% !important;
     object-fit: cover !important;
     position: absolute !important;
-    top: -50px !important; /* Ragt nach oben über */
-    left: 30px !important; /* Besserer Abstand zum Rand */
+    top: -50px !important;
+    left: 30px !important;
     border: 5px solid #ffffff !important;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
     transition: transform 0.3s ease !important;
-    z-index: 2 !important; /* Vor den Header-Text */
+    z-index: 2 !important;
 }
 
 .rmc-header-text {
-    /* Platziert den Text NACH dem Foto */
     margin-left: 170px !important; 
     flex-grow: 1 !important;
     position: relative !important;
@@ -1844,7 +1915,7 @@ table.develey-info-slider tr:hover .slider-arrow {
     font-family: "Montserrat", sans-serif !important;
     font-weight: 700 !important;
     font-size: 1.3rem !important;
-    color: rgb(0, 119, 52) !important;
+    color: #ffffff !important; /* Weißer Text auf dunkelgrün */
     display: block !important;
     line-height: 1.1 !important;
 }
@@ -1853,7 +1924,7 @@ table.develey-info-slider tr:hover .slider-arrow {
     font-family: "Montserrat", sans-serif !important;
     font-weight: 400 !important;
     font-size: 1.1rem !important;
-    color: #666 !important;
+    color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparentes Weiß */
     display: block !important;
     margin-top: 6px !important;
 }
@@ -1863,7 +1934,7 @@ table.develey-info-slider tr:hover .slider-arrow {
     right: 20px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    color: rgb(0, 119, 52) !important;
+    color: #ffffff !important; /* Weißer Pfeil */
     font-size: 1rem !important;
     transition: all 0.3s ease !important;
     z-index: 1 !important;
@@ -1932,7 +2003,7 @@ table.develey-info-slider tr:hover .slider-arrow {
     padding-top: 15px !important;
     /* Textbereich weiß machen für bessere Lesbarkeit */
     background: #ffffff !important;
-    border-radius: 0 0 20px 20px !important; /* <--- Untere Ecken abrunden */
+    border-radius: 0 0 20px 20px !important; /* Untere Ecken abrunden */
 }
 
 /* Pfeil-Rotation */
@@ -1972,5 +2043,13 @@ table.develey-info-slider tr:hover .slider-arrow {
     }
     .rmc-body {
         padding: 0 20px !important;
+    }
+    
+    /* FIX: Mobile max-height drastically increased to prevent cutting off text */
+    .recruiting-message-card:hover .rmc-body,
+    .recruiting-message-card:focus .rmc-body,
+    .recruiting-message-card:focus-within .rmc-body {
+        max-height: 2000px !important;
+        padding-bottom: 25px !important;
     }
 }
