@@ -164,8 +164,15 @@
     .intro-text {
         font-size: 1rem !important;
     }
-}
 
+    /* NEU: Fließtext und Listen auf dem Smartphone verkleinern */
+    p, li, 
+    .BW-WebPositionPage p, 
+    .BW-WebPositionPage li {
+        font-size: 1.15rem !important; /* Standard war 1.4rem. Du kannst hier auch 1.1rem oder 1.2rem testen */
+        line-height: 1.5 !important;
+    }
+}
 /* --------------------------------------------------
    FLIESSTEXT
 -------------------------------------------------- */
