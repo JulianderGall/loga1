@@ -1863,7 +1863,7 @@ table.develey-info-slider tr:hover .slider-arrow {
 .recruiting-message-box:hover .rm-body,
 .recruiting-message-box:focus .rm-body,
 .recruiting-message-box:focus-within .rm-body {
-    max-height: 400px !important; /* Gibt genug Platz zum Aufklappen */
+    max-height: 800px !important; /* Gibt genug Platz zum Aufklappen */
     opacity: 1 !important;
     padding-bottom: 20px !important;
     padding-top: 10px !important;
@@ -1876,7 +1876,7 @@ table.develey-info-slider tr:hover .slider-arrow {
 }
 
 /* === MOBILE ANPASSUNG === */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1000px) {
     .recruiting-message-box {
         border-radius: 30px !important;
     }
