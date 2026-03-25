@@ -1777,3 +1777,114 @@ table.develey-info-slider tr:hover .slider-arrow {
         font-size: 2rem !important;
     }
 }
+/* ==========================================
+   RECRUITING MESSAGE BOX (Ausklappbar)
+========================================== */
+.recruiting-message-box {
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 10px 0 40px 0 !important; /* Abstand nach oben und unten */
+    background-color: #ffffff !important;
+    border: 2px solid rgb(0, 119, 52) !important; /* Develey Grün */
+    border-radius: 40px !important; /* Runde Ecken wie eine Pille */
+    overflow: hidden !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05) !important;
+    outline: none !important; /* Entfernt Standard-Rahmen beim Klicken */
+}
+
+.rm-header {
+    display: flex !important;
+    align-items: center !important;
+    padding: 5px 20px 5px 5px !important; /* Asymmetrisch, damit das Bild links bündig ist */
+}
+
+.rm-avatar {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    border: 2px solid #ffffff !important; 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+    flex-shrink: 0 !important;
+}
+
+.rm-title-wrap {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100% !important;
+    padding-left: 15px !important;
+}
+
+.rm-title {
+    font-family: "Montserrat", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    color: rgb(0, 119, 52) !important; 
+}
+
+.rm-icon {
+    color: rgb(0, 119, 52) !important;
+    font-size: 0.9rem !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* Der Textbereich (Standard: unsichtbar und Höhe 0) */
+.rm-body {
+    max-height: 0 !important;
+    opacity: 0 !important;
+    padding: 0 25px !important;
+    margin-left: 65px !important; /* Schön eingerückt unter dem Text, nicht unter dem Bild */
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    color: #333 !important;
+    transition: all 0.4s ease !important;
+}
+
+.rm-body p {
+    margin-bottom: 15px !important;
+}
+
+.rm-body strong {
+    color: rgb(0, 119, 52) !important;
+}
+
+/* === INTERAKTION: KLICK ODER HOVER === */
+.recruiting-message-box:hover,
+.recruiting-message-box:focus,
+.recruiting-message-box:focus-within {
+    border-radius: 20px !important; /* Wird etwas eckiger, wenn sie sich öffnet */
+    box-shadow: 0 10px 25px rgba(0, 119, 52, 0.15) !important;
+}
+
+.recruiting-message-box:hover .rm-body,
+.recruiting-message-box:focus .rm-body,
+.recruiting-message-box:focus-within .rm-body {
+    max-height: 400px !important; /* Gibt genug Platz zum Aufklappen */
+    opacity: 1 !important;
+    padding-bottom: 20px !important;
+    padding-top: 10px !important;
+}
+
+.recruiting-message-box:hover .rm-icon,
+.recruiting-message-box:focus .rm-icon,
+.recruiting-message-box:focus-within .rm-icon {
+    transform: rotate(180deg) !important; /* Pfeil dreht sich nach oben */
+}
+
+/* === MOBILE ANPASSUNG === */
+@media screen and (max-width: 600px) {
+    .recruiting-message-box {
+        border-radius: 30px !important;
+    }
+    .rm-body {
+        margin-left: 0 !important; /* Auf dem Handy die volle Breite für Text nutzen */
+        padding: 0 20px !important;
+    }
+    .rm-title {
+        font-size: 1rem !important;
+    }
+}
