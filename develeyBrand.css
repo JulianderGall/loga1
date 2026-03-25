@@ -141,38 +141,7 @@
     }
 }
 
-/* --------------------------------------------------
-   MOBILE (bis 800px)
--------------------------------------------------- */
-@media screen and (max-width: 800px) {
-    h1, .BW-WebPositionPage h1 {
-        font-family: "Open Sans", sans-serif !important;
-        font-size: 40px !important;
-        line-height: 1.4 !important;
-        /* FIX: Farbe explizit wiederholen, sonst wird es schwarz! */
-        color: rgb(0, 119, 52) !important; 
-        -webkit-text-stroke: 0px !important;
-    }
 
-    h2, .BW-WebPositionPage h2 {
-        font-family: "Open Sans", sans-serif !important;
-        font-size: 35px !important;
-        line-height: 1.4 !important;
-        color: #000000 !important;
-    }
-    
-    .intro-text {
-        font-size: 1rem !important;
-    }
-
-    /* NEU: Fließtext und Listen auf dem Smartphone verkleinern */
-    p, li, 
-    .BW-WebPositionPage p, 
-    .BW-WebPositionPage li {
-        font-size: 1.15rem !important; /* Standard war 1.4rem. Du kannst hier auch 1.1rem oder 1.2rem testen */
-        line-height: 1.5 !important;
-    }
-}
 /* --------------------------------------------------
    FLIESSTEXT
 -------------------------------------------------- */
@@ -1784,52 +1753,8 @@ table.develey-info-slider tr:hover .slider-arrow {
         font-size: 2rem !important;
     }
 }
-/* ==================================================
-   DEVELEY BRANDING STYLESHEET (Finalized Version)
-   Contains global mobile font reduction and 
-   the modernized recruiting message card.
-================================================== */
-
 /* --------------------------------------------------
-   GLOBAL STYLES & TYPOGRAPHY
--------------------------------------------------- */
-body, .BW-WebPositionPage {
-    font-family: "Open Sans", sans-serif !important;
-    font-size: 1.4rem !important; /* Large desktop font */
-    line-height: 1.7 !important;
-    color: #000000 !important;
-}
-
-h1, .BW-WebPositionPage h1 {
-    font-family: "Open Sans", sans-serif !important;
-    font-weight: bold !important;
-    font-size: 50px !important;
-    line-height: 1.2 !important;
-    color: rgb(0, 119, 52) !important;
-    margin-top: 15px !important;
-    -webkit-text-stroke: 1.5px !important; /* Fine green outline for better readability */
-}
-
-h2, .BW-WebPositionPage h2 {
-    font-family: "Open Sans", sans-serif !important;
-    font-weight: bold !important;
-    font-size: 40px !important;
-    line-height: 1.3 !important;
-    color: #000000 !important;
-    margin-bottom: 25px !important;
-    -webkit-text-stroke: 1px !important;
-}
-
-strong {
-    color: rgb(0, 119, 52) !important;
-}
-
-.skew-section.bg-white {
-    padding: 60px 0 !important;
-}
-
-/* --------------------------------------------------
-   MOBILE FIXES (Global reduction for smartphone)
+   MOBILE FIXES (Schrift auf dem Smartphone verkleinern)
 -------------------------------------------------- */
 @media screen and (max-width: 800px) {
     h1, .BW-WebPositionPage h1 {
@@ -1851,28 +1776,26 @@ strong {
         font-size: 1rem !important;
     }
 
-    /* NEU: Fließtext und Listen auf dem Smartphone verkleinern */
+    /* Fließtext und Listen auf dem Smartphone verkleinern */
     p, li, 
     .BW-WebPositionPage p, 
     .BW-WebPositionPage li {
-        font-size: 1.15rem !important; /* Reduced for mobile readability */
+        font-size: 1.15rem !important; 
         line-height: 1.5 !important;
     }
 }
 
 /* ==========================================
-   RECRUITING MESSAGE CARD (Finaled)
+   RECRUITING MESSAGE CARD (Korrektur: Keine globalen Eingriffe)
 ========================================== */
 .recruiting-message-card {
     width: 100% !important;
-    /* INITIAL: Schmaler Störer linksbündig, jetzt 600px breit */
     max-width: 600px !important; 
-    margin: 60px 0 40px 0 !important; /* Abstand nach oben, linksbündig */
-    /* GANZE KARTE DUNKELGRÜN (Wie von dir gewünscht) */
+    margin: 60px 0 40px 0 !important;
     background-color: rgb(0, 119, 52) !important; 
-    border-radius: 20px !important; /* Alle Ecken abgerundet */
+    border-radius: 20px !important;
     box-shadow: 0 10px 25px rgba(0, 119, 52, 0.08) !important;
-    overflow: visible !important; /* Wichtig für das überragende Foto */
+    overflow: visible !important;
     cursor: pointer !important;
     transition: all 0.5s ease-in-out !important; 
     outline: none !important;
@@ -1915,7 +1838,7 @@ strong {
     font-family: "Montserrat", sans-serif !important;
     font-weight: 700 !important;
     font-size: 1.3rem !important;
-    color: #ffffff !important; /* Weißer Text auf dunkelgrün */
+    color: #ffffff !important; 
     display: block !important;
     line-height: 1.1 !important;
 }
@@ -1924,7 +1847,7 @@ strong {
     font-family: "Montserrat", sans-serif !important;
     font-weight: 400 !important;
     font-size: 1.1rem !important;
-    color: rgba(255, 255, 255, 0.8) !important; /* Leicht transparentes Weiß */
+    color: rgba(255, 255, 255, 0.8) !important; 
     display: block !important;
     margin-top: 6px !important;
 }
@@ -1934,13 +1857,12 @@ strong {
     right: 20px !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    color: #ffffff !important; /* Weißer Pfeil */
+    color: #ffffff !important;
     font-size: 1rem !important;
     transition: all 0.3s ease !important;
     z-index: 1 !important;
 }
 
-/* Der Textbereich (Auf volle Breite ausgeklappt) */
 .rmc-body {
     max-height: 0 !important;
     opacity: 0 !important;
@@ -1949,7 +1871,7 @@ strong {
     font-family: "Montserrat", sans-serif !important;
     font-size: 1rem !important;
     line-height: 1.6 !important;
-    color: rgb(0, 119, 52) !important; /* Grün, um auf hellgrün lesbar zu sein */
+    color: rgb(0, 119, 52) !important; 
     transition: all 0.5s ease-in-out !important;
     margin-top: -10px !important;
 }
@@ -1958,11 +1880,6 @@ strong {
     margin-bottom: 18px !important;
 }
 
-.rmc-body strong {
-    color: rgb(0, 119, 52) !important;
-}
-
-/* Schließen-Link */
 .rmc-close-link {
     display: block !important;
     text-align: right !important;
@@ -1977,13 +1894,11 @@ strong {
     text-decoration: underline !important;
 }
 
-/* === INTERAKTION: KLICK/HOVER === */
 .recruiting-message-card:hover,
 .recruiting-message-card:focus,
 .recruiting-message-card:focus-within {
     transform: translateY(-2px) !important;
     box-shadow: 0 15px 30px rgba(0, 119, 52, 0.12) !important;
-    /* AUFKLAPPEN: Auf volle verfügbare Breite (100%) */
     max-width: 100% !important; 
     width: 100% !important;
 }
@@ -1994,19 +1909,16 @@ strong {
     transform: scale(1.03) !important;
 }
 
-/* Textbereich einblenden & Ecken abrunden */
 .recruiting-message-card:hover .rmc-body,
 .recruiting-message-card:focus .rmc-body,
 .recruiting-message-card:focus-within .rmc-body {
     max-height: 1000px !important;
     opacity: 1 !important;
     padding-top: 15px !important;
-    /* Textbereich weiß machen für bessere Lesbarkeit */
     background: #ffffff !important;
-    border-radius: 0 0 20px 20px !important; /* Untere Ecken abrunden */
+    border-radius: 0 0 20px 20px !important; 
 }
 
-/* Pfeil-Rotation */
 .recruiting-message-card:hover .rmc-icon,
 .recruiting-message-card:focus .rmc-icon,
 .recruiting-message-card:focus-within .rmc-icon {
@@ -2045,7 +1957,6 @@ strong {
         padding: 0 20px !important;
     }
     
-    /* FIX: Mobile max-height drastically increased to prevent cutting off text */
     .recruiting-message-card:hover .rmc-body,
     .recruiting-message-card:focus .rmc-body,
     .recruiting-message-card:focus-within .rmc-body {
