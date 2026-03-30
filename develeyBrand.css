@@ -523,7 +523,18 @@ h1 *, h2 *, h3 * {
 .LG-BoxPanelRow-Column:last-child {
     margin-right: 0 !important;
 }
+/* 2. FELDER AUSBLENDEN (Dynamisch über Title-Attribute) */
 
+/* Versteckt die Labels selbst */
+label[title="Username"],
+label[title="Bewerbungsquelle"],
+
+/* Versteckt die komplette Tabellenzeile (inklusive Eingabefeld daneben), 
+   in der sich ein Label mit diesem Titel befindet */
+tr:has(label[title="Username"]),
+tr:has(label[title="Bewerbungsquelle"]) {
+    display: none !important;
+}
 
 /* 3. TYPOGRAFIE (LABELS) */
 .LG-InputLabel {
