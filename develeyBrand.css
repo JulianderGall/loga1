@@ -1977,3 +1977,46 @@ table.develey-info-slider tr:hover .slider-arrow {
         padding-bottom: 25px !important;
     }
 }
+/* ==========================================
+   RADIKAL-FIX FÜR DEN MISSIONSTEXT (GRÜNE BOX)
+========================================== */
+
+/* 1. Normaler Text: Zwingt alles auf 1.4rem (egal was der Editor daraus macht) */
+.BW-WebPositionPage .skew-section.bg-green .content-inner p,
+.BW-WebPositionPage .skew-section.bg-green .content-inner div,
+.BW-WebPositionPage .skew-section.bg-green .content-inner span,
+.BW-WebPositionPage .skew-section.bg-green .content-inner center,
+.BW-WebPositionPage .skew-section.bg-green .content-inner font {
+    font-family: "Montserrat", sans-serif !important;
+    font-size: 1.4rem !important;
+    line-height: 1.6 !important;
+    color: #ffffff !important;
+}
+
+/* 2. Überschrift: Zwingt H2 in der grünen Box auf Open Sans 45px */
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2,
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 * {
+    font-family: "Open Sans", sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 45px !important;
+    line-height: 1.4 !important;
+    color: #ffffff !important;
+    margin-bottom: 1.5rem !important;
+}
+
+/* 3. Mobile Anpassung für das Smartphone */
+@media screen and (max-width: 800px) {
+    .BW-WebPositionPage .skew-section.bg-green .content-inner p,
+    .BW-WebPositionPage .skew-section.bg-green .content-inner div,
+    .BW-WebPositionPage .skew-section.bg-green .content-inner span,
+    .BW-WebPositionPage .skew-section.bg-green .content-inner center,
+    .BW-WebPositionPage .skew-section.bg-green .content-inner font {
+        font-size: 1.15rem !important; 
+        line-height: 1.5 !important;
+    }
+    
+    .BW-WebPositionPage .skew-section.bg-green .content-inner h2,
+    .BW-WebPositionPage .skew-section.bg-green .content-inner h2 * {
+        font-size: 35px !important;
+    }
+}
