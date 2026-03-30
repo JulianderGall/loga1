@@ -141,13 +141,15 @@
     }
 }
 
-
 /* --------------------------------------------------
    FLIESSTEXT
 -------------------------------------------------- */
 p, li, 
 .BW-WebPositionPage p, 
-.BW-WebPositionPage li {
+.BW-WebPositionPage li,
+.BW-WebPositionPage .content-inner div,
+.BW-WebPositionPage .content-inner span,
+.BW-WebPositionPage .content-inner center {
     font-family: "Montserrat", sans-serif !important;
     font-size: 1.4rem !important;
     line-height: 1.6 !important;
@@ -155,8 +157,10 @@ p, li,
     color: #000000 !important;
 }
 
-ul {
-    padding-left: 25px !important;
+/* Schutz: Falls in Überschriften Spans genutzt werden, sollen diese groß bleiben */
+h1 span, h2 span, h3 span {
+    font-size: inherit !important;
+    margin-bottom: 0 !important;
 }
 
 /* --------------------------------------------------
@@ -1776,10 +1780,13 @@ table.develey-info-slider tr:hover .slider-arrow {
         font-size: 1rem !important;
     }
 
-    /* Fließtext und Listen auf dem Smartphone verkleinern */
+   /* Fließtext und Listen auf dem Smartphone verkleinern */
     p, li, 
     .BW-WebPositionPage p, 
-    .BW-WebPositionPage li {
+    .BW-WebPositionPage li,
+    .BW-WebPositionPage .content-inner div,
+    .BW-WebPositionPage .content-inner span,
+    .BW-WebPositionPage .content-inner center {
         font-size: 1.15rem !important; 
         line-height: 1.5 !important;
     }
