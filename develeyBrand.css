@@ -529,10 +529,12 @@ h1 *, h2 *, h3 * {
 label[title="Username"],
 label[title="Bewerbungsquelle"],
 label[title="ga_utm_parameter"],
+
 /* Versteckt die komplette Tabellenzeile (inklusive Eingabefeld daneben), 
    in der sich ein Label mit diesem Titel befindet */
 tr:has(label[title="Username"]),
-tr:has(label[title="Bewerbungsquelle"]) {
+tr:has(label[title="Bewerbungsquelle"]),
+tr:has(label[title="ga_utm_parameter"]) {
     display: none !important;
 }
 
