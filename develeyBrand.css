@@ -528,7 +528,7 @@ h1 *, h2 *, h3 * {
 /* Versteckt die Labels selbst */
 label[title="Username"],
 label[title="Bewerbungsquelle"],
-
+label[title="ga_utm_parameter"],
 /* Versteckt die komplette Tabellenzeile (inklusive Eingabefeld daneben), 
    in der sich ein Label mit diesem Titel befindet */
 tr:has(label[title="Username"]),
