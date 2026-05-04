@@ -989,39 +989,75 @@ tr:has(label[title="ga_utm_parameter"]) {
     font-weight: 700 !important;
 }
 
-/* === Basis-Felder === */
+/* ============================================================
+   FORM-FELDER: Universelles Erscheinungsbild für ALLE Feldtypen
+   ------------------------------------------------------------
+   Strategie: Eine universelle Basis (Höhe, Border, Radius) für
+   Textfelder, Dropdowns und Uploads. Die HTML-Strukturen
+   unterscheiden sich (direkter Input vs. innere Tabelle vs.
+   Wrapper-Div), also wandert das Padding gezielt dorthin, wo
+   der Text rendert. So sehen alle Felder identisch aus.
+   ============================================================ */
+
+/* --- 1. Universelle Basis für alle Feld-Container --- */
 .LG-TextBox,
 .gwt-combo-box,
-.LG-FileController-Edit {
-    height: 50px !important;
-    background: #fff !important;
-    box-shadow: none !important;
-    border: 2px solid var(--develey-green) !important;
-    border-radius: var(--radius-input) !important;
-    font-family: var(--font-body) !important;
-    font-size: 1.1rem !important;
-    color: var(--color-text) !important;
+.LG-FileController-Edit,
+.LG-FileController-Edit-uploader {
+    /* Box-Modell: identische Größe für alle */
     width: 100% !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
     box-sizing: border-box !important;
-    padding: 0 14px !important;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
-}
+    margin: 0 !important;
 
-.gwt-TextArea {
-    height: auto !important;
-    min-height: 110px !important;
-    padding: 12px 14px !important;
+    /* Optik: gleiche Rundung, gleicher Rand */
+    background: #fff !important;
     border: 2px solid var(--develey-green) !important;
     border-radius: var(--radius-input) !important;
+    box-shadow: none !important;
+    overflow: hidden !important; /* erzwingt Rundung trotz innerer Tabelle/Wrapper */
+
+    /* Typografie */
     font-family: var(--font-body) !important;
-    font-size: 1.1rem !important;
-    transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+    font-size: 1.05rem !important;
+    color: var(--color-text) !important;
+    line-height: normal !important;
+
+    /* Übergänge */
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast) !important;
 }
 
-/* === Fokus === */
+/* --- 2. Direkter Input (Textfeld): Padding direkt am Element --- */
+.LG-TextBox {
+    padding: 0 16px !important;
+}
+
+/* --- 3. Textarea: Auto-Höhe, sonst identisches Erscheinungsbild --- */
+.gwt-TextArea {
+    width: 100% !important;
+    min-height: 120px !important;
+    height: auto !important;
+    padding: 14px 16px !important;
+    background: #fff !important;
+    border: 2px solid var(--develey-green) !important;
+    border-radius: var(--radius-input) !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    font-family: var(--font-body) !important;
+    font-size: 1.05rem !important;
+    color: var(--color-text) !important;
+    line-height: 1.5 !important;
+    transition: border-color var(--transition-fast),
+                box-shadow var(--transition-fast) !important;
+}
+
+/* --- 4. Fokus-Stil (Maus-Hover und Tastatur-Fokus) --- */
 .LG-TextBox:focus,
-.gwt-combo-box-input:focus,
 .gwt-combo-box:focus-within,
+.gwt-combo-box-input:focus,
 .gwt-TextArea:focus,
 .LG-FileController-Edit:hover,
 .LG-FileController-Edit:focus-within {
@@ -1030,8 +1066,7 @@ tr:has(label[title="ga_utm_parameter"]) {
     border-color: var(--develey-green-dark) !important;
 }
 
-/* === Accessibility: Klar sichtbarer Fokusring für Tastatur-Nutzer (WCAG 2.2 AA) ===
-   Nur bei Tastatur-Navigation, nicht bei Mausklick */
+/* --- 5. WCAG 2.2: Sichtbarer Tastatur-Fokus für klickbare Elemente --- */
 .LG-Button.primary:focus-visible,
 .recruiting-message-card:focus-visible,
 .ki-badge-wrapper:focus-visible,
@@ -1040,59 +1075,130 @@ tr:has(label[title="ga_utm_parameter"]) {
     outline-offset: 3px !important;
 }
 
-/* === Dropdown (Combo-Box) === */
+/* ============================================================
+   DROPDOWN (Combo-Box): innere Tabelle abflachen
+   HTML-Struktur:
+     div.gwt-combo-box > table > tbody > tr > [td.input, td.icon]
+   ============================================================ */
 .gwt-combo-box {
     display: flex !important;
-    align-items: center !important;
+    align-items: stretch !important;
     padding: 0 !important;
-    overflow: hidden !important; /* Damit border-radius greift, da innere Tabelle vorhanden */
-    position: relative;
-    border-radius: var(--radius-input) !important; /* Doppelt sicher trotz Basis-Felder-Regel */
+    position: relative !important;
 }
 
-.gwt-combo-box table {
+.gwt-combo-box table,
+.gwt-combo-box tbody,
+.gwt-combo-box tr {
     width: 100% !important;
     height: 100% !important;
+    border: none !important;
+    background: transparent !important;
     border-collapse: collapse !important;
 }
 
 .gwt-combo-box td {
+    height: 100% !important;
     vertical-align: middle !important;
     padding: 0 !important;
     border: none !important;
     background: transparent !important;
 }
 
+/* Inneres Input-Feld des Dropdowns: trägt das Padding für den Text */
 .gwt-combo-box .gwt-combo-box-input {
+    width: 100% !important;
+    height: 100% !important;
     border: none !important;
     outline: none !important;
     background: transparent !important;
-    height: 100% !important;
-    width: 100% !important;
-    padding: 0 14px !important;
+    padding: 0 16px !important;
     margin: 0 !important;
-    display: flex !important;
-    align-items: center !important;
-    line-height: normal !important;
+    box-sizing: border-box !important;
     font-family: var(--font-body) !important;
-    font-size: 1.1rem !important;
+    font-size: 1.05rem !important;
     color: var(--color-text) !important;
+    line-height: normal !important;
 }
 
-/* === Icons (Pfeil & Klammer) – Develey Grün === */
+/* ============================================================
+   UPLOAD-FELD: inneren Wrapper auf Container-Höhe spannen
+   HTML-Struktur:
+     div.LG-FileController-Edit > div.LG-FileController-MainPanel
+       > [div.text, span.icon-clip, form (versteckt)]
+   ============================================================ */
+.LG-FileController-Edit,
+.LG-FileController-Edit-uploader {
+    display: flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    padding: 0 !important; /* Padding wandert in MainPanel */
+}
+
+.LG-FileController-MainPanel {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 0 16px !important;
+    box-sizing: border-box !important;
+}
+
+.LG-FileController-Text {
+    flex-grow: 1 !important;
+    font-family: var(--font-body) !important;
+    font-size: 1.05rem !important;
+    color: var(--color-text-soft) !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+
+/* Wrapper um mehrere Uploads (Anhänge stapeln untereinander) */
+.LG-FileController {
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+    clear: both !important;
+}
+
+#LG_FFC_11, #LG_FFC_12, #LG_FFC_13, #LG_FFC_14,
+div[id^="LG_FFC_"] {
+    &:has(.LG-FileController) {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        height: auto !important;
+        width: 100% !important;
+    }
+}
+
+/* ============================================================
+   ICONS (Pfeil im Dropdown, Klammer im Upload): einheitliche Größe
+   ============================================================ */
 .LG-FileController-Icon,
 .combo-box-action-icon {
+    /* Develey-Grün via Filter (Original-Icons sind schwarz) */
     filter: invert(27%) sepia(91%) saturate(1633%) hue-rotate(128deg) brightness(95%) contrast(102%) !important;
     opacity: 1 !important;
     cursor: pointer;
-    width: 24px !important;
-    height: 24px !important;
-    margin-left: 10px !important;
-    margin-right: 12px !important;
+    width: 22px !important;
+    height: 22px !important;
+    margin: 0 0 0 12px !important;
     flex-shrink: 0 !important;
     background: transparent !important;
     border: none !important;
     display: block !important;
+}
+
+/* Pfeil-Icon im Dropdown braucht etwas mehr Abstand zum rechten Rand */
+.combo-box-action-icon {
+    margin-right: 14px !important;
 }
 
 /* === Dropdown-Popup (aufgeklappte Liste) ===
@@ -1174,56 +1280,6 @@ tr:has(label[title="ga_utm_parameter"]) {
     height: 20px !important;
     cursor: pointer !important;
     margin: 5px 0 !important;
-}
-
-/* === Upload-Felder === */
-#LG_FFC_11, #LG_FFC_12, #LG_FFC_13, #LG_FFC_14,
-div[id^="LG_FFC_"] {
-    &:has(.LG-FileController) {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 15px !important;
-        height: auto !important;
-        width: 100% !important;
-    }
-}
-
-.LG-FileController {
-    position: relative !important;
-    display: block !important;
-    width: 100% !important;
-    margin-bottom: 15px !important;
-    clear: both !important;
-}
-
-.LG-FileController-Edit {
-    height: auto !important;
-    min-height: 50px !important;
-    box-sizing: border-box !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    cursor: pointer !important;
-}
-
-.LG-FileController-MainPanel {
-    width: 100% !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center !important;
-}
-
-.LG-FileController-Text {
-    font-family: var(--font-body) !important;
-    font-size: 1.05rem !important;
-    color: var(--color-text-soft) !important;
-    flex-grow: 1 !important;
-    white-space: normal !important;
-    word-break: break-all !important;
-    margin-right: 15px !important;
-    line-height: 1.3 !important;
-    padding: 5px 0 !important;
 }
 
 /* === Button "Jetzt bewerben" === */
