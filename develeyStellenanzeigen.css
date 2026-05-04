@@ -56,6 +56,7 @@
     --radius-md:            12px;
     --radius-lg:            20px;
     --radius-pill:          999px;
+    --radius-input:         10px;  /* Bewusst eigener Wert für Form-Inputs (UX 2026: deutlich sichtbar) */
 
     /* === Schatten (mehrschichtig, modern) === */
     --shadow-sm:            0 2px 8px rgba(0, 0, 0, 0.06);
@@ -121,7 +122,7 @@
     z-index: 0 !important;
 }
 
-/* Floating Logo */
+/* Floating Logo (statisch, kein Hover-Effekt) */
 .develey-floating-logo {
     position: absolute !important;
     top: -8px !important;
@@ -131,11 +132,8 @@
     height: auto !important;
     z-index: 100 !important;
     filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.22)) !important;
-    transition: transform var(--transition-base) !important;
-}
-
-.header-wrapper:hover .develey-floating-logo {
-    transform: rotate(-3deg) scale(1.03);
+    /* Logo soll kein Hover-Verhalten haben - bewusst keine transition */
+    pointer-events: none !important; /* leitet Hover an darunterliegenden Wrapper weiter */
 }
 
 /* Surprise-Overlay (gelb beim Hover) */
@@ -311,6 +309,28 @@ h1 *, h2 *, h3 * {
     -webkit-text-stroke: 0 !important;
     text-shadow: none !important;
     border-color: #ffffff !important;
+}
+
+/* === Headline-Größe in grüner Box: gleiche Größe wie alle anderen h2 erzwingen ===
+   Wichtig: Höhere Spezifität als .content-inner span (sonst werden Spans im h2 kleingerechnet) */
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2,
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 *,
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 span,
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 font,
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 b,
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 strong {
+    font-family: var(--font-headline) !important;
+    font-weight: 700 !important;
+    font-size: clamp(2rem, 3vw, 2.8rem) !important;
+    line-height: 1.25 !important;
+    color: #ffffff !important;
+    margin-bottom: 1.5rem !important;
+    letter-spacing: -0.3px !important;
+}
+
+/* Strong/Bold IN h2 in grüner Box - Senf-Gold Akzent für Highlights */
+.BW-WebPositionPage .skew-section.bg-green .content-inner h2 strong {
+    color: var(--develey-yellow) !important;
 }
 
 /* Spezifisch: Headline in grüner Box mit gelbem Strong */
@@ -977,7 +997,7 @@ tr:has(label[title="ga_utm_parameter"]) {
     background: #fff !important;
     box-shadow: none !important;
     border: 2px solid var(--develey-green) !important;
-    border-radius: var(--radius-sm) !important;
+    border-radius: var(--radius-input) !important;
     font-family: var(--font-body) !important;
     font-size: 1.1rem !important;
     color: var(--color-text) !important;
@@ -992,7 +1012,7 @@ tr:has(label[title="ga_utm_parameter"]) {
     min-height: 110px !important;
     padding: 12px 14px !important;
     border: 2px solid var(--develey-green) !important;
-    border-radius: var(--radius-sm) !important;
+    border-radius: var(--radius-input) !important;
     font-family: var(--font-body) !important;
     font-size: 1.1rem !important;
     transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
@@ -1003,10 +1023,21 @@ tr:has(label[title="ga_utm_parameter"]) {
 .gwt-combo-box-input:focus,
 .gwt-combo-box:focus-within,
 .gwt-TextArea:focus,
-.LG-FileController-Edit:hover {
+.LG-FileController-Edit:hover,
+.LG-FileController-Edit:focus-within {
     outline: none !important;
-    box-shadow: 0 0 0 4px rgba(0, 119, 52, 0.15) !important;
+    box-shadow: 0 0 0 4px rgba(0, 119, 52, 0.18) !important;
     border-color: var(--develey-green-dark) !important;
+}
+
+/* === Accessibility: Klar sichtbarer Fokusring für Tastatur-Nutzer (WCAG 2.2 AA) ===
+   Nur bei Tastatur-Navigation, nicht bei Mausklick */
+.LG-Button.primary:focus-visible,
+.recruiting-message-card:focus-visible,
+.ki-badge-wrapper:focus-visible,
+.LG-CheckBox input[type="checkbox"]:focus-visible {
+    outline: 3px solid var(--develey-yellow) !important;
+    outline-offset: 3px !important;
 }
 
 /* === Dropdown (Combo-Box) === */
@@ -1014,8 +1045,9 @@ tr:has(label[title="ga_utm_parameter"]) {
     display: flex !important;
     align-items: center !important;
     padding: 0 !important;
-    overflow: hidden;
+    overflow: hidden !important; /* Damit border-radius greift, da innere Tabelle vorhanden */
     position: relative;
+    border-radius: var(--radius-input) !important; /* Doppelt sicher trotz Basis-Felder-Regel */
 }
 
 .gwt-combo-box table {
@@ -1063,17 +1095,19 @@ tr:has(label[title="ga_utm_parameter"]) {
     display: block !important;
 }
 
-/* === Dropdown-Popup === */
+/* === Dropdown-Popup (aufgeklappte Liste) ===
+   Develey-Branding: weißes Panel, grüner Rahmen, deutlicher Hover */
 .gwt-MenuBarPopup,
 .gwt-SuggestBoxPopup,
 .gwt-PopupPanel {
     z-index: 2147483647 !important;
     background-color: #ffffff !important;
     border: 2px solid var(--develey-green) !important;
-    box-shadow: var(--shadow-lg) !important;
-    border-radius: 0 0 var(--radius-sm) var(--radius-sm) !important;
-    padding: 0 !important;
+    box-shadow: var(--shadow-lg), 0 0 0 4px rgba(0, 119, 52, 0.08) !important;
+    border-radius: var(--radius-input) !important;
+    padding: 6px !important; /* Etwas Innenabstand für moderneren Look */
     overflow: hidden !important;
+    margin-top: 4px !important; /* Kleiner Abstand zum Eingabefeld */
 }
 
 .gwt-MenuBarPopup table,
@@ -1083,20 +1117,31 @@ tr:has(label[title="ga_utm_parameter"]) {
     background: white !important;
 }
 
+/* === Einzelne Einträge im Dropdown === */
 .gwt-MenuItem,
 .gwt-SuggestBoxPopup .item,
 .gwt-MenuBarPopup td {
     font-family: var(--font-body) !important;
     font-size: 1rem !important;
+    font-weight: 500 !important;
     color: var(--color-text-soft) !important;
-    padding: 12px 20px !important;
+    padding: 14px 18px !important;
     cursor: pointer !important;
     display: block !important;
     background: #ffffff !important;
     border-bottom: 1px solid var(--color-border-soft) !important;
+    border-radius: 6px !important;
     transition: all var(--transition-fast) !important;
+    position: relative !important;
 }
 
+/* Letzter Eintrag: keine Trennlinie */
+.gwt-MenuBarPopup tr:last-child td,
+.gwt-SuggestBoxPopup .item:last-child {
+    border-bottom: none !important;
+}
+
+/* === Hover & Selected: Develey-Grün mit weißem Text === */
 .gwt-MenuItem-selected,
 .gwt-MenuItem:hover,
 .gwt-SuggestBoxPopup .item-selected,
@@ -1105,6 +1150,8 @@ tr:has(label[title="ga_utm_parameter"]) {
 .gwt-MenuBarPopup tr:hover td {
     background-color: var(--develey-green) !important;
     color: #ffffff !important;
+    font-weight: 600 !important;
+    transform: translateX(2px); /* Subtile Mikro-Interaktion (funktional, nicht dekorativ) */
 }
 
 /* Custom Scrollbar im Popup */
